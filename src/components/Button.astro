@@ -1,0 +1,28 @@
+---
+interface Props {
+  href?: string;
+  color?: "blue" | "orange";
+  size?: "normal" | "small";
+  submit?: boolean;
+}
+
+const { href, color = "blue", submit = false, size = "normal" } = Astro.props;
+
+const classList = ["button", `button--${color}`, `button--${size}`];
+---
+
+{
+  href ? (
+    <a {href} class:list={classList}>
+      <slot />
+    </a>
+  ) : submit ? (
+    <button type="submit" class:list={classList}>
+      <slot />
+    </button>
+  ) : (
+    <div class:list={classList}>
+      <slot />
+    </div>
+  )
+}

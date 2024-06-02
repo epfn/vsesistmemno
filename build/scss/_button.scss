@@ -1,0 +1,38 @@
+@use "sass:color";
+
+.button {
+  font-weight: 500;
+  line-height: 1.25;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  transition-duration: 0.38s;
+  transition-timing-function: ease-in-out;
+  transition-property: background-color;
+
+  &--normal {
+    font-size: 16px;
+  }
+
+  &--small {
+    font-size: 14px;
+  }
+
+  &--blue {
+    background-color: $color-background-blue;
+    color: white;
+
+    &:hover {
+      background-color: color-mix(
+        in srgb,
+        $color-background-blue 90%,
+        black 10%
+      );
+    }
+  }
+
+  &--orange {
+    background-color: $color-background-peach;
+    color: white;
+  }
+}

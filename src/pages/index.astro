@@ -1,0 +1,14 @@
+---
+import Layout from "@components/Layout.astro";
+import Field from "@components/Field.astro";
+import Input from "@components/Input.astro";
+---
+
+<Layout title="Главная страница">
+  <Field label="Логин" id="name">
+    <Input id="name" type="password" placeholder="password" />
+  </Field>
+  <Field label="Пароль" id="name1" variant="gray">
+    <Input id="name1" type="date" />
+  </Field>
+</Layout>

@@ -1,0 +1,43 @@
+.input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  &__element {
+    grid-area: 1/1/-1/-1;
+    border: 1px solid $color-border-gray;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+    padding: 14px 20px;
+    transition: border-color 0.38s ease-in-out;
+
+    &::placeholder {
+      color: $color-text-gray;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: unset;
+      border-color: $color-border-blue;
+    }
+    &--password {
+      padding-right: 50px;
+    }
+  }
+
+  &__icon {
+    cursor: pointer;
+    grid-area: 1/2/-1/-1;
+    font-size: 20px;
+    color: $color-text-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+  }
+
+  &__element--date + &__icon {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,39 @@
+$color-text-black: #273137;
+$color-text-gray: #8596a0;
+$color-text-blue: #5c7ef4;
+$color-text-green: #5eb728;
+$color-text-red: #f43e36;
+$color-text-orange: #f38928;
+$color-text-peach: #f78763;
+
+$color-background-gray: #e9eff2;
+$color-background-gray-light: #fafbfc;
+$color-background-blue: #5c7ef4;
+$color-background-blue-light: #ebefff;
+$color-background-purple: #dbe1f4;
+$color-background-purple-light: #f1f4f9;
+$color-background-green: #dbf3cc;
+$color-background-red: #ffd8d7;
+$color-background-orange: #ffe4cc;
+$color-background-peach: #f78763;
+$color-background-peach-light: #ffefea;
+
+$color-border-gray: #e9eff2;
+$color-border-peach: #f78763;
+$color-border-blue: #5c7ef4;
+
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/onest/onest-variable.ttf") format("truetype-variations");
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: "Onest", sans-serif;
+  color: $color-text-black;
+  background-color: $color-background-purple-light;
+}

@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="guest">
+  <div class="guest__container">
+    <img src="/img/logo.svg" alt="" class="guest__logo" />
+    <div class="guest__card">
+      <h1 class="guest__title">{title}</h1>
+      {subtitle ? <div class="guest__subtitle">{subtitle}</div> : null}
+      <form class="guest__form">
+        <slot name="form" />
+      </form>
+      <slot name="footer" />
+    </div>
+  </div>
+</section>

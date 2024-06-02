@@ -1,0 +1,15 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__label {
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 400;
+
+    &--gray {
+      color: $color-text-gray;
+    }
+  }
+}

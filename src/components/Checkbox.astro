@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  variant?: "normal" | "small";
+}
+
+const { variant = "normal", type, id, ...restProps } = Astro.props;
+---
+
+<div class="checkbox">
+  <input {...restProps} {id} type="checkbox" class="checkbox__element" />
+  <label
+    for={id}
+    class:list={["checkbox__label", `checkbox__label--${variant}`]}
+  >
+    <slot />
+  </label>
+</div>

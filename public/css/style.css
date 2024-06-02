@@ -1,0 +1,533 @@
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: currentColor; /* 2 */
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+*/
+html {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing for appropriate elements.
+*/
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+*/
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+button,
+[role=button] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden] {
+  display: none;
+}
+
+@font-face {
+  font-family: "Onest";
+  src: url("../fonts/onest/onest-variable.ttf") format("truetype-variations");
+}
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: "Onest", sans-serif;
+  color: #273137;
+  background-color: #f1f4f9;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.field__label {
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+.field__label--gray {
+  color: #8596a0;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.input__element {
+  grid-area: 1/1/-1/-1;
+  border: 1px solid #e9eff2;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 400;
+  padding: 14px 20px;
+  transition: border-color 0.38s ease-in-out;
+}
+.input__element::placeholder {
+  color: #8596a0;
+}
+.input__element:focus, .input__element:focus-visible {
+  outline: unset;
+  border-color: #5c7ef4;
+}
+.input__element--password {
+  padding-right: 50px;
+}
+.input__icon {
+  cursor: pointer;
+  grid-area: 1/2/-1/-1;
+  font-size: 20px;
+  color: #8596a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+}
+.input__element--date + .input__icon {
+  pointer-events: none;
+}
+
+.guest {
+  display: grid;
+  grid-template-columns: minmax(16px, 1fr) minmax(auto) minmax(16px, 1fr);
+}
+.guest__container {
+  grid-area: 1/2/-1/-2;
+  margin-top: 90px;
+  display: grid;
+  justify-content: center;
+  gap: 50px;
+}
+.guest__logo {
+  height: 50px;
+  width: 148px;
+  justify-self: center;
+}
+.guest__card {
+  --_padding: 80px;
+  display: grid;
+  padding-top: var(--_padding);
+  padding-bottom: 60px;
+  grid-template-columns: var(--_padding) minmax(auto, 440px) var(--_padding);
+  border-radius: 20px;
+  width: fit-content;
+  background-color: white;
+}
+.guest__card > * {
+  grid-column: 2/-2;
+}
+.guest__title {
+  font-weight: 600;
+  font-size: 26px;
+  justify-self: center;
+}
+.guest__subtitle {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+.guest__title, .guest__subtitle {
+  margin-bottom: 30px;
+}
+.guest__form {
+  display: grid;
+  gap: 10px;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+}
+.checkbox__label {
+  cursor: pointer;
+  font-weight: 400;
+}
+.checkbox__label--normal {
+  font-size: 14px;
+  line-height: 1;
+}
+.checkbox__label--small {
+  font-size: 12px;
+}
+.checkbox__element {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  display: inline-block;
+  vertical-align: middle;
+  background-origin: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+  height: 14px;
+  width: 14px;
+  color: white;
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid #e9eff2;
+  cursor: pointer;
+  transition-property: border-color color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.38s;
+}
+.checkbox__element:checked {
+  background-size: 8px;
+  color: #5c7ef4;
+  border-color: #5c7ef4;
+  background-color: currentColor;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml,<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.25017 6.43242L1.226 4.40826C1.11693 4.29919 0.968998 4.23791 0.81475 4.23791C0.660501 4.23791 0.51257 4.29919 0.4035 4.40826C0.294429 4.51733 0.233154 4.66526 0.233154 4.81951C0.233154 4.89588 0.248198 4.97151 0.277426 5.04207C0.306654 5.11264 0.349494 5.17675 0.4035 5.23076L2.84183 7.66909C3.06933 7.89659 3.43683 7.89659 3.66433 7.66909L9.836 1.49742C9.94507 1.38835 10.0063 1.24042 10.0063 1.08617C10.0063 0.931924 9.94507 0.783993 9.836 0.674923C9.72693 0.565853 9.579 0.504578 9.42475 0.504578C9.2705 0.504578 9.12257 0.565853 9.0135 0.674923L3.25017 6.43242Z" fill="white"/></svg>');
+}
+
+.button {
+  font-weight: 500;
+  line-height: 1.25;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  transition-duration: 0.38s;
+  transition-timing-function: ease-in-out;
+  transition-property: background-color;
+}
+.button--normal {
+  font-size: 16px;
+}
+.button--small {
+  font-size: 14px;
+}
+.button--blue {
+  background-color: #5c7ef4;
+  color: white;
+}
+.button--blue:hover {
+  background-color: color-mix(in srgb, #5c7ef4 90%, black 10%);
+}
+.button--orange {
+  background-color: #f78763;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

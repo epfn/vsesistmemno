@@ -1,0 +1,55 @@
+.guest {
+  display: grid;
+  grid-template-columns: minmax(16px, 1fr) minmax(auto) minmax(16px, 1fr);
+
+  &__container {
+    grid-area: 1 / 2 / -1 / -2;
+    margin-top: 90px;
+    display: grid;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  &__logo {
+    height: 50px;
+    width: 148px;
+    justify-self: center;
+  }
+
+  &__card {
+    --_padding: 80px;
+    display: grid;
+    padding-top: var(--_padding);
+    padding-bottom: 60px;
+    grid-template-columns: var(--_padding) minmax(auto, 440px) var(--_padding);
+    border-radius: 20px;
+    width: fit-content;
+    background-color: white;
+
+    & > * {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 26px;
+    justify-self: center;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  &__title,
+  &__subtitle {
+    margin-bottom: 30px;
+  }
+
+  &__form {
+    display: grid;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,23 @@
+---
+import Layout from "@components/Layout.astro";
+import Guest from "@components/Guest.astro";
+import Field from "@components/Field.astro";
+import Input from "@components/Input.astro";
+import Checkbox from "@components/Checkbox.astro";
+import Button from "@components/Button.astro";
+---
+
+<Layout title="Вход">
+  <Guest title="Вход">
+    <Fragment slot="form">
+      <Field id="name" label="Логин">
+        <Input id="name" placeholder="Введите логин" />
+      </Field>
+      <Field id="password" label="Пароль">
+        <Input id="password" type="password" placeholder="Ваш пароль" />
+      </Field>
+      <Checkbox id="save">Сохранить данные входа</Checkbox>
+      <Button submit>Зарегистрироваться</Button>
+    </Fragment>
+  </Guest>
+</Layout>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  variant?: "black" | "gray";
+}
+
+const { label, id, variant = "black" } = Astro.props;
+---
+
+<div class="field">
+  <label for={id} class:list={["field__label", `field__label--${variant}`]}>
+    {label}
+  </label>
+  <slot />
+</div>
