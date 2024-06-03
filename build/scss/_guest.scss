@@ -1,10 +1,11 @@
 .guest {
   display: grid;
-  grid-template-columns: minmax(16px, 1fr) minmax(auto) minmax(16px, 1fr);
+  grid-template-columns: minmax(12px, 1fr) auto minmax(12px, 1fr);
 
   &__container {
     grid-area: 1 / 2 / -1 / -2;
     margin-top: 90px;
+    margin-bottom: 90px;
     display: grid;
     justify-content: center;
     gap: 50px;
@@ -21,7 +22,7 @@
     display: grid;
     padding-top: var(--_padding);
     padding-bottom: 60px;
-    grid-template-columns: var(--_padding) minmax(auto, 440px) var(--_padding);
+    grid-template-columns: var(--_padding) minmax(auto, 455px) var(--_padding);
     border-radius: 20px;
     width: fit-content;
     background-color: white;
@@ -35,12 +36,14 @@
     font-weight: 600;
     font-size: 26px;
     justify-self: center;
+    text-align: center;
   }
 
   &__subtitle {
     font-size: 14px;
     line-height: 1.5;
     text-align: center;
+    padding-inline: 1ch;
   }
 
   &__title,
@@ -51,5 +54,102 @@
   &__form {
     display: grid;
     gap: 10px;
+  }
+
+  &__cols {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 1ch;
+    line-height: 1;
+  }
+
+  &__footer {
+    margin-top: 60px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .guest {
+    &__container {
+      gap: 30px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    &__logo {
+    }
+
+    &__card {
+      --_padding: 40px;
+      padding-bottom: 30px;
+      border-radius: 16px;
+    }
+
+    &__title {
+    }
+
+    &__subtitle {
+    }
+
+    &__title,
+    &__subtitle {
+      margin-bottom: 16px;
+    }
+
+    &__form {
+    }
+
+    &__cols {
+    }
+
+    &__footer {
+      margin-top: 30px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .guest {
+    &__container {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    &__logo {
+    }
+
+    &__card {
+      --_padding: 16px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    &__subtitle {
+      font-size: 12px;
+    }
+
+    &__title,
+    &__subtitle {
+    }
+
+    &__form {
+    }
+
+    &__cols {
+    }
+
+    &__footer {
+      margin-top: 30px;
+    }
   }
 }

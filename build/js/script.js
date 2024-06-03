@@ -21,3 +21,66 @@ function passwordToggle() {
 }
 
 passwordToggle();
+
+function maskInput() {
+  const phone = document.querySelectorAll('[name="phone"]');
+  if (phone) {
+    phone.forEach((element) => {
+      const maskOptions = {
+        mask: "+{7}(000) 000-00-00",
+      };
+      const mask = IMask(element, maskOptions);
+    });
+  }
+
+  const dateInputs = document.querySelectorAll(".input__element--date");
+  if (dateInputs.length) {
+    dateInputs.forEach((element) => {
+      const maskOptions = {
+        mask: Date,
+      };
+      const mask = IMask(element, maskOptions);
+    });
+  }
+}
+
+maskInput();
+
+function menuToggle() {
+  const button = document.querySelector(".header__menu");
+  const wrapper = document.querySelector(".header__wrapper");
+
+  if (button && wrapper) {
+    button.addEventListener("click", () => {
+      if (button.classList.contains("header__menu--open")) {
+        document.body.classList.remove("body-overflow");
+        button.classList.remove("header__menu--open");
+        button.classList.remove("icon-close");
+        button.classList.add("icon-menu");
+        wrapper.classList.remove("header__wrapper--open");
+      } else {
+        document.body.classList.add("body-overflow");
+        wrapper.classList.add("header__wrapper--open");
+        button.classList.add("header__menu--open");
+        button.classList.add("icon-close");
+        button.classList.remove("icon-menu");
+      }
+    });
+  }
+}
+
+menuToggle();
+
+function customSelects() {
+  const selects = document.querySelectorAll(".select");
+  if (selects.length) {
+    selects.forEach((select) => {
+      const choices = new Choices(select, {
+        searchEnabled: false,
+        itemSelectText: "",
+      });
+    });
+  }
+}
+
+customSelects();

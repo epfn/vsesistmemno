@@ -5,19 +5,33 @@ import Field from "@components/Field.astro";
 import Input from "@components/Input.astro";
 import Checkbox from "@components/Checkbox.astro";
 import Button from "@components/Button.astro";
+import Link from "@components/Link.astro";
 ---
 
 <Layout title="Вход">
   <Guest title="Вход">
     <Fragment slot="form">
       <Field id="name" label="Логин">
-        <Input id="name" placeholder="Введите логин" />
+        <Input id="name" name="name" placeholder="Введите логин" />
       </Field>
       <Field id="password" label="Пароль">
-        <Input id="password" type="password" placeholder="Ваш пароль" />
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Ваш пароль"
+        />
       </Field>
-      <Checkbox id="save">Сохранить данные входа</Checkbox>
-      <Button submit>Зарегистрироваться</Button>
+      <div class="guest__cols">
+        <Checkbox id="save" name="save">Сохранить данные входа</Checkbox>
+        <Link href="/forgotPassword.html"> Забыли пароль? </Link>
+      </div>
+      <Button submit marginTop="20">Вход</Button>
     </Fragment>
+    <span class="guest__footer" slot="footer">
+      У вас еще нет учетной записи? <Link href="/registration.html">
+        Зарегистрироваться?
+      </Link>
+    </span>
   </Guest>
 </Layout>

@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 
 .button {
   font-weight: 500;
@@ -23,12 +23,22 @@
     color: white;
 
     &:hover {
-      background-color: color-mix(in srgb, $color-background-blue 90%, black 10%);
+      background-color: color-mix(
+        in srgb,
+        $color-background-blue 90%,
+        black 10%
+      );
     }
   }
 
   &--orange {
     background-color: $color-background-peach;
     color: white;
+  }
+
+  &--mt {
+    &20 {
+      margin-top: 20px;
+    }
   }
 }

@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  variant?: "normal";
+}
+
+const { variant = "normal", ...restProps } = Astro.props;
+---
+
+<a {...restProps} class:list={["link", `link--${variant}`]}><slot /></a>

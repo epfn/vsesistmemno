@@ -35,4 +35,10 @@
     background-color: $color-background-peach;
     color: white;
   }
+
+  &--mt {
+    &20 {
+      margin-top: 20px;
+    }
+  }
 }

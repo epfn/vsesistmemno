@@ -1,0 +1,243 @@
+.header {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  &__wrapper {
+  }
+
+  &__container {
+    grid-area: center;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: clamp(16px, 4vw, 70px);
+  }
+
+  &__content {
+    grid-area: full;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__menu {
+    display: none;
+    z-index: 15;
+  }
+
+  &__logo {
+    object-fit: contain;
+    height: 50px;
+    width: 148px;
+    z-index: 15;
+    object-position: left;
+  }
+
+  &__form {
+  }
+
+  &__search {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px;
+    align-items: center;
+
+    &-icon {
+      font-size: 22px;
+      grid-area: 1/1/-1/2;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      color: $color-text-gray;
+      transition: color 0.38s ease-in-out;
+
+      &:hover {
+        color: $color-text-blue;
+      }
+    }
+    &-input {
+      grid-area: 1/1/-1/-1;
+      font-size: 14px;
+      padding: 12px;
+      padding-left: 40px;
+      outline-style: solid;
+      outline-width: 1px;
+      outline-color: white;
+      transition: outline 0.38s ease-in-out;
+      border-radius: 4px;
+      line-height: 1;
+
+      &::placeholder {
+        color: $color-text-gray;
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline-color: $color-border-blue;
+      }
+    }
+  }
+
+  &__navigation {
+    justify-self: end;
+  }
+
+  &__list {
+    display: flex;
+    gap: clamp(8px, 2.5vw, 40px);
+
+    &-item {
+    }
+
+    &-link {
+      font-size: clamp(14px, 1.25vw, 16px);
+      line-height: 1;
+      font-weight: 400;
+      transition: color 0.38s ease-in-out;
+
+      &:hover {
+        color: $color-text-blue;
+      }
+    }
+  }
+
+  &__user {
+    justify-self: end;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 5px;
+    column-gap: 15px;
+
+    &-avatar {
+      grid-row: span 2;
+
+      img {
+        --_size: 50px;
+        min-height: var(--_size);
+        min-width: var(--_size);
+        height: var(--_size);
+        width: var(--_size);
+        object-fit: cover;
+        border-radius: 999px;
+      }
+    }
+
+    &-name {
+      font-size: clamp(14px, 1.25vw, 16px);
+      line-height: 1;
+      line-height: 1.5;
+      font-weight: 500;
+      transition: color 0.38s ease-in-out;
+
+      &:hover {
+        color: $color-text-blue;
+      }
+    }
+
+    &-logout {
+      font-size: 14px;
+      color: $color-text-gray;
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+      transition: color 0.38s ease-in-out;
+
+      &-icon {
+        font-size: 20px;
+      }
+
+      &:hover {
+        color: $color-text-peach;
+      }
+    }
+  }
+
+  &__menu {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header {
+    --_pt: 60px;
+    min-height: var(--_pt);
+
+    &__container {
+      justify-content: space-between;
+      align-items: center;
+      padding-top: unset;
+      padding-bottom: unset;
+    }
+
+    &__wrapper {
+      position: fixed;
+      height: 100%;
+      background-color: white;
+      width: 100%;
+      left: -100%;
+      top: 0;
+      transition: left 0.38s ease-in-out;
+      padding-top: var(--_pt);
+
+      &--open {
+        left: 0;
+      }
+    }
+
+    &__content {
+      grid-area: center;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
+
+    &__menu {
+      cursor: pointer;
+      display: block;
+    }
+
+    &__logo {
+      height: 36px;
+      width: 130px;
+    }
+
+    &__form {
+    }
+
+    &__search {
+      &-icon {
+      }
+      &-input {
+      }
+    }
+
+    &__nav {
+    }
+
+    &__list {
+      &-item {
+      }
+
+      &-link {
+      }
+    }
+
+    &__user {
+      &-avatar {
+      }
+
+      &-name {
+      }
+
+      &-logout {
+        &-icon {
+        }
+      }
+    }
+  }
+}

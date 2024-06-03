@@ -11,11 +11,12 @@ const version = String(Date.now()).substring(5);
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/plugins/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="/plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="/fonts/icomoon/style.css" />
     <link rel="stylesheet" href=`/css/style.css?v=0.${version}` />
-    <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
   </head>
   <body>
@@ -23,6 +24,7 @@ const version = String(Date.now()).substring(5);
     <script is:inline src="/plugins/air-datepicker/air-datepicker.js" defer
     ></script>
     <script is:inline src="/plugins/imask/imask.js" defer></script>
+    <script is:inline src="/plugins/choices/choices.min.js" defer></script>
     <script is:inline src=`/js/script.js?v=0.${version}` defer></script>
   </body>
 </html>

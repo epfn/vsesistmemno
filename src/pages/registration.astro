@@ -1,0 +1,66 @@
+---
+import Layout from "@components/Layout.astro";
+import Guest from "@components/Guest.astro";
+import Field from "@components/Field.astro";
+import Input from "@components/Input.astro";
+import Checkbox from "@components/Checkbox.astro";
+import Button from "@components/Button.astro";
+import Link from "@components/Link.astro";
+---
+
+<Layout title="Регистрация">
+  <Guest title="Регистрация">
+    <Fragment slot="form">
+      <Field id="name" label="ФИО">
+        <Input id="name" name="name" placeholder="Ваше ФИО" />
+      </Field>
+      <Field id="phone" label="Телефон">
+        <Input
+          id="phone"
+          name="phone"
+          type="text"
+          placeholder="+ 7 (___) ___ - __ - __"
+        />
+      </Field>
+      <Field id="email" label="E-mail">
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="your@email.com"
+        />
+      </Field>
+      <Field id="date" label="Дата рождения">
+        <Input id="date" name="date" type="date" placeholder="___.___._____" />
+      </Field>
+      <Field id="company" label="Название компании">
+        <Input
+          id="company"
+          name="company"
+          type="text"
+          placeholder="Ваша компания"
+        />
+      </Field>
+      <Field id="department" label="Название подразделения">
+        <Input
+          id="department"
+          name="department"
+          type="text"
+          placeholder="Ваше подразделение"
+        />
+      </Field>
+      <Field id="role" label="Должность пользователя">
+        <Input id="role" name="role" type="text" placeholder="Ваша должность" />
+      </Field>
+      <Button submit marginTop="20">Зарегистрироваться</Button>
+      <Checkbox id="agree" name="agree" variant="small" marginTop="20">
+        Заполняя данную форму, я подтверждаю, что ознакомился с <a href="#">
+          политикой конфиденциальности
+        </a> и даю <a href="#"> согласие на обработку персональных данных </a>
+      </Checkbox>
+    </Fragment>
+    <span class="guest__footer" slot="footer">
+      У вас есть учетная запись? <Link href="/login.html"> Войти </Link>
+    </span>
+  </Guest>
+</Layout>

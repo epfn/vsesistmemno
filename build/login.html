@@ -2,11 +2,12 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./plugins/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.60416296" />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="./css/style.css?v=0.23752694" />
     <title>Вход</title>
   </head>
   <body>
@@ -21,29 +22,34 @@
               <label for="name" class="field__label field__label--black"> Логин </label>
 
               <div class="input">
-                <input id="name" placeholder="Введите логин" class="input__element" />
+                <input id="name" name="name" placeholder="Введите логин" class="input__element" />
               </div>
             </div>
             <div class="field">
               <label for="password" class="field__label field__label--black"> Пароль </label>
 
               <div class="input">
-                <input id="password" placeholder="Ваш пароль" type="password" class="input__element input__element--password" />
+                <input id="password" name="password" placeholder="Ваш пароль" type="password" class="input__element input__element--password" />
                 <div class="input__icon icon-eye"></div>
               </div>
             </div>
-            <div class="checkbox">
-              <input id="save" type="checkbox" class="checkbox__element" />
-              <label for="save" class="checkbox__label checkbox__label--normal"> Сохранить данные входа </label>
+            <div class="guest__cols">
+              <div class="checkbox">
+                <input name="save" id="save" type="checkbox" class="checkbox__element" />
+                <label for="save" class="checkbox__label checkbox__label--normal"> Сохранить данные входа </label>
+              </div>
+              <a href="./forgotPassword.html" class="link link--normal"> Забыли пароль? </a>
             </div>
-            <button type="submit" class="button button--blue button--normal">Зарегистрироваться</button>
+            <button type="submit" class="button button--blue button--normal button--mt20">Вход</button>
           </form>
+          <span class="guest__footer"> У вас еще нет учетной записи? <a href="./registration.html" class="link link--normal"> Зарегистрироваться? </a> </span>
         </div>
       </div>
     </section>
 
     <script src="./plugins/air-datepicker/air-datepicker.js" defer></script>
     <script src="./plugins/imask/imask.js" defer></script>
-    <script src="./js/script.js?v=0.60416296" defer></script>
+    <script src="./plugins/choices/choices.min.js" defer></script>
+    <script src="./js/script.js?v=0.23752694" defer></script>
   </body>
 </html>

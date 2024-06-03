@@ -1,0 +1,14 @@
+.link {
+  color: $color-text-blue;
+  transition: color 0.38s ease-in-out;
+  text-decoration: underline;
+
+  &--normal {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &:hover {
+    color: color-mix(in srgb, $color-background-blue 75%, black 25%);
+  }
+}
