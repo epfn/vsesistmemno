@@ -1,0 +1,57 @@
+// Переменные для миксина контейнера
+$breakpoint-to-fluid: 992px;
+$base-vw: 1920px;
+
+$breakpoint-lg: 992px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 576px;
+
+// ширина контейнера + padding с двух сторон
+$container-lg: 1306px;
+$container-md: 720px;
+$container-sm: 540px;
+
+$p: 16px;
+
+//тоже самое, что и контейнер, только больше возможностей
+.section {
+  --container-width: #{$container-lg};
+
+  display: grid;
+  grid-template-columns:
+    [full-start left-start]
+    minmax($p, 1fr)
+    [right-start center-start]
+    minmax(0, var(--container-width))
+    [left-end center-end]
+    minmax($p, 1fr)
+    [full-end right-end];
+
+  grid-template-rows:
+    [full-start left-start center-start right-start]
+    auto
+    [full-end left-end center-end right-end];
+
+  @media (max-width: $breakpoint-lg) {
+    --container-width: #{$container-md};
+  }
+  @media (max-width: $breakpoint-md) {
+    --container-width: #{$container-sm};
+  }
+  @media (max-width: $breakpoint-sm) {
+    --container-width: 100%;
+  }
+
+  &--grow {
+    flex-grow: 1;
+  }
+
+  &--mb {
+    margin-bottom: 60px;
+  }
+
+  &__container {
+    grid-area: center;
+    height: max-content;
+  }
+}

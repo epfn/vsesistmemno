@@ -31,9 +31,22 @@ if (id) classList.push("table--id");
       {
         body.map((row) => (
           <tr>
-            {row.map((cell) => (
-              <td>{cell.text}</td>
-            ))}
+            {row.map((cell) =>
+              cell.type === "link" ? (
+                <td>
+                  <a class="link" href="/userCard.html">
+                    {cell.text}
+                  </a>
+                </td>
+              ) : cell.type &&
+                ["red", "green", "yellow"].includes(cell.type) ? (
+                <td>
+                  <span class={cell.type}>{cell.text}</span>
+                </td>
+              ) : (
+                <td>{cell.text}</td>
+              )
+            )}
           </tr>
         ))
       }

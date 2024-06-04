@@ -88,10 +88,12 @@ customSelects();
 function storageMasonry() {
   if (document.querySelector(".storage__list")) {
     const masonry = new MiniMasonry({
-      container: ".storage__list",
+      container: ".storage__content",
       baseWidth: 312,
       gutter: 20,
       surroundingGutter: false,
+      minify: false,
+      ultimateGutter: 15,
     });
   }
 }

@@ -27,7 +27,7 @@ function maskInput() {
   if (phone) {
     phone.forEach((element) => {
       const maskOptions = {
-        mask: "+{7}(000) 000-00-00",
+        mask: "+{7} (000) 000-00-00",
       };
       const mask = IMask(element, maskOptions);
     });
@@ -84,3 +84,18 @@ function customSelects() {
 }
 
 customSelects();
+
+function storageMasonry() {
+  if (document.querySelector(".storage__list")) {
+    const masonry = new MiniMasonry({
+      container: ".storage__content",
+      baseWidth: 312,
+      gutter: 20,
+      surroundingGutter: false,
+      minify: false,
+      ultimateGutter: 15,
+    });
+  }
+}
+
+storageMasonry();

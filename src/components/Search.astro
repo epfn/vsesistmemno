@@ -1,0 +1,14 @@
+---
+interface Props {
+  placeholder: string;
+}
+
+const { placeholder } = Astro.props;
+---
+
+<form>
+  <div class="search">
+    <input {placeholder} type="text" class="search__element" />
+    <button type="submit" class="search__icon icon-search"></button>
+  </div>
+</form>

@@ -1,29 +1,18 @@
 (function (global, factory) {
-  typeof exports === "object" && typeof module !== "undefined"
-    ? factory(exports)
-    : typeof define === "function" && define.amd
-      ? define(["exports"], factory)
-      : ((global =
-          typeof globalThis !== "undefined" ? globalThis : global || self),
-        factory((global.IMask = {})));
-})(this, function (exports) {
-  "use strict";
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.IMask = {}));
+})(this, (function (exports) { 'use strict';
 
   /** Checks if value is string */
   function isString(str) {
-    return typeof str === "string" || str instanceof String;
+    return typeof str === 'string' || str instanceof String;
   }
 
   /** Checks if value is object */
   function isObject(obj) {
     var _obj$constructor;
-    return (
-      typeof obj === "object" &&
-      obj != null &&
-      (obj == null || (_obj$constructor = obj.constructor) == null
-        ? void 0
-        : _obj$constructor.name) === "Object"
-    );
+    return typeof obj === 'object' && obj != null && (obj == null || (_obj$constructor = obj.constructor) == null ? void 0 : _obj$constructor.name) === 'Object';
   }
   function pick(obj, keys) {
     if (Array.isArray(keys)) return pick(obj, (_, k) => keys.includes(k));
@@ -36,11 +25,11 @@
 
   /** Direction */
   const DIRECTION = {
-    NONE: "NONE",
-    LEFT: "LEFT",
-    FORCE_LEFT: "FORCE_LEFT",
-    RIGHT: "RIGHT",
-    FORCE_RIGHT: "FORCE_RIGHT",
+    NONE: 'NONE',
+    LEFT: 'LEFT',
+    FORCE_LEFT: 'FORCE_LEFT',
+    RIGHT: 'RIGHT',
+    FORCE_RIGHT: 'FORCE_RIGHT'
   };
 
   /** Direction */
@@ -58,7 +47,7 @@
 
   /** Escapes regular expression control chars */
   function escapeRegExp(str) {
-    return str.replace(/([.*+?^=!:${}()|[\]/\\])/g, "\\$1");
+    return str.replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1');
   }
 
   // cloned from https://github.com/epoberezkin/fast-deep-equal with small changes
@@ -69,12 +58,11 @@
     let i;
     if (arrA && arrB) {
       if (a.length != b.length) return false;
-      for (i = 0; i < a.length; i++)
-        if (!objectIncludes(a[i], b[i])) return false;
+      for (i = 0; i < a.length; i++) if (!objectIncludes(a[i], b[i])) return false;
       return true;
     }
     if (arrA != arrB) return false;
-    if (a && b && typeof a === "object" && typeof b === "object") {
+    if (a && b && typeof a === 'object' && typeof b === 'object') {
       const dateA = a instanceof Date,
         dateB = b instanceof Date;
       if (dateA && dateB) return a.getTime() == b.getTime();
@@ -86,12 +74,10 @@
       const keys = Object.keys(a);
       // if (keys.length !== Object.keys(b).length) return false;
 
-      for (i = 0; i < keys.length; i++)
-        if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
-      for (i = 0; i < keys.length; i++)
-        if (!objectIncludes(b[keys[i]], a[keys[i]])) return false;
+      for (i = 0; i < keys.length; i++) if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+      for (i = 0; i < keys.length; i++) if (!objectIncludes(b[keys[i]], a[keys[i]])) return false;
       return true;
-    } else if (a && b && typeof a === "function" && typeof b === "function") {
+    } else if (a && b && typeof a === 'function' && typeof b === 'function') {
       return a.toString() === b.toString();
     }
     return false;
@@ -113,24 +99,13 @@
       Object.assign(this, opts);
 
       // double check if left part was changed (autofilling, other non-standard input triggers)
-      while (
-        this.value.slice(0, this.startChangePos) !==
-        this.oldValue.slice(0, this.startChangePos)
-      ) {
+      while (this.value.slice(0, this.startChangePos) !== this.oldValue.slice(0, this.startChangePos)) {
         --this.oldSelection.start;
       }
       if (this.insertedCount) {
         // double check right part
-        while (
-          this.value.slice(this.cursorPos) !==
-          this.oldValue.slice(this.oldSelection.end)
-        ) {
-          if (
-            this.value.length - this.cursorPos <
-            this.oldValue.length - this.oldSelection.end
-          )
-            ++this.oldSelection.end;
-          else ++this.cursorPos;
+        while (this.value.slice(this.cursorPos) !== this.oldValue.slice(this.oldSelection.end)) {
+          if (this.value.length - this.cursorPos < this.oldValue.length - this.oldSelection.end) ++this.oldSelection.end;else ++this.cursorPos;
         }
       }
     }
@@ -153,12 +128,9 @@
     /** Removed symbols count */
     get removedCount() {
       // Math.max for opposite operation
-      return Math.max(
-        this.oldSelection.end - this.startChangePos ||
-          // for Delete
-          this.oldValue.length - this.value.length,
-        0,
-      );
+      return Math.max(this.oldSelection.end - this.startChangePos ||
+      // for Delete
+      this.oldValue.length - this.value.length, 0);
     }
 
     /** Removed symbols */
@@ -181,12 +153,9 @@
       if (!this.removedCount || this.insertedCount) return DIRECTION.NONE;
 
       // align right if delete at right
-      return (this.oldSelection.end === this.cursorPos ||
-        this.oldSelection.start === this.cursorPos) &&
-        // if not range removed (event with backspace)
-        this.oldSelection.end === this.oldSelection.start
-        ? DIRECTION.RIGHT
-        : DIRECTION.LEFT;
+      return (this.oldSelection.end === this.cursorPos || this.oldSelection.start === this.cursorPos) &&
+      // if not range removed (event with backspace)
+      this.oldSelection.end === this.oldSelection.start ? DIRECTION.RIGHT : DIRECTION.LEFT;
     }
   }
 
@@ -224,8 +193,8 @@
   // export function maskedClass(mask: (value: string, ...args: any[]) => boolean): typeof MaskedFunction;
 
   /** Get Masked class by mask type */
-  function maskedClass(mask) /* TODO */ {
-    if (mask == null) throw new Error("mask property should be defined");
+  function maskedClass(mask) /* TODO */{
+    if (mask == null) throw new Error('mask property should be defined');
     if (mask instanceof RegExp) return IMask.MaskedRegExp;
     if (isString(mask)) return IMask.MaskedPattern;
     if (mask === Date) return IMask.MaskedDate;
@@ -234,46 +203,42 @@
     if (IMask.Masked && mask.prototype instanceof IMask.Masked) return mask;
     if (IMask.Masked && mask instanceof IMask.Masked) return mask.constructor;
     if (mask instanceof Function) return IMask.MaskedFunction;
-    console.warn("Mask not found for mask", mask); // eslint-disable-line no-console
+    console.warn('Mask not found for mask', mask); // eslint-disable-line no-console
     return IMask.Masked;
   }
   function normalizeOpts(opts) {
-    if (!opts) throw new Error("Options in not defined");
+    if (!opts) throw new Error('Options in not defined');
     if (IMask.Masked) {
-      if (opts.prototype instanceof IMask.Masked)
-        return {
-          mask: opts,
-        };
+      if (opts.prototype instanceof IMask.Masked) return {
+        mask: opts
+      };
 
       /*
         handle cases like:
         1) opts = Masked
         2) opts = { mask: Masked, ...instanceOpts }
       */
-      const { mask = undefined, ...instanceOpts } =
-        opts instanceof IMask.Masked
-          ? {
-              mask: opts,
-            }
-          : isObject(opts) && opts.mask instanceof IMask.Masked
-            ? opts
-            : {};
+      const {
+        mask = undefined,
+        ...instanceOpts
+      } = opts instanceof IMask.Masked ? {
+        mask: opts
+      } : isObject(opts) && opts.mask instanceof IMask.Masked ? opts : {};
       if (mask) {
         const _mask = mask.mask;
         return {
-          ...pick(mask, (_, k) => !k.startsWith("_")),
+          ...pick(mask, (_, k) => !k.startsWith('_')),
           mask: mask.constructor,
           _mask,
-          ...instanceOpts,
+          ...instanceOpts
         };
       }
     }
-    if (!isObject(opts))
-      return {
-        mask: opts,
-      };
+    if (!isObject(opts)) return {
+      mask: opts
+    };
     return {
-      ...opts,
+      ...opts
     };
   }
 
@@ -307,12 +272,7 @@
     if (IMask.Masked && opts instanceof IMask.Masked) return opts;
     const nOpts = normalizeOpts(opts);
     const MaskedClass = maskedClass(nOpts.mask);
-    if (!MaskedClass)
-      throw new Error(
-        "Masked class is not found for provided mask " +
-          nOpts.mask +
-          ", appropriate module needs to be imported manually before creating mask.",
-      );
+    if (!MaskedClass) throw new Error("Masked class is not found for provided mask " + nOpts.mask + ", appropriate module needs to be imported manually before creating mask.");
     if (nOpts.mask === MaskedClass) delete nOpts.mask;
     if (nOpts._mask) {
       nOpts.mask = nOpts._mask;
@@ -350,12 +310,7 @@
 
     /** Safely sets element selection */
     select(start, end) {
-      if (
-        start == null ||
-        end == null ||
-        (start === this.selectionStart && end === this.selectionEnd)
-      )
-        return;
+      if (start == null || end == null || start === this.selectionStart && end === this.selectionEnd) return;
       try {
         this._unsafeSelect(start, end);
       } catch {}
@@ -390,13 +345,7 @@
     }
     get rootElement() {
       var _this$input$getRootNo, _this$input$getRootNo2, _this$input;
-      return (_this$input$getRootNo =
-        (_this$input$getRootNo2 = (_this$input = this.input).getRootNode) ==
-        null
-          ? void 0
-          : _this$input$getRootNo2.call(_this$input)) != null
-        ? _this$input$getRootNo
-        : document;
+      return (_this$input$getRootNo = (_this$input$getRootNo2 = (_this$input = this.input).getRootNode) == null ? void 0 : _this$input$getRootNo2.call(_this$input)) != null ? _this$input$getRootNo : document;
     }
 
     /** Is element in focus */
@@ -406,41 +355,33 @@
 
     /** Binds HTMLElement events to mask internal events */
     bindEvents(handlers) {
-      this.input.addEventListener("keydown", this._onKeydown);
-      this.input.addEventListener("input", this._onInput);
-      this.input.addEventListener("beforeinput", this._onBeforeinput);
-      this.input.addEventListener("compositionend", this._onCompositionEnd);
-      this.input.addEventListener("drop", handlers.drop);
-      this.input.addEventListener("click", handlers.click);
-      this.input.addEventListener("focus", handlers.focus);
-      this.input.addEventListener("blur", handlers.commit);
+      this.input.addEventListener('keydown', this._onKeydown);
+      this.input.addEventListener('input', this._onInput);
+      this.input.addEventListener('beforeinput', this._onBeforeinput);
+      this.input.addEventListener('compositionend', this._onCompositionEnd);
+      this.input.addEventListener('drop', handlers.drop);
+      this.input.addEventListener('click', handlers.click);
+      this.input.addEventListener('focus', handlers.focus);
+      this.input.addEventListener('blur', handlers.commit);
       this._handlers = handlers;
     }
     _onKeydown(e) {
-      if (
-        this._handlers.redo &&
-        ((e.keyCode === KEY_Z && e.shiftKey && (e.metaKey || e.ctrlKey)) ||
-          (e.keyCode === KEY_Y && e.ctrlKey))
-      ) {
+      if (this._handlers.redo && (e.keyCode === KEY_Z && e.shiftKey && (e.metaKey || e.ctrlKey) || e.keyCode === KEY_Y && e.ctrlKey)) {
         e.preventDefault();
         return this._handlers.redo(e);
       }
-      if (
-        this._handlers.undo &&
-        e.keyCode === KEY_Z &&
-        (e.metaKey || e.ctrlKey)
-      ) {
+      if (this._handlers.undo && e.keyCode === KEY_Z && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         return this._handlers.undo(e);
       }
       if (!e.isComposing) this._handlers.selectionChange(e);
     }
     _onBeforeinput(e) {
-      if (e.inputType === "historyUndo" && this._handlers.undo) {
+      if (e.inputType === 'historyUndo' && this._handlers.undo) {
         e.preventDefault();
         return this._handlers.undo(e);
       }
-      if (e.inputType === "historyRedo" && this._handlers.redo) {
+      if (e.inputType === 'historyRedo' && this._handlers.redo) {
         e.preventDefault();
         return this._handlers.redo(e);
       }
@@ -454,14 +395,14 @@
 
     /** Unbinds HTMLElement events to mask internal events */
     unbindEvents() {
-      this.input.removeEventListener("keydown", this._onKeydown);
-      this.input.removeEventListener("input", this._onInput);
-      this.input.removeEventListener("beforeinput", this._onBeforeinput);
-      this.input.removeEventListener("compositionend", this._onCompositionEnd);
-      this.input.removeEventListener("drop", this._handlers.drop);
-      this.input.removeEventListener("click", this._handlers.click);
-      this.input.removeEventListener("focus", this._handlers.focus);
-      this.input.removeEventListener("blur", this._handlers.commit);
+      this.input.removeEventListener('keydown', this._onKeydown);
+      this.input.removeEventListener('input', this._onInput);
+      this.input.removeEventListener('beforeinput', this._onBeforeinput);
+      this.input.removeEventListener('compositionend', this._onCompositionEnd);
+      this.input.removeEventListener('drop', this._handlers.drop);
+      this.input.removeEventListener('click', this._handlers.click);
+      this.input.removeEventListener('focus', this._handlers.focus);
+      this.input.removeEventListener('blur', this._handlers.commit);
       this._handlers = {};
     }
   }
@@ -478,9 +419,7 @@
 
     /** Returns InputElement selection start */
     get _unsafeSelectionStart() {
-      return this.input.selectionStart != null
-        ? this.input.selectionStart
-        : this.value.length;
+      return this.input.selectionStart != null ? this.input.selectionStart : this.value.length;
     }
 
     /** Returns InputElement selection end */
@@ -508,11 +447,7 @@
       const selection = root.getSelection && root.getSelection();
       const anchorOffset = selection && selection.anchorOffset;
       const focusOffset = selection && selection.focusOffset;
-      if (
-        focusOffset == null ||
-        anchorOffset == null ||
-        anchorOffset < focusOffset
-      ) {
+      if (focusOffset == null || anchorOffset == null || anchorOffset < focusOffset) {
         return anchorOffset;
       }
       return focusOffset;
@@ -524,11 +459,7 @@
       const selection = root.getSelection && root.getSelection();
       const anchorOffset = selection && selection.anchorOffset;
       const focusOffset = selection && selection.focusOffset;
-      if (
-        focusOffset == null ||
-        anchorOffset == null ||
-        anchorOffset > focusOffset
-      ) {
+      if (focusOffset == null || anchorOffset == null || anchorOffset > focusOffset) {
         return anchorOffset;
       }
       return focusOffset;
@@ -550,7 +481,7 @@
 
     /** HTMLElement value */
     get value() {
-      return this.input.textContent || "";
+      return this.input.textContent || '';
     }
     set value(value) {
       this.input.textContent = value;
@@ -571,17 +502,13 @@
     }
     push(state) {
       // if current index points before the last element then remove the future
-      if (this.currentIndex < this.states.length - 1)
-        this.states.length = this.currentIndex + 1;
+      if (this.currentIndex < this.states.length - 1) this.states.length = this.currentIndex + 1;
       this.states.push(state);
       if (this.states.length > InputHistory.MAX_LENGTH) this.states.shift();
       this.currentIndex = this.states.length - 1;
     }
     go(steps) {
-      this.currentIndex = Math.min(
-        Math.max(this.currentIndex + steps, 0),
-        this.states.length - 1,
-      );
+      this.currentIndex = Math.min(Math.max(this.currentIndex + steps, 0), this.states.length - 1);
       return this.currentState;
     }
     undo() {
@@ -606,19 +533,12 @@
     /** Internal {@link Masked} model */
 
     constructor(el, opts) {
-      this.el =
-        el instanceof MaskElement
-          ? el
-          : el.isContentEditable &&
-              el.tagName !== "INPUT" &&
-              el.tagName !== "TEXTAREA"
-            ? new HTMLContenteditableMaskElement(el)
-            : new HTMLInputMaskElement(el);
+      this.el = el instanceof MaskElement ? el : el.isContentEditable && el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' ? new HTMLContenteditableMaskElement(el) : new HTMLInputMaskElement(el);
       this.masked = createMask(opts);
       this._listeners = {};
-      this._value = "";
-      this._unmaskedValue = "";
-      this._rawInputValue = "";
+      this._value = '';
+      this._unmaskedValue = '';
+      this._rawInputValue = '';
       this.history = new InputHistory();
       this._saveSelection = this._saveSelection.bind(this);
       this._onInput = this._onInput.bind(this);
@@ -638,12 +558,7 @@
     }
     maskEquals(mask) {
       var _this$masked;
-      return (
-        mask == null ||
-        ((_this$masked = this.masked) == null
-          ? void 0
-          : _this$masked.maskEquals(mask))
-      );
+      return mask == null || ((_this$masked = this.masked) == null ? void 0 : _this$masked.maskEquals(mask));
     }
 
     /** Masked */
@@ -652,22 +567,16 @@
     }
     set mask(mask) {
       if (this.maskEquals(mask)) return;
-      if (
-        !(mask instanceof IMask.Masked) &&
-        this.masked.constructor === maskedClass(mask)
-      ) {
+      if (!(mask instanceof IMask.Masked) && this.masked.constructor === maskedClass(mask)) {
         // TODO "any" no idea
         this.masked.updateOptions({
-          mask,
+          mask
         });
         return;
       }
-      const masked =
-        mask instanceof IMask.Masked
-          ? mask
-          : createMask({
-              mask,
-            });
+      const masked = mask instanceof IMask.Masked ? mask : createMask({
+        mask
+      });
       masked.unmaskedValue = this.masked.unmaskedValue;
       this.masked = masked;
     }
@@ -679,7 +588,7 @@
     set value(str) {
       if (this.value === str) return;
       this.masked.value = str;
-      this.updateControl("auto");
+      this.updateControl('auto');
     }
 
     /** Unmasked value */
@@ -689,7 +598,7 @@
     set unmaskedValue(str) {
       if (this.unmaskedValue === str) return;
       this.masked.unmaskedValue = str;
-      this.updateControl("auto");
+      this.updateControl('auto');
     }
 
     /** Raw input value */
@@ -710,7 +619,7 @@
     set typedValue(val) {
       if (this.masked.typedValueEquals(val)) return;
       this.masked.typedValue = val;
-      this.updateControl("auto");
+      this.updateControl('auto');
     }
 
     /** Display value */
@@ -728,7 +637,7 @@
         focus: this._onFocus,
         commit: this._onChange,
         undo: this._onUndo,
-        redo: this._onRedo,
+        redo: this._onRedo
       });
     }
 
@@ -741,21 +650,17 @@
     _fireEvent(ev, e) {
       const listeners = this._listeners[ev];
       if (!listeners) return;
-      listeners.forEach((l) => l(e));
+      listeners.forEach(l => l(e));
     }
 
     /** Current selection start */
     get selectionStart() {
-      return this._cursorChanging
-        ? this._changingCursorPos
-        : this.el.selectionStart;
+      return this._cursorChanging ? this._changingCursorPos : this.el.selectionStart;
     }
 
     /** Current cursor position */
     get cursorPos() {
-      return this._cursorChanging
-        ? this._changingCursorPos
-        : this.el.selectionEnd;
+      return this._cursorChanging ? this._changingCursorPos : this.el.selectionEnd;
     }
     set cursorPos(pos) {
       if (!this.el || !this.el.isActive) return;
@@ -764,15 +669,14 @@
     }
 
     /** Stores current selection */
-    _saveSelection /* ev */() {
+    _saveSelection( /* ev */
+    ) {
       if (this.displayValue !== this.el.value) {
-        console.warn(
-          "Element value was changed outside of mask. Syncronize mask using `mask.updateValue()` to work properly.",
-        ); // eslint-disable-line no-console
+        console.warn('Element value was changed outside of mask. Syncronize mask using `mask.updateValue()` to work properly.'); // eslint-disable-line no-console
       }
       this._selection = {
         start: this.selectionStart,
-        end: this.cursorPos,
+        end: this.cursorPos
       };
     }
 
@@ -790,30 +694,28 @@
       const newValue = this.masked.value;
       const newRawInputValue = this.masked.rawInputValue;
       const newDisplayValue = this.displayValue;
-      const isChanged =
-        this.unmaskedValue !== newUnmaskedValue ||
-        this.value !== newValue ||
-        this._rawInputValue !== newRawInputValue;
+      const isChanged = this.unmaskedValue !== newUnmaskedValue || this.value !== newValue || this._rawInputValue !== newRawInputValue;
       this._unmaskedValue = newUnmaskedValue;
       this._value = newValue;
       this._rawInputValue = newRawInputValue;
       if (this.el.value !== newDisplayValue) this.el.value = newDisplayValue;
-      if (cursorPos === "auto") this.alignCursor();
-      else if (cursorPos != null) this.cursorPos = cursorPos;
+      if (cursorPos === 'auto') this.alignCursor();else if (cursorPos != null) this.cursorPos = cursorPos;
       if (isChanged) this._fireChangeEvents();
-      if (!this._historyChanging && (isChanged || this.history.isEmpty))
-        this.history.push({
-          unmaskedValue: newUnmaskedValue,
-          selection: {
-            start: this.selectionStart,
-            end: this.cursorPos,
-          },
-        });
+      if (!this._historyChanging && (isChanged || this.history.isEmpty)) this.history.push({
+        unmaskedValue: newUnmaskedValue,
+        selection: {
+          start: this.selectionStart,
+          end: this.cursorPos
+        }
+      });
     }
 
     /** Updates options with deep equal check, recreates {@link Masked} model if mask type changes */
     updateOptions(opts) {
-      const { mask, ...restOpts } = opts; // TODO types, yes, mask is optional
+      const {
+        mask,
+        ...restOpts
+      } = opts; // TODO types, yes, mask is optional
 
       const updateMask = !this.maskEquals(mask);
       const updateOpts = this.masked.optionsIsChanged(restOpts);
@@ -845,8 +747,8 @@
 
     /** Fires custom events */
     _fireChangeEvents() {
-      this._fireEvent("accept", this._inputEvent);
-      if (this.masked.isComplete) this._fireEvent("complete", this._inputEvent);
+      this._fireEvent('accept', this._inputEvent);
+      if (this.masked.isComplete) this._fireEvent('complete', this._inputEvent);
     }
 
     /** Aborts delayed cursor update */
@@ -859,9 +761,7 @@
 
     /** Aligns cursor to nearest available position */
     alignCursor() {
-      this.cursorPos = this.masked.nearestInputPos(
-        this.masked.nearestInputPos(this.cursorPos, DIRECTION.LEFT),
-      );
+      this.cursorPos = this.masked.nearestInputPos(this.masked.nearestInputPos(this.cursorPos, DIRECTION.LEFT));
     }
 
     /** Aligns cursor only if selection is empty */
@@ -899,32 +799,19 @@
         cursorPos: this.cursorPos,
         // old state
         oldValue: this.displayValue,
-        oldSelection: this._selection,
+        oldSelection: this._selection
       });
       const oldRawValue = this.masked.rawInputValue;
-      const offset = this.masked.splice(
-        details.startChangePos,
-        details.removed.length,
-        details.inserted,
-        details.removeDirection,
-        {
-          input: true,
-          raw: true,
-        },
-      ).offset;
+      const offset = this.masked.splice(details.startChangePos, details.removed.length, details.inserted, details.removeDirection, {
+        input: true,
+        raw: true
+      }).offset;
 
       // force align in remove direction only if no input chars were removed
       // otherwise we still need to align with NONE (to get out from fixed symbols for instance)
-      const removeDirection =
-        oldRawValue === this.masked.rawInputValue
-          ? details.removeDirection
-          : DIRECTION.NONE;
-      let cursorPos = this.masked.nearestInputPos(
-        details.startChangePos + offset,
-        removeDirection,
-      );
-      if (removeDirection !== DIRECTION.NONE)
-        cursorPos = this.masked.nearestInputPos(cursorPos, DIRECTION.NONE);
+      const removeDirection = oldRawValue === this.masked.rawInputValue ? details.removeDirection : DIRECTION.NONE;
+      let cursorPos = this.masked.nearestInputPos(details.startChangePos + offset, removeDirection);
+      if (removeDirection !== DIRECTION.NONE) cursorPos = this.masked.nearestInputPos(cursorPos, DIRECTION.NONE);
       this.updateControl(cursorPos);
       delete this._inputEvent;
     }
@@ -990,16 +877,12 @@
       return Array.isArray(prep) ? prep : [prep, new ChangeDetails()];
     }
     constructor(details) {
-      Object.assign(
-        this,
-        {
-          inserted: "",
-          rawInserted: "",
-          tailShift: 0,
-          skip: false,
-        },
-        details,
-      );
+      Object.assign(this, {
+        inserted: '',
+        rawInserted: '',
+        tailShift: 0,
+        skip: false
+      }, details);
     }
 
     /** Aggregate changes */
@@ -1019,12 +902,7 @@
       return Boolean(this.rawInserted) || this.skip;
     }
     equals(details) {
-      return (
-        this.inserted === details.inserted &&
-        this.tailShift === details.tailShift &&
-        this.rawInserted === details.rawInserted &&
-        this.skip === details.skip
-      );
+      return this.inserted === details.inserted && this.tailShift === details.tailShift && this.rawInserted === details.rawInserted && this.skip === details.skip;
     }
   }
   IMask.ChangeDetails = ChangeDetails;
@@ -1039,7 +917,7 @@
 
     constructor(value, from, stop) {
       if (value === void 0) {
-        value = "";
+        value = '';
       }
       if (from === void 0) {
         from = 0;
@@ -1055,31 +933,28 @@
       this.value += String(tail);
     }
     appendTo(masked) {
-      return masked
-        .append(this.toString(), {
-          tail: true,
-        })
-        .aggregate(masked._appendPlaceholder());
+      return masked.append(this.toString(), {
+        tail: true
+      }).aggregate(masked._appendPlaceholder());
     }
     get state() {
       return {
         value: this.value,
         from: this.from,
-        stop: this.stop,
+        stop: this.stop
       };
     }
     set state(state) {
       Object.assign(this, state);
     }
     unshift(beforePos) {
-      if (!this.value.length || (beforePos != null && this.from >= beforePos))
-        return "";
+      if (!this.value.length || beforePos != null && this.from >= beforePos) return '';
       const shiftChar = this.value[0];
       this.value = this.value.slice(1);
       return shiftChar;
     }
     shift() {
-      if (!this.value.length) return "";
+      if (!this.value.length) return '';
       const shiftChar = this.value[this.value.length - 1];
       this.value = this.value.slice(0, -1);
       return shiftChar;
@@ -1121,10 +996,10 @@
     /** */
 
     constructor(opts) {
-      this._value = "";
+      this._value = '';
       this._update({
         ...Masked.DEFAULTS,
-        ...opts,
+        ...opts
       });
       this._initialized = true;
     }
@@ -1144,7 +1019,7 @@
     get state() {
       return {
         _value: this.value,
-        _rawInputValue: this.rawInputValue,
+        _rawInputValue: this.rawInputValue
       };
     }
     set state(state) {
@@ -1153,14 +1028,14 @@
 
     /** Resets value */
     reset() {
-      this._value = "";
+      this._value = '';
     }
     get value() {
       return this._value;
     }
     set value(value) {
       this.resolve(value, {
-        input: true,
+        input: true
       });
     }
 
@@ -1168,11 +1043,11 @@
     resolve(value, flags) {
       if (flags === void 0) {
         flags = {
-          input: true,
+          input: true
         };
       }
       this.reset();
-      this.append(value, flags, "");
+      this.append(value, flags, '');
       this.doCommit();
     }
     get unmaskedValue() {
@@ -1195,12 +1070,12 @@
     /** Value that includes raw user input */
     get rawInputValue() {
       return this.extractInput(0, this.displayValue.length, {
-        raw: true,
+        raw: true
       });
     }
     set rawInputValue(value) {
       this.resolve(value, {
-        raw: true,
+        raw: true
       });
     }
     get displayValue() {
@@ -1246,10 +1121,7 @@
       if (toPos === void 0) {
         toPos = this.displayValue.length;
       }
-      return new ContinuousTailDetails(
-        this.extractInput(fromPos, toPos),
-        fromPos,
-      );
+      return new ContinuousTailDetails(this.extractInput(fromPos, toPos), fromPos);
     }
 
     /** Appends tail */
@@ -1264,7 +1136,7 @@
       this._value += ch;
       return new ChangeDetails({
         inserted: ch,
-        rawInserted: ch,
+        rawInserted: ch
       });
     }
 
@@ -1282,7 +1154,7 @@
         // TODO handle `skip`?
 
         // try `autofix` lookahead
-        if (!details.rawInserted && this.autofix === "pad") {
+        if (!details.rawInserted && this.autofix === 'pad') {
           const noFixState = this.state;
           this.state = consistentState;
           let fixDetails = this.pad(flags);
@@ -1311,22 +1183,17 @@
             }
           }
           let tailDetails = this.appendTail(checkTail);
-          appended =
-            tailDetails.rawInserted.length === checkTail.toString().length;
+          appended = tailDetails.rawInserted.length === checkTail.toString().length;
 
           // not ok, try shift
-          if (
-            !(appended && tailDetails.inserted) &&
-            this.overwrite === "shift"
-          ) {
+          if (!(appended && tailDetails.inserted) && this.overwrite === 'shift') {
             this.state = beforeTailState;
             consistentTail = checkTail.state;
             for (let i = 0; i < details.rawInserted.length; ++i) {
               checkTail.shift();
             }
             tailDetails = this.appendTail(checkTail);
-            appended =
-              tailDetails.rawInserted.length === checkTail.toString().length;
+            appended = tailDetails.rawInserted.length === checkTail.toString().length;
           }
 
           // if ok, rollback state after tail
@@ -1355,25 +1222,17 @@
 
     /** Appends symbols considering flags */
     append(str, flags, tail) {
-      if (!isString(str)) throw new Error("value should be string");
-      const checkTail = isString(tail)
-        ? new ContinuousTailDetails(String(tail))
-        : tail;
+      if (!isString(str)) throw new Error('value should be string');
+      const checkTail = isString(tail) ? new ContinuousTailDetails(String(tail)) : tail;
       if (flags != null && flags.tail) flags._beforeTailState = this.state;
       let details;
       [str, details] = this.doPrepare(str, flags);
       for (let ci = 0; ci < str.length; ++ci) {
         const d = this._appendChar(str[ci], flags, checkTail);
-        if (!d.rawInserted && !this.doSkipInvalid(str[ci], flags, checkTail))
-          break;
+        if (!d.rawInserted && !this.doSkipInvalid(str[ci], flags, checkTail)) break;
         details.aggregate(d);
       }
-      if (
-        (this.eager === true || this.eager === "append") &&
-        flags != null &&
-        flags.input &&
-        str
-      ) {
+      if ((this.eager === true || this.eager === 'append') && flags != null && flags.input && str) {
         details.aggregate(this._appendEager());
       }
 
@@ -1393,8 +1252,7 @@
       if (toPos === void 0) {
         toPos = this.displayValue.length;
       }
-      this._value =
-        this.displayValue.slice(0, fromPos) + this.displayValue.slice(toPos);
+      this._value = this.displayValue.slice(0, fromPos) + this.displayValue.slice(toPos);
       return new ChangeDetails();
     }
 
@@ -1407,12 +1265,8 @@
       const ret = fn();
       this.rawInputValue = rawInput;
       // append lost trailing chars at the end
-      if (
-        this.value &&
-        this.value !== value &&
-        value.indexOf(this.value) === 0
-      ) {
-        this.append(value.slice(this.displayValue.length), {}, "");
+      if (this.value && this.value !== value && value.indexOf(this.value) === 0) {
+        this.append(value.slice(this.displayValue.length), {}, '');
         this.doCommit();
       }
       delete this._refreshing;
@@ -1436,9 +1290,7 @@
       if (flags === void 0) {
         flags = {};
       }
-      return ChangeDetails.normalize(
-        this.prepare ? this.prepare(str, this, flags) : str,
-      );
+      return ChangeDetails.normalize(this.prepare ? this.prepare(str, this, flags) : str);
     }
 
     /** Prepares each char before mask processing */
@@ -1446,17 +1298,12 @@
       if (flags === void 0) {
         flags = {};
       }
-      return ChangeDetails.normalize(
-        this.prepareChar ? this.prepareChar(str, this, flags) : str,
-      );
+      return ChangeDetails.normalize(this.prepareChar ? this.prepareChar(str, this, flags) : str);
     }
 
     /** Validates if value is acceptable */
     doValidate(flags) {
-      return (
-        (!this.validate || this.validate(this.value, this, flags)) &&
-        (!this.parent || this.parent.doValidate(flags))
-      );
+      return (!this.validate || this.validate(this.value, this, flags)) && (!this.parent || this.parent.doValidate(flags));
     }
 
     /** Does additional processing at the end of editing */
@@ -1465,24 +1312,24 @@
     }
     splice(start, deleteCount, inserted, removeDirection, flags) {
       if (inserted === void 0) {
-        inserted = "";
+        inserted = '';
       }
       if (removeDirection === void 0) {
         removeDirection = DIRECTION.NONE;
       }
       if (flags === void 0) {
         flags = {
-          input: true,
+          input: true
         };
       }
       const tailPos = start + deleteCount;
       const tail = this.extractTail(tailPos);
-      const eagerRemove = this.eager === true || this.eager === "remove";
+      const eagerRemove = this.eager === true || this.eager === 'remove';
       let oldRawValue;
       if (eagerRemove) {
         removeDirection = forceDirection(removeDirection);
         oldRawValue = this.extractInput(0, tailPos, {
-          raw: true,
+          raw: true
         });
       }
       let startChangePos = start;
@@ -1490,35 +1337,19 @@
 
       // if it is just deletion without insertion
       if (removeDirection !== DIRECTION.NONE) {
-        startChangePos = this.nearestInputPos(
-          start,
-          deleteCount > 1 && start !== 0 && !eagerRemove
-            ? DIRECTION.NONE
-            : removeDirection,
-        );
+        startChangePos = this.nearestInputPos(start, deleteCount > 1 && start !== 0 && !eagerRemove ? DIRECTION.NONE : removeDirection);
 
         // adjust tailShift if start was aligned
         details.tailShift = startChangePos - start;
       }
       details.aggregate(this.remove(startChangePos));
-      if (
-        eagerRemove &&
-        removeDirection !== DIRECTION.NONE &&
-        oldRawValue === this.rawInputValue
-      ) {
+      if (eagerRemove && removeDirection !== DIRECTION.NONE && oldRawValue === this.rawInputValue) {
         if (removeDirection === DIRECTION.FORCE_LEFT) {
           let valLength;
-          while (
-            oldRawValue === this.rawInputValue &&
-            (valLength = this.displayValue.length)
-          ) {
-            details
-              .aggregate(
-                new ChangeDetails({
-                  tailShift: -1,
-                }),
-              )
-              .aggregate(this.remove(valLength - 1));
+          while (oldRawValue === this.rawInputValue && (valLength = this.displayValue.length)) {
+            details.aggregate(new ChangeDetails({
+              tailShift: -1
+            })).aggregate(this.remove(valLength - 1));
           }
         } else if (removeDirection === DIRECTION.FORCE_RIGHT) {
           tail.unshift();
@@ -1534,23 +1365,16 @@
     }
     typedValueEquals(value) {
       const tval = this.typedValue;
-      return (
-        value === tval ||
-        (Masked.EMPTY_VALUES.includes(value) &&
-          Masked.EMPTY_VALUES.includes(tval)) ||
-        (this.format
-          ? this.format(value, this) === this.format(this.typedValue, this)
-          : false)
-      );
+      return value === tval || Masked.EMPTY_VALUES.includes(value) && Masked.EMPTY_VALUES.includes(tval) || (this.format ? this.format(value, this) === this.format(this.typedValue, this) : false);
     }
     pad(flags) {
       return new ChangeDetails();
     }
   }
   Masked.DEFAULTS = {
-    skipInvalid: true,
+    skipInvalid: true
   };
-  Masked.EMPTY_VALUES = [undefined, null, ""];
+  Masked.EMPTY_VALUES = [undefined, null, ''];
   IMask.Masked = Masked;
 
   class ChunksTailDetails {
@@ -1567,20 +1391,17 @@
       this.from = from;
     }
     toString() {
-      return this.chunks.map(String).join("");
+      return this.chunks.map(String).join('');
     }
     extend(tailChunk) {
       if (!String(tailChunk)) return;
-      tailChunk = isString(tailChunk)
-        ? new ContinuousTailDetails(String(tailChunk))
-        : tailChunk;
+      tailChunk = isString(tailChunk) ? new ContinuousTailDetails(String(tailChunk)) : tailChunk;
       const lastChunk = this.chunks[this.chunks.length - 1];
-      const extendLast =
-        lastChunk &&
-        // if stops are same or tail has no stop
-        (lastChunk.stop === tailChunk.stop || tailChunk.stop == null) &&
-        // if tail chunk goes just after last chunk
-        tailChunk.from === lastChunk.from + lastChunk.toString().length;
+      const extendLast = lastChunk && (
+      // if stops are same or tail has no stop
+      lastChunk.stop === tailChunk.stop || tailChunk.stop == null) &&
+      // if tail chunk goes just after last chunk
+      tailChunk.from === lastChunk.from + lastChunk.toString().length;
       if (tailChunk instanceof ContinuousTailDetails) {
         // check the ability to extend previous chunk
         if (extendLast) {
@@ -1620,70 +1441,56 @@
         const lastBlockIter = masked._mapPosToBlock(masked.displayValue.length);
         const stop = chunk.stop;
         let chunkBlock;
-        if (
-          stop != null &&
-          // if block not found or stop is behind lastBlock
-          (!lastBlockIter || lastBlockIter.index <= stop)
-        ) {
-          if (
-            chunk instanceof ChunksTailDetails ||
-            // for continuous block also check if stop is exist
-            masked._stops.indexOf(stop) >= 0
-          ) {
+        if (stop != null && (
+        // if block not found or stop is behind lastBlock
+        !lastBlockIter || lastBlockIter.index <= stop)) {
+          if (chunk instanceof ChunksTailDetails ||
+          // for continuous block also check if stop is exist
+          masked._stops.indexOf(stop) >= 0) {
             details.aggregate(masked._appendPlaceholder(stop));
           }
-          chunkBlock =
-            chunk instanceof ChunksTailDetails && masked._blocks[stop];
+          chunkBlock = chunk instanceof ChunksTailDetails && masked._blocks[stop];
         }
         if (chunkBlock) {
           const tailDetails = chunkBlock.appendTail(chunk);
           details.aggregate(tailDetails);
 
           // get not inserted chars
-          const remainChars = chunk
-            .toString()
-            .slice(tailDetails.rawInserted.length);
-          if (remainChars)
-            details.aggregate(
-              masked.append(remainChars, {
-                tail: true,
-              }),
-            );
+          const remainChars = chunk.toString().slice(tailDetails.rawInserted.length);
+          if (remainChars) details.aggregate(masked.append(remainChars, {
+            tail: true
+          }));
         } else {
-          details.aggregate(
-            masked.append(chunk.toString(), {
-              tail: true,
-            }),
-          );
+          details.aggregate(masked.append(chunk.toString(), {
+            tail: true
+          }));
         }
       }
       return details;
     }
     get state() {
       return {
-        chunks: this.chunks.map((c) => c.state),
+        chunks: this.chunks.map(c => c.state),
         from: this.from,
         stop: this.stop,
-        blockIndex: this.blockIndex,
+        blockIndex: this.blockIndex
       };
     }
     set state(state) {
-      const { chunks, ...props } = state;
+      const {
+        chunks,
+        ...props
+      } = state;
       Object.assign(this, props);
-      this.chunks = chunks.map((cstate) => {
-        const chunk =
-          "chunks" in cstate
-            ? new ChunksTailDetails()
-            : new ContinuousTailDetails();
+      this.chunks = chunks.map(cstate => {
+        const chunk = "chunks" in cstate ? new ChunksTailDetails() : new ContinuousTailDetails();
         chunk.state = cstate;
         return chunk;
       });
     }
     unshift(beforePos) {
-      if (!this.chunks.length || (beforePos != null && this.from >= beforePos))
-        return "";
-      const chunkShiftPos =
-        beforePos != null ? beforePos - this.from : beforePos;
+      if (!this.chunks.length || beforePos != null && this.from >= beforePos) return '';
+      const chunkShiftPos = beforePos != null ? beforePos - this.from : beforePos;
       let ci = 0;
       while (ci < this.chunks.length) {
         const chunk = this.chunks[ci];
@@ -1699,10 +1506,10 @@
         }
         if (shiftChar) return shiftChar;
       }
-      return "";
+      return '';
     }
     shift() {
-      if (!this.chunks.length) return "";
+      if (!this.chunks.length) return '';
       let ci = this.chunks.length - 1;
       while (0 <= ci) {
         const chunk = this.chunks[ci];
@@ -1718,7 +1525,7 @@
         }
         if (shiftChar) return shiftChar;
       }
-      return "";
+      return '';
     }
   }
 
@@ -1726,19 +1533,20 @@
     constructor(masked, pos) {
       this.masked = masked;
       this._log = [];
-      const { offset, index } =
-        masked._mapPosToBlock(pos) ||
-        (pos < 0
-          ? // first
-            {
-              index: 0,
-              offset: 0,
-            }
-          : // last
-            {
-              index: this.masked._blocks.length,
-              offset: 0,
-            });
+      const {
+        offset,
+        index
+      } = masked._mapPosToBlock(pos) || (pos < 0 ?
+      // first
+      {
+        index: 0,
+        offset: 0
+      } :
+      // last
+      {
+        index: this.masked._blocks.length,
+        offset: 0
+      });
       this.offset = offset;
       this.index = index;
       this.ok = false;
@@ -1753,7 +1561,7 @@
       return {
         index: this.index,
         offset: this.offset,
-        ok: this.ok,
+        ok: this.ok
       };
     }
     set state(s) {
@@ -1780,38 +1588,23 @@
     }
     _pushLeft(fn) {
       this.pushState();
-      for (
-        this.bindBlock();
-        0 <= this.index;
-        --this.index,
-          this.offset =
-            ((_this$block = this.block) == null
-              ? void 0
-              : _this$block.displayValue.length) || 0
-      ) {
+      for (this.bindBlock(); 0 <= this.index; --this.index, this.offset = ((_this$block = this.block) == null ? void 0 : _this$block.displayValue.length) || 0) {
         var _this$block;
-        if (fn()) return (this.ok = true);
+        if (fn()) return this.ok = true;
       }
-      return (this.ok = false);
+      return this.ok = false;
     }
     _pushRight(fn) {
       this.pushState();
-      for (
-        this.bindBlock();
-        this.index < this.masked._blocks.length;
-        ++this.index, this.offset = 0
-      ) {
-        if (fn()) return (this.ok = true);
+      for (this.bindBlock(); this.index < this.masked._blocks.length; ++this.index, this.offset = 0) {
+        if (fn()) return this.ok = true;
       }
-      return (this.ok = false);
+      return this.ok = false;
     }
     pushLeftBeforeFilled() {
       return this._pushLeft(() => {
         if (this.block.isFixed || !this.block.value) return;
-        this.offset = this.block.nearestInputPos(
-          this.offset,
-          DIRECTION.FORCE_LEFT,
-        );
+        this.offset = this.block.nearestInputPos(this.offset, DIRECTION.FORCE_LEFT);
         if (this.offset !== 0) return true;
       });
     }
@@ -1828,8 +1621,7 @@
     }
     pushLeftBeforeRequired() {
       return this._pushLeft(() => {
-        if (this.block.isFixed || (this.block.isOptional && !this.block.value))
-          return;
+        if (this.block.isFixed || this.block.isOptional && !this.block.value) return;
         this.offset = this.block.nearestInputPos(this.offset, DIRECTION.LEFT);
         return true;
       });
@@ -1837,10 +1629,7 @@
     pushRightBeforeFilled() {
       return this._pushRight(() => {
         if (this.block.isFixed || !this.block.value) return;
-        this.offset = this.block.nearestInputPos(
-          this.offset,
-          DIRECTION.FORCE_RIGHT,
-        );
+        this.offset = this.block.nearestInputPos(this.offset, DIRECTION.FORCE_RIGHT);
         if (this.offset !== this.block.value.length) return true;
       });
     }
@@ -1859,8 +1648,7 @@
     }
     pushRightBeforeRequired() {
       return this._pushRight(() => {
-        if (this.block.isFixed || (this.block.isOptional && !this.block.value))
-          return;
+        if (this.block.isFixed || this.block.isOptional && !this.block.value) return;
 
         // TODO check |[*]XX_
         this.offset = this.block.nearestInputPos(this.offset, DIRECTION.NONE);
@@ -1884,24 +1672,24 @@
 
     constructor(opts) {
       Object.assign(this, opts);
-      this._value = "";
+      this._value = '';
       this.isFixed = true;
     }
     get value() {
       return this._value;
     }
     get unmaskedValue() {
-      return this.isUnmasking ? this.value : "";
+      return this.isUnmasking ? this.value : '';
     }
     get rawInputValue() {
-      return this._isRawInput ? this.value : "";
+      return this._isRawInput ? this.value : '';
     }
     get displayValue() {
       return this.value;
     }
     reset() {
       this._isRawInput = false;
-      this._value = "";
+      this._value = '';
     }
     remove(fromPos, toPos) {
       if (fromPos === void 0) {
@@ -1950,10 +1738,7 @@
       if (flags === void 0) {
         flags = {};
       }
-      return (
-        (flags.raw && this._isRawInput && this._value.slice(fromPos, toPos)) ||
-        ""
-      );
+      return flags.raw && this._isRawInput && this._value.slice(fromPos, toPos) || '';
     }
     get isComplete() {
       return true;
@@ -1966,16 +1751,12 @@
         flags = {};
       }
       if (this.isFilled) return new ChangeDetails();
-      const appendEager = this.eager === true || this.eager === "append";
+      const appendEager = this.eager === true || this.eager === 'append';
       const appended = this.char === ch;
-      const isResolved =
-        appended &&
-        (this.isUnmasking || flags.input || flags.raw) &&
-        (!flags.raw || !appendEager) &&
-        !flags.tail;
+      const isResolved = appended && (this.isUnmasking || flags.input || flags.raw) && (!flags.raw || !appendEager) && !flags.tail;
       const details = new ChangeDetails({
         inserted: this.char,
-        rawInserted: isResolved ? this.char : "",
+        rawInserted: isResolved ? this.char : ''
       });
       this._value = this.char;
       this._isRawInput = isResolved && (flags.raw || flags.input);
@@ -1983,7 +1764,7 @@
     }
     _appendEager() {
       return this._appendChar(this.char, {
-        tail: true,
+        tail: true
       });
     }
     _appendPlaceholder() {
@@ -1993,7 +1774,7 @@
       return details;
     }
     extractTail() {
-      return new ContinuousTailDetails("");
+      return new ContinuousTailDetails('');
     }
     appendTail(tail) {
       if (isString(tail)) tail = new ContinuousTailDetails(String(tail));
@@ -2010,7 +1791,7 @@
     get state() {
       return {
         _value: this._value,
-        _rawInputValue: this.rawInputValue,
+        _rawInputValue: this.rawInputValue
       };
     }
     set state(state) {
@@ -2056,7 +1837,7 @@
         placeholderChar,
         displayChar,
         lazy,
-        eager,
+        eager
       });
     }
     reset() {
@@ -2077,10 +1858,7 @@
       return new ChangeDetails();
     }
     get value() {
-      return (
-        this.masked.value ||
-        (this.isFilled && !this.isOptional ? this.placeholderChar : "")
-      );
+      return this.masked.value || (this.isFilled && !this.isOptional ? this.placeholderChar : '');
     }
     get unmaskedValue() {
       return this.masked.unmaskedValue;
@@ -2089,7 +1867,7 @@
       return this.masked.rawInputValue;
     }
     get displayValue() {
-      return (this.masked.value && this.displayChar) || this.value;
+      return this.masked.value && this.displayChar || this.value;
     }
     get isComplete() {
       return Boolean(this.masked.value) || this.isOptional;
@@ -2121,7 +1899,7 @@
       if (this.isFilled || this.isOptional) return new ChangeDetails();
       this.isFilled = true;
       return new ChangeDetails({
-        inserted: this.placeholderChar,
+        inserted: this.placeholderChar
       });
     }
     _appendEager() {
@@ -2171,10 +1949,7 @@
       return this.value.slice(fromPos, toPos).length;
     }
     doValidate(flags) {
-      return (
-        this.masked.doValidate(this.currentMaskFlags(flags)) &&
-        (!this.parent || this.parent.doValidate(this.currentMaskFlags(flags)))
-      );
+      return this.masked.doValidate(this.currentMaskFlags(flags)) && (!this.parent || this.parent.doValidate(this.currentMaskFlags(flags)));
     }
     doCommit() {
       this.masked.doCommit();
@@ -2184,7 +1959,7 @@
         _value: this.value,
         _rawInputValue: this.rawInputValue,
         masked: this.masked.state,
-        isFilled: this.isFilled,
+        isFilled: this.isFilled
       };
     }
     set state(state) {
@@ -2195,12 +1970,7 @@
       var _flags$_beforeTailSta;
       return {
         ...flags,
-        _beforeTailState:
-          (flags == null ||
-          (_flags$_beforeTailSta = flags._beforeTailState) == null
-            ? void 0
-            : _flags$_beforeTailSta.masked) ||
-          (flags == null ? void 0 : flags._beforeTailState),
+        _beforeTailState: (flags == null || (_flags$_beforeTailSta = flags._beforeTailState) == null ? void 0 : _flags$_beforeTailSta.masked) || (flags == null ? void 0 : flags._beforeTailState)
       };
     }
     pad(flags) {
@@ -2208,10 +1978,10 @@
     }
   }
   PatternInputDefinition.DEFAULT_DEFINITIONS = {
-    0: /\d/,
-    a: /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,
+    '0': /\d/,
+    'a': /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,
     // http://stackoverflow.com/a/22075070
-    "*": /./,
+    '*': /./
   };
 
   /** Masking by RegExp */
@@ -2231,7 +2001,7 @@
     }
     _update(opts) {
       const mask = opts.mask;
-      if (mask) opts.validate = (value) => value.search(mask) >= 0;
+      if (mask) opts.validate = value => value.search(mask) >= 0;
       super._update(opts);
     }
   }
@@ -2261,11 +2031,7 @@
       super({
         ...MaskedPattern.DEFAULTS,
         ...opts,
-        definitions: Object.assign(
-          {},
-          PatternInputDefinition.DEFAULT_DEFINITIONS,
-          opts == null ? void 0 : opts.definitions,
-        ),
+        definitions: Object.assign({}, PatternInputDefinition.DEFAULT_DEFINITIONS, opts == null ? void 0 : opts.definitions)
       });
     }
     updateOptions(opts) {
@@ -2289,17 +2055,17 @@
       for (let i = 0; i < pattern.length; ++i) {
         if (this.blocks) {
           const p = pattern.slice(i);
-          const bNames = Object.keys(this.blocks).filter(
-            (bName) => p.indexOf(bName) === 0,
-          );
+          const bNames = Object.keys(this.blocks).filter(bName => p.indexOf(bName) === 0);
           // order by key length
           bNames.sort((a, b) => b.length - a.length);
           // use block name with max length
           const bName = bNames[0];
           if (bName) {
-            const { expose, repeat, ...bOpts } = normalizeOpts(
-              this.blocks[bName],
-            ); // TODO type Opts<Arg & Extra>
+            const {
+              expose,
+              repeat,
+              ...bOpts
+            } = normalizeOpts(this.blocks[bName]); // TODO type Opts<Arg & Extra>
             const blockOpts = {
               lazy: this.lazy,
               eager: this.eager,
@@ -2309,12 +2075,9 @@
               autofix: this.autofix,
               ...bOpts,
               repeat,
-              parent: this,
+              parent: this
             };
-            const maskedBlock =
-              repeat != null
-                ? new IMask.RepeatBlock(blockOpts /* TODO */)
-                : createMask(blockOpts);
+            const maskedBlock = repeat != null ? new IMask.RepeatBlock(blockOpts /* TODO */) : createMask(blockOpts);
             if (maskedBlock) {
               this._blocks.push(maskedBlock);
               if (expose) this.exposeBlock = maskedBlock;
@@ -2328,16 +2091,16 @@
           }
         }
         let char = pattern[i];
-        let isInput = char in defs;
+        let isInput = (char in defs);
         if (char === MaskedPattern.STOP_CHAR) {
           this._stops.push(this._blocks.length);
           continue;
         }
-        if (char === "{" || char === "}") {
+        if (char === '{' || char === '}') {
           unmaskingBlock = !unmaskingBlock;
           continue;
         }
-        if (char === "[" || char === "]") {
+        if (char === '[' || char === ']') {
           optionalBlock = !optionalBlock;
           continue;
         }
@@ -2347,28 +2110,26 @@
           if (!char) break;
           isInput = false;
         }
-        const def = isInput
-          ? new PatternInputDefinition({
-              isOptional: optionalBlock,
-              lazy: this.lazy,
-              eager: this.eager,
-              placeholderChar: this.placeholderChar,
-              displayChar: this.displayChar,
-              ...normalizeOpts(defs[char]),
-              parent: this,
-            })
-          : new PatternFixedDefinition({
-              char,
-              eager: this.eager,
-              isUnmasking: unmaskingBlock,
-            });
+        const def = isInput ? new PatternInputDefinition({
+          isOptional: optionalBlock,
+          lazy: this.lazy,
+          eager: this.eager,
+          placeholderChar: this.placeholderChar,
+          displayChar: this.displayChar,
+          ...normalizeOpts(defs[char]),
+          parent: this
+        }) : new PatternFixedDefinition({
+          char,
+          eager: this.eager,
+          isUnmasking: unmaskingBlock
+        });
         this._blocks.push(def);
       }
     }
     get state() {
       return {
         ...super.state,
-        _blocks: this._blocks.map((b) => b.state),
+        _blocks: this._blocks.map(b => b.state)
       };
     }
     set state(state) {
@@ -2376,60 +2137,52 @@
         this.reset();
         return;
       }
-      const { _blocks, ...maskedState } = state;
-      this._blocks.forEach((b, bi) => (b.state = _blocks[bi]));
+      const {
+        _blocks,
+        ...maskedState
+      } = state;
+      this._blocks.forEach((b, bi) => b.state = _blocks[bi]);
       super.state = maskedState;
     }
     reset() {
       super.reset();
-      this._blocks.forEach((b) => b.reset());
+      this._blocks.forEach(b => b.reset());
     }
     get isComplete() {
-      return this.exposeBlock
-        ? this.exposeBlock.isComplete
-        : this._blocks.every((b) => b.isComplete);
+      return this.exposeBlock ? this.exposeBlock.isComplete : this._blocks.every(b => b.isComplete);
     }
     get isFilled() {
-      return this._blocks.every((b) => b.isFilled);
+      return this._blocks.every(b => b.isFilled);
     }
     get isFixed() {
-      return this._blocks.every((b) => b.isFixed);
+      return this._blocks.every(b => b.isFixed);
     }
     get isOptional() {
-      return this._blocks.every((b) => b.isOptional);
+      return this._blocks.every(b => b.isOptional);
     }
     doCommit() {
-      this._blocks.forEach((b) => b.doCommit());
+      this._blocks.forEach(b => b.doCommit());
       super.doCommit();
     }
     get unmaskedValue() {
-      return this.exposeBlock
-        ? this.exposeBlock.unmaskedValue
-        : this._blocks.reduce((str, b) => (str += b.unmaskedValue), "");
+      return this.exposeBlock ? this.exposeBlock.unmaskedValue : this._blocks.reduce((str, b) => str += b.unmaskedValue, '');
     }
     set unmaskedValue(unmaskedValue) {
       if (this.exposeBlock) {
-        const tail = this.extractTail(
-          this._blockStartPos(this._blocks.indexOf(this.exposeBlock)) +
-            this.exposeBlock.displayValue.length,
-        );
+        const tail = this.extractTail(this._blockStartPos(this._blocks.indexOf(this.exposeBlock)) + this.exposeBlock.displayValue.length);
         this.exposeBlock.unmaskedValue = unmaskedValue;
         this.appendTail(tail);
         this.doCommit();
       } else super.unmaskedValue = unmaskedValue;
     }
     get value() {
-      return this.exposeBlock
-        ? this.exposeBlock.value
-        : // TODO return _value when not in change?
-          this._blocks.reduce((str, b) => (str += b.value), "");
+      return this.exposeBlock ? this.exposeBlock.value :
+      // TODO return _value when not in change?
+      this._blocks.reduce((str, b) => str += b.value, '');
     }
     set value(value) {
       if (this.exposeBlock) {
-        const tail = this.extractTail(
-          this._blockStartPos(this._blocks.indexOf(this.exposeBlock)) +
-            this.exposeBlock.displayValue.length,
-        );
+        const tail = this.extractTail(this._blockStartPos(this._blocks.indexOf(this.exposeBlock)) + this.exposeBlock.displayValue.length);
         this.exposeBlock.value = value;
         this.appendTail(tail);
         this.doCommit();
@@ -2440,17 +2193,14 @@
     }
     set typedValue(value) {
       if (this.exposeBlock) {
-        const tail = this.extractTail(
-          this._blockStartPos(this._blocks.indexOf(this.exposeBlock)) +
-            this.exposeBlock.displayValue.length,
-        );
+        const tail = this.extractTail(this._blockStartPos(this._blocks.indexOf(this.exposeBlock)) + this.exposeBlock.displayValue.length);
         this.exposeBlock.typedValue = value;
         this.appendTail(tail);
         this.doCommit();
       } else super.typedValue = value;
     }
     get displayValue() {
-      return this._blocks.reduce((str, b) => (str += b.displayValue), "");
+      return this._blocks.reduce((str, b) => str += b.displayValue, '');
     }
     appendTail(tail) {
       return super.appendTail(tail).aggregate(this._appendPlaceholder());
@@ -2458,12 +2208,7 @@
     _appendEager() {
       var _this$_mapPosToBlock;
       const details = new ChangeDetails();
-      let startBlockIndex =
-        (_this$_mapPosToBlock = this._mapPosToBlock(
-          this.displayValue.length,
-        )) == null
-          ? void 0
-          : _this$_mapPosToBlock.index;
+      let startBlockIndex = (_this$_mapPosToBlock = this._mapPosToBlock(this.displayValue.length)) == null ? void 0 : _this$_mapPosToBlock.index;
       if (startBlockIndex == null) return details;
 
       // TODO test if it works for nested pattern masks
@@ -2482,15 +2227,11 @@
       const blockIter = this._mapPosToBlock(this.displayValue.length);
       const details = new ChangeDetails();
       if (!blockIter) return details;
-      for (let bi = blockIter.index, block; (block = this._blocks[bi]); ++bi) {
+      for (let bi = blockIter.index, block; block = this._blocks[bi]; ++bi) {
         var _flags$_beforeTailSta;
         const blockDetails = block._appendChar(ch, {
           ...flags,
-          _beforeTailState:
-            (_flags$_beforeTailSta = flags._beforeTailState) == null ||
-            (_flags$_beforeTailSta = _flags$_beforeTailSta._blocks) == null
-              ? void 0
-              : _flags$_beforeTailSta[bi],
+          _beforeTailState: (_flags$_beforeTailSta = flags._beforeTailState) == null || (_flags$_beforeTailSta = _flags$_beforeTailSta._blocks) == null ? void 0 : _flags$_beforeTailSta[bi]
         });
         details.aggregate(blockDetails);
         if (blockDetails.consumed) break; // go next char
@@ -2525,8 +2266,8 @@
       if (flags === void 0) {
         flags = {};
       }
-      if (fromPos === toPos) return "";
-      let input = "";
+      if (fromPos === toPos) return '';
+      let input = '';
       this._forEachBlocksInRange(fromPos, toPos, (b, _, fromPos, toPos) => {
         input += b.extractInput(fromPos, toPos, flags);
       });
@@ -2536,8 +2277,7 @@
       let stopBefore;
       for (let si = 0; si < this._stops.length; ++si) {
         const stop = this._stops[si];
-        if (stop <= blockIndex) stopBefore = stop;
-        else break;
+        if (stop <= blockIndex) stopBefore = stop;else break;
       }
       return stopBefore;
     }
@@ -2549,16 +2289,11 @@
       const startBlockIter = this._mapPosToBlock(this.displayValue.length);
       if (!startBlockIter) return details;
       const startBlockIndex = startBlockIter.index;
-      const endBlockIndex =
-        toBlockIndex != null ? toBlockIndex : this._blocks.length;
-      this._blocks.slice(startBlockIndex, endBlockIndex).forEach((b) => {
+      const endBlockIndex = toBlockIndex != null ? toBlockIndex : this._blocks.length;
+      this._blocks.slice(startBlockIndex, endBlockIndex).forEach(b => {
         if (!b.lazy || toBlockIndex != null) {
           var _blocks2;
-          details.aggregate(
-            b._appendPlaceholder(
-              (_blocks2 = b._blocks) == null ? void 0 : _blocks2.length,
-            ),
-          );
+          details.aggregate(b._appendPlaceholder((_blocks2 = b._blocks) == null ? void 0 : _blocks2.length));
         }
       });
       return details;
@@ -2566,7 +2301,7 @@
 
     /** Finds block in pos */
     _mapPosToBlock(pos) {
-      let accVal = "";
+      let accVal = '';
       for (let bi = 0; bi < this._blocks.length; ++bi) {
         const block = this._blocks[bi];
         const blockStartPos = accVal.length;
@@ -2574,15 +2309,13 @@
         if (pos <= accVal.length) {
           return {
             index: bi,
-            offset: pos - blockStartPos,
+            offset: pos - blockStartPos
           };
         }
       }
     }
     _blockStartPos(blockIndex) {
-      return this._blocks
-        .slice(0, blockIndex)
-        .reduce((pos, b) => (pos += b.displayValue.length), 0);
+      return this._blocks.slice(0, blockIndex).reduce((pos, b) => pos += b.displayValue.length, 0);
     }
     _forEachBlocksInRange(fromPos, toPos, fn) {
       if (toPos === void 0) {
@@ -2592,19 +2325,10 @@
       if (fromBlockIter) {
         const toBlockIter = this._mapPosToBlock(toPos);
         // process first block
-        const isSameBlock =
-          toBlockIter && fromBlockIter.index === toBlockIter.index;
+        const isSameBlock = toBlockIter && fromBlockIter.index === toBlockIter.index;
         const fromBlockStartPos = fromBlockIter.offset;
-        const fromBlockEndPos =
-          toBlockIter && isSameBlock
-            ? toBlockIter.offset
-            : this._blocks[fromBlockIter.index].displayValue.length;
-        fn(
-          this._blocks[fromBlockIter.index],
-          fromBlockIter.index,
-          fromBlockStartPos,
-          fromBlockEndPos,
-        );
+        const fromBlockEndPos = toBlockIter && isSameBlock ? toBlockIter.offset : this._blocks[fromBlockIter.index].displayValue.length;
+        fn(this._blocks[fromBlockIter.index], fromBlockIter.index, fromBlockStartPos, fromBlockEndPos);
         if (toBlockIter && !isSameBlock) {
           // process intermediate blocks
           for (let bi = fromBlockIter.index + 1; bi < toBlockIter.index; ++bi) {
@@ -2612,12 +2336,7 @@
           }
 
           // process last block
-          fn(
-            this._blocks[toBlockIter.index],
-            toBlockIter.index,
-            0,
-            toBlockIter.offset,
-          );
+          fn(this._blocks[toBlockIter.index], toBlockIter.index, 0, toBlockIter.offset);
         }
       }
     }
@@ -2681,16 +2400,12 @@
         if (cursor.ok) return cursor.pos;
         return 0;
       }
-      if (
-        direction === DIRECTION.RIGHT ||
-        direction === DIRECTION.FORCE_RIGHT
-      ) {
+      if (direction === DIRECTION.RIGHT || direction === DIRECTION.FORCE_RIGHT) {
         // forward flow
         cursor.pushRightBeforeInput();
         cursor.pushRightBeforeRequired();
         if (cursor.pushRightBeforeFilled()) return cursor.pos;
-        if (direction === DIRECTION.FORCE_RIGHT)
-          return this.displayValue.length;
+        if (direction === DIRECTION.FORCE_RIGHT) return this.displayValue.length;
 
         // backward flow
         cursor.popState();
@@ -2724,23 +2439,21 @@
     maskedBlocks(name) {
       const indices = this._maskedBlocks[name];
       if (!indices) return [];
-      return indices.map((gi) => this._blocks[gi]);
+      return indices.map(gi => this._blocks[gi]);
     }
     pad(flags) {
       const details = new ChangeDetails();
-      this._forEachBlocksInRange(0, this.displayValue.length, (b) =>
-        details.aggregate(b.pad(flags)),
-      );
+      this._forEachBlocksInRange(0, this.displayValue.length, b => details.aggregate(b.pad(flags)));
       return details;
     }
   }
   MaskedPattern.DEFAULTS = {
     ...Masked.DEFAULTS,
     lazy: true,
-    placeholderChar: "_",
+    placeholderChar: '_'
   };
-  MaskedPattern.STOP_CHAR = "`";
-  MaskedPattern.ESCAPE_CHAR = "\\";
+  MaskedPattern.STOP_CHAR = '`';
+  MaskedPattern.ESCAPE_CHAR = '\\';
   MaskedPattern.InputDefinition = PatternInputDefinition;
   MaskedPattern.FixedDefinition = PatternFixedDefinition;
   IMask.MaskedPattern = MaskedPattern;
@@ -2777,32 +2490,26 @@
       this.from = from;
       this.maxLength = Math.max(String(to).length, maxLength);
       this.autofix = autofix;
-      const fromStr = String(this.from).padStart(this.maxLength, "0");
-      const toStr = String(this.to).padStart(this.maxLength, "0");
+      const fromStr = String(this.from).padStart(this.maxLength, '0');
+      const toStr = String(this.to).padStart(this.maxLength, '0');
       let sameCharsCount = 0;
-      while (
-        sameCharsCount < toStr.length &&
-        toStr[sameCharsCount] === fromStr[sameCharsCount]
-      )
-        ++sameCharsCount;
-      patternOpts.mask =
-        toStr.slice(0, sameCharsCount).replace(/0/g, "\\0") +
-        "0".repeat(this.maxLength - sameCharsCount);
+      while (sameCharsCount < toStr.length && toStr[sameCharsCount] === fromStr[sameCharsCount]) ++sameCharsCount;
+      patternOpts.mask = toStr.slice(0, sameCharsCount).replace(/0/g, '\\0') + '0'.repeat(this.maxLength - sameCharsCount);
       super._update(patternOpts);
     }
     get isComplete() {
       return super.isComplete && Boolean(this.value);
     }
     boundaries(str) {
-      let minstr = "";
-      let maxstr = "";
+      let minstr = '';
+      let maxstr = '';
       const [, placeholder, num] = str.match(/^(\D*)(\d*)(\D*)/) || [];
       if (num) {
-        minstr = "0".repeat(placeholder.length) + num;
-        maxstr = "9".repeat(placeholder.length) + num;
+        minstr = '0'.repeat(placeholder.length) + num;
+        maxstr = '9'.repeat(placeholder.length) + num;
       }
-      minstr = minstr.padEnd(this.maxLength, "0");
-      maxstr = maxstr.padEnd(this.maxLength, "9");
+      minstr = minstr.padEnd(this.maxLength, '0');
+      maxstr = maxstr.padEnd(this.maxLength, '9');
       return [minstr, maxstr];
     }
     doPrepareChar(ch, flags) {
@@ -2810,7 +2517,7 @@
         flags = {};
       }
       let details;
-      [ch, details] = super.doPrepareChar(ch.replace(/\D/g, ""), flags);
+      [ch, details] = super.doPrepareChar(ch.replace(/\D/g, ''), flags);
       if (!ch) details.skip = !this.isComplete;
       return [ch, details];
     }
@@ -2818,22 +2525,14 @@
       if (flags === void 0) {
         flags = {};
       }
-      if (!this.autofix || this.value.length + 1 > this.maxLength)
-        return super._appendCharRaw(ch, flags);
-      const fromStr = String(this.from).padStart(this.maxLength, "0");
-      const toStr = String(this.to).padStart(this.maxLength, "0");
+      if (!this.autofix || this.value.length + 1 > this.maxLength) return super._appendCharRaw(ch, flags);
+      const fromStr = String(this.from).padStart(this.maxLength, '0');
+      const toStr = String(this.to).padStart(this.maxLength, '0');
       const [minstr, maxstr] = this.boundaries(this.value + ch);
-      if (Number(maxstr) < this.from)
-        return super._appendCharRaw(fromStr[this.value.length], flags);
+      if (Number(maxstr) < this.from) return super._appendCharRaw(fromStr[this.value.length], flags);
       if (Number(minstr) > this.to) {
-        if (
-          !flags.tail &&
-          this.autofix === "pad" &&
-          this.value.length + 1 < this.maxLength
-        ) {
-          return super
-            ._appendCharRaw(fromStr[this.value.length], flags)
-            .aggregate(this._appendCharRaw(ch, flags));
+        if (!flags.tail && this.autofix === 'pad' && this.value.length + 1 < this.maxLength) {
+          return super._appendCharRaw(fromStr[this.value.length], flags).aggregate(this._appendCharRaw(ch, flags));
         }
         return super._appendCharRaw(toStr[this.value.length], flags);
       }
@@ -2844,11 +2543,7 @@
       const firstNonZero = str.search(/[^0]/);
       if (firstNonZero === -1 && str.length <= this._matchFrom) return true;
       const [minstr, maxstr] = this.boundaries(str);
-      return (
-        this.from <= Number(maxstr) &&
-        Number(minstr) <= this.to &&
-        super.doValidate(flags)
-      );
+      return this.from <= Number(maxstr) && Number(minstr) <= this.to && super.doValidate(flags);
     }
     pad(flags) {
       const details = new ChangeDetails();
@@ -2858,28 +2553,32 @@
       if (padLength) {
         this.reset();
         for (let i = 0; i < padLength; ++i) {
-          details.aggregate(super._appendCharRaw("0", flags));
+          details.aggregate(super._appendCharRaw('0', flags));
         }
 
         // append tail
-        value.split("").forEach((ch) => this._appendCharRaw(ch));
+        value.split('').forEach(ch => this._appendCharRaw(ch));
       }
       return details;
     }
   }
   IMask.MaskedRange = MaskedRange;
 
-  const DefaultPattern = "d{.}`m{.}`Y";
+  const DefaultPattern = 'd{.}`m{.}`Y';
 
   // Make format and parse required when pattern is provided
 
   /** Date mask */
   class MaskedDate extends MaskedPattern {
     static extractPatternOptions(opts) {
-      const { mask, pattern, ...patternOpts } = opts;
+      const {
+        mask,
+        pattern,
+        ...patternOpts
+      } = opts;
       return {
         ...patternOpts,
-        mask: isString(mask) ? mask : pattern,
+        mask: isString(mask) ? mask : pattern
       };
     }
 
@@ -2894,20 +2593,23 @@
     /** Parse string to get typed value */
 
     constructor(opts) {
-      super(
-        MaskedDate.extractPatternOptions({
-          ...MaskedDate.DEFAULTS,
-          ...opts,
-        }),
-      );
+      super(MaskedDate.extractPatternOptions({
+        ...MaskedDate.DEFAULTS,
+        ...opts
+      }));
     }
     updateOptions(opts) {
       super.updateOptions(opts);
     }
     _update(opts) {
-      const { mask, pattern, blocks, ...patternOpts } = {
+      const {
+        mask,
+        pattern,
+        blocks,
+        ...patternOpts
+      } = {
         ...MaskedDate.DEFAULTS,
-        ...opts,
+        ...opts
       };
       const patternBlocks = Object.assign({}, MaskedDate.GET_DEFAULT_BLOCKS());
       // adjust year block
@@ -2925,19 +2627,12 @@
       super._update({
         ...patternOpts,
         mask: isString(mask) ? mask : pattern,
-        blocks: patternBlocks,
+        blocks: patternBlocks
       });
     }
     doValidate(flags) {
       const date = this.date;
-      return (
-        super.doValidate(flags) &&
-        (!this.isComplete ||
-          (this.isDateExist(this.value) &&
-            date != null &&
-            (this.min == null || this.min <= date) &&
-            (this.max == null || date <= this.max)))
-      );
+      return super.doValidate(flags) && (!this.isComplete || this.isDateExist(this.value) && date != null && (this.min == null || this.min <= date) && (this.max == null || date <= this.max));
     }
 
     /** Checks if date is exists */
@@ -2970,35 +2665,35 @@
       mask: MaskedRange,
       from: 1,
       to: 31,
-      maxLength: 2,
+      maxLength: 2
     },
     m: {
       mask: MaskedRange,
       from: 1,
       to: 12,
-      maxLength: 2,
+      maxLength: 2
     },
     Y: {
       mask: MaskedRange,
       from: 1900,
-      to: 9999,
-    },
+      to: 9999
+    }
   });
   MaskedDate.DEFAULTS = {
     ...MaskedPattern.DEFAULTS,
     mask: Date,
     pattern: DefaultPattern,
     format: (date, masked) => {
-      if (!date) return "";
-      const day = String(date.getDate()).padStart(2, "0");
-      const month = String(date.getMonth() + 1).padStart(2, "0");
+      if (!date) return '';
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
       const year = date.getFullYear();
-      return [day, month, year].join(".");
+      return [day, month, year].join('.');
     },
     parse: (str, masked) => {
-      const [day, month, year] = str.split(".").map(Number);
+      const [day, month, year] = str.split('.').map(Number);
       return new Date(year, month - 1, day);
-    },
+    }
   };
   IMask.MaskedDate = MaskedDate;
 
@@ -3007,7 +2702,7 @@
     constructor(opts) {
       super({
         ...MaskedDynamic.DEFAULTS,
-        ...opts,
+        ...opts
       });
       this.currentMask = undefined;
     }
@@ -3016,22 +2711,23 @@
     }
     _update(opts) {
       super._update(opts);
-      if ("mask" in opts) {
+      if ('mask' in opts) {
         this.exposeMask = undefined;
         // mask could be totally dynamic with only `dispatch` option
-        this.compiledMasks = Array.isArray(opts.mask)
-          ? opts.mask.map((m) => {
-              const { expose, ...maskOpts } = normalizeOpts(m);
-              const masked = createMask({
-                overwrite: this._overwrite,
-                eager: this._eager,
-                skipInvalid: this._skipInvalid,
-                ...maskOpts,
-              });
-              if (expose) this.exposeMask = masked;
-              return masked;
-            })
-          : [];
+        this.compiledMasks = Array.isArray(opts.mask) ? opts.mask.map(m => {
+          const {
+            expose,
+            ...maskOpts
+          } = normalizeOpts(m);
+          const masked = createMask({
+            overwrite: this._overwrite,
+            eager: this._eager,
+            skipInvalid: this._skipInvalid,
+            ...maskOpts
+          });
+          if (expose) this.exposeMask = masked;
+          return masked;
+        }) : [];
 
         // this.currentMask = this.doDispatch(''); // probably not needed but lets see
       }
@@ -3042,44 +2738,32 @@
       }
       const details = this._applyDispatch(ch, flags);
       if (this.currentMask) {
-        details.aggregate(
-          this.currentMask._appendChar(ch, this.currentMaskFlags(flags)),
-        );
+        details.aggregate(this.currentMask._appendChar(ch, this.currentMaskFlags(flags)));
       }
       return details;
     }
     _applyDispatch(appended, flags, tail) {
       if (appended === void 0) {
-        appended = "";
+        appended = '';
       }
       if (flags === void 0) {
         flags = {};
       }
       if (tail === void 0) {
-        tail = "";
+        tail = '';
       }
-      const prevValueBeforeTail =
-        flags.tail && flags._beforeTailState != null
-          ? flags._beforeTailState._value
-          : this.value;
+      const prevValueBeforeTail = flags.tail && flags._beforeTailState != null ? flags._beforeTailState._value : this.value;
       const inputValue = this.rawInputValue;
-      const insertValue =
-        flags.tail && flags._beforeTailState != null
-          ? flags._beforeTailState._rawInputValue
-          : inputValue;
+      const insertValue = flags.tail && flags._beforeTailState != null ? flags._beforeTailState._rawInputValue : inputValue;
       const tailValue = inputValue.slice(insertValue.length);
       const prevMask = this.currentMask;
       const details = new ChangeDetails();
       const prevMaskState = prevMask == null ? void 0 : prevMask.state;
 
       // clone flags to prevent overwriting `_beforeTailState`
-      this.currentMask = this.doDispatch(
-        appended,
-        {
-          ...flags,
-        },
-        tail,
-      );
+      this.currentMask = this.doDispatch(appended, {
+        ...flags
+      }, tail);
 
       // restore state after dispatch
       if (this.currentMask) {
@@ -3088,15 +2772,14 @@
           this.currentMask.reset();
           if (insertValue) {
             this.currentMask.append(insertValue, {
-              raw: true,
+              raw: true
             });
-            details.tailShift =
-              this.currentMask.value.length - prevValueBeforeTail.length;
+            details.tailShift = this.currentMask.value.length - prevValueBeforeTail.length;
           }
           if (tailValue) {
             details.tailShift += this.currentMask.append(tailValue, {
               raw: true,
-              tail: true,
+              tail: true
             }).tailShift;
           }
         } else if (prevMaskState) {
@@ -3123,25 +2806,14 @@
     }
     appendTail(tail) {
       const details = new ChangeDetails();
-      if (tail) details.aggregate(this._applyDispatch("", {}, tail));
-      return details.aggregate(
-        this.currentMask
-          ? this.currentMask.appendTail(tail)
-          : super.appendTail(tail),
-      );
+      if (tail) details.aggregate(this._applyDispatch('', {}, tail));
+      return details.aggregate(this.currentMask ? this.currentMask.appendTail(tail) : super.appendTail(tail));
     }
     currentMaskFlags(flags) {
       var _flags$_beforeTailSta, _flags$_beforeTailSta2;
       return {
         ...flags,
-        _beforeTailState:
-          (((_flags$_beforeTailSta = flags._beforeTailState) == null
-            ? void 0
-            : _flags$_beforeTailSta.currentMaskRef) === this.currentMask &&
-            ((_flags$_beforeTailSta2 = flags._beforeTailState) == null
-              ? void 0
-              : _flags$_beforeTailSta2.currentMask)) ||
-          flags._beforeTailState,
+        _beforeTailState: ((_flags$_beforeTailSta = flags._beforeTailState) == null ? void 0 : _flags$_beforeTailSta.currentMaskRef) === this.currentMask && ((_flags$_beforeTailSta2 = flags._beforeTailState) == null ? void 0 : _flags$_beforeTailSta2.currentMask) || flags._beforeTailState
       };
     }
     doDispatch(appended, flags, tail) {
@@ -3149,16 +2821,12 @@
         flags = {};
       }
       if (tail === void 0) {
-        tail = "";
+        tail = '';
       }
       return this.dispatch(appended, this, flags, tail);
     }
     doValidate(flags) {
-      return (
-        super.doValidate(flags) &&
-        (!this.currentMask ||
-          this.currentMask.doValidate(this.currentMaskFlags(flags)))
-      );
+      return super.doValidate(flags) && (!this.currentMask || this.currentMask.doValidate(this.currentMaskFlags(flags)));
     }
     doPrepare(str, flags) {
       if (flags === void 0) {
@@ -3179,26 +2847,18 @@
       let [s, details] = super.doPrepareChar(str, flags);
       if (this.currentMask) {
         let currentDetails;
-        [s, currentDetails] = super.doPrepareChar(
-          s,
-          this.currentMaskFlags(flags),
-        );
+        [s, currentDetails] = super.doPrepareChar(s, this.currentMaskFlags(flags));
         details = details.aggregate(currentDetails);
       }
       return [s, details];
     }
     reset() {
       var _this$currentMask;
-      (_this$currentMask = this.currentMask) == null ||
-        _this$currentMask.reset();
-      this.compiledMasks.forEach((m) => m.reset());
+      (_this$currentMask = this.currentMask) == null || _this$currentMask.reset();
+      this.compiledMasks.forEach(m => m.reset());
     }
     get value() {
-      return this.exposeMask
-        ? this.exposeMask.value
-        : this.currentMask
-          ? this.currentMask.value
-          : "";
+      return this.exposeMask ? this.exposeMask.value : this.currentMask ? this.currentMask.value : '';
     }
     set value(value) {
       if (this.exposeMask) {
@@ -3208,11 +2868,7 @@
       } else super.value = value;
     }
     get unmaskedValue() {
-      return this.exposeMask
-        ? this.exposeMask.unmaskedValue
-        : this.currentMask
-          ? this.currentMask.unmaskedValue
-          : "";
+      return this.exposeMask ? this.exposeMask.unmaskedValue : this.currentMask ? this.currentMask.unmaskedValue : '';
     }
     set unmaskedValue(unmaskedValue) {
       if (this.exposeMask) {
@@ -3222,11 +2878,7 @@
       } else super.unmaskedValue = unmaskedValue;
     }
     get typedValue() {
-      return this.exposeMask
-        ? this.exposeMask.typedValue
-        : this.currentMask
-          ? this.currentMask.typedValue
-          : "";
+      return this.exposeMask ? this.exposeMask.typedValue : this.currentMask ? this.currentMask.typedValue : '';
     }
     set typedValue(typedValue) {
       if (this.exposeMask) {
@@ -3245,31 +2897,22 @@
       this.unmaskedValue = unmaskedValue;
     }
     get displayValue() {
-      return this.currentMask ? this.currentMask.displayValue : "";
+      return this.currentMask ? this.currentMask.displayValue : '';
     }
     get isComplete() {
       var _this$currentMask2;
-      return Boolean(
-        (_this$currentMask2 = this.currentMask) == null
-          ? void 0
-          : _this$currentMask2.isComplete,
-      );
+      return Boolean((_this$currentMask2 = this.currentMask) == null ? void 0 : _this$currentMask2.isComplete);
     }
     get isFilled() {
       var _this$currentMask3;
-      return Boolean(
-        (_this$currentMask3 = this.currentMask) == null
-          ? void 0
-          : _this$currentMask3.isFilled,
-      );
+      return Boolean((_this$currentMask3 = this.currentMask) == null ? void 0 : _this$currentMask3.isFilled);
     }
     remove(fromPos, toPos) {
       const details = new ChangeDetails();
       if (this.currentMask) {
-        details
-          .aggregate(this.currentMask.remove(fromPos, toPos))
-          // update with dispatch
-          .aggregate(this._applyDispatch());
+        details.aggregate(this.currentMask.remove(fromPos, toPos))
+        // update with dispatch
+        .aggregate(this._applyDispatch());
       }
       return details;
     }
@@ -3278,19 +2921,19 @@
       return {
         ...super.state,
         _rawInputValue: this.rawInputValue,
-        compiledMasks: this.compiledMasks.map((m) => m.state),
+        compiledMasks: this.compiledMasks.map(m => m.state),
         currentMaskRef: this.currentMask,
-        currentMask:
-          (_this$currentMask4 = this.currentMask) == null
-            ? void 0
-            : _this$currentMask4.state,
+        currentMask: (_this$currentMask4 = this.currentMask) == null ? void 0 : _this$currentMask4.state
       };
     }
     set state(state) {
-      const { compiledMasks, currentMaskRef, currentMask, ...maskedState } =
-        state;
-      if (compiledMasks)
-        this.compiledMasks.forEach((m, mi) => (m.state = compiledMasks[mi]));
+      const {
+        compiledMasks,
+        currentMaskRef,
+        currentMask,
+        ...maskedState
+      } = state;
+      if (compiledMasks) this.compiledMasks.forEach((m, mi) => m.state = compiledMasks[mi]);
       if (currentMaskRef != null) {
         this.currentMask = currentMaskRef;
         this.currentMask.state = currentMask;
@@ -3298,23 +2941,17 @@
       super.state = maskedState;
     }
     extractInput(fromPos, toPos, flags) {
-      return this.currentMask
-        ? this.currentMask.extractInput(fromPos, toPos, flags)
-        : "";
+      return this.currentMask ? this.currentMask.extractInput(fromPos, toPos, flags) : '';
     }
     extractTail(fromPos, toPos) {
-      return this.currentMask
-        ? this.currentMask.extractTail(fromPos, toPos)
-        : super.extractTail(fromPos, toPos);
+      return this.currentMask ? this.currentMask.extractTail(fromPos, toPos) : super.extractTail(fromPos, toPos);
     }
     doCommit() {
       if (this.currentMask) this.currentMask.doCommit();
       super.doCommit();
     }
     nearestInputPos(cursorPos, direction) {
-      return this.currentMask
-        ? this.currentMask.nearestInputPos(cursorPos, direction)
-        : super.nearestInputPos(cursorPos, direction);
+      return this.currentMask ? this.currentMask.nearestInputPos(cursorPos, direction) : super.nearestInputPos(cursorPos, direction);
     }
     get overwrite() {
       return this.currentMask ? this.currentMask.overwrite : this._overwrite;
@@ -3329,9 +2966,7 @@
       this._eager = eager;
     }
     get skipInvalid() {
-      return this.currentMask
-        ? this.currentMask.skipInvalid
-        : this._skipInvalid;
+      return this.currentMask ? this.currentMask.skipInvalid : this._skipInvalid;
     }
     set skipInvalid(skipInvalid) {
       this._skipInvalid = skipInvalid;
@@ -3343,21 +2978,18 @@
       this._autofix = autofix;
     }
     maskEquals(mask) {
-      return Array.isArray(mask)
-        ? this.compiledMasks.every((m, mi) => {
-            if (!mask[mi]) return;
-            const { mask: oldMask, ...restOpts } = mask[mi];
-            return objectIncludes(m, restOpts) && m.maskEquals(oldMask);
-          })
-        : super.maskEquals(mask);
+      return Array.isArray(mask) ? this.compiledMasks.every((m, mi) => {
+        if (!mask[mi]) return;
+        const {
+          mask: oldMask,
+          ...restOpts
+        } = mask[mi];
+        return objectIncludes(m, restOpts) && m.maskEquals(oldMask);
+      }) : super.maskEquals(mask);
     }
     typedValueEquals(value) {
       var _this$currentMask5;
-      return Boolean(
-        (_this$currentMask5 = this.currentMask) == null
-          ? void 0
-          : _this$currentMask5.typedValueEquals(value),
-      );
+      return Boolean((_this$currentMask5 = this.currentMask) == null ? void 0 : _this$currentMask5.typedValueEquals(value));
     }
   }
   /** Currently chosen mask */
@@ -3373,13 +3005,11 @@
       // simulate input
       const inputs = masked.compiledMasks.map((m, index) => {
         const isCurrent = masked.currentMask === m;
-        const startInputPos = isCurrent
-          ? m.displayValue.length
-          : m.nearestInputPos(m.displayValue.length, DIRECTION.FORCE_LEFT);
+        const startInputPos = isCurrent ? m.displayValue.length : m.nearestInputPos(m.displayValue.length, DIRECTION.FORCE_LEFT);
         if (m.rawInputValue !== inputValue) {
           m.reset();
           m.append(inputValue, {
-            raw: true,
+            raw: true
           });
         } else if (!isCurrent) {
           m.remove(startInputPos);
@@ -3389,24 +3019,14 @@
         return {
           index,
           weight: m.rawInputValue.length,
-          totalInputPositions: m.totalInputPositions(
-            0,
-            Math.max(
-              startInputPos,
-              m.nearestInputPos(m.displayValue.length, DIRECTION.FORCE_LEFT),
-            ),
-          ),
+          totalInputPositions: m.totalInputPositions(0, Math.max(startInputPos, m.nearestInputPos(m.displayValue.length, DIRECTION.FORCE_LEFT)))
         };
       });
 
       // pop masks with longer values first
-      inputs.sort(
-        (i1, i2) =>
-          i2.weight - i1.weight ||
-          i2.totalInputPositions - i1.totalInputPositions,
-      );
+      inputs.sort((i1, i2) => i2.weight - i1.weight || i2.totalInputPositions - i1.totalInputPositions);
       return masked.compiledMasks[inputs[0].index];
-    },
+    }
   };
   IMask.MaskedDynamic = MaskedDynamic;
 
@@ -3415,21 +3035,23 @@
     constructor(opts) {
       super({
         ...MaskedEnum.DEFAULTS,
-        ...opts,
+        ...opts
       }); // mask will be created in _update
     }
     updateOptions(opts) {
       super.updateOptions(opts);
     }
     _update(opts) {
-      const { enum: enum_, ...eopts } = opts;
+      const {
+        enum: enum_,
+        ...eopts
+      } = opts;
       if (enum_) {
-        const lengths = enum_.map((e) => e.length);
+        const lengths = enum_.map(e => e.length);
         const requiredLength = Math.min(...lengths);
         const optionalLength = Math.max(...lengths) - requiredLength;
-        eopts.mask = "*".repeat(requiredLength);
-        if (optionalLength)
-          eopts.mask += "[" + "*".repeat(optionalLength) + "]";
+        eopts.mask = '*'.repeat(requiredLength);
+        if (optionalLength) eopts.mask += '[' + '*'.repeat(optionalLength) + ']';
         this.enum = enum_;
       }
       super._update(eopts);
@@ -3438,13 +3060,8 @@
       if (flags === void 0) {
         flags = {};
       }
-      const matchFrom = Math.min(
-        this.nearestInputPos(0, DIRECTION.FORCE_RIGHT),
-        this.value.length,
-      );
-      const matches = this.enum.filter((e) =>
-        this.matchValue(e, this.unmaskedValue + ch, matchFrom),
-      );
+      const matchFrom = Math.min(this.nearestInputPos(0, DIRECTION.FORCE_RIGHT), this.value.length);
+      const matches = this.enum.filter(e => this.matchValue(e, this.unmaskedValue + ch, matchFrom));
       if (matches.length) {
         if (matches.length === 1) {
           this._forEachBlocksInRange(0, this.value.length, (b, bi) => {
@@ -3456,15 +3073,12 @@
         }
         const d = super._appendCharRaw(matches[0][this.value.length], flags);
         if (matches.length === 1) {
-          matches[0]
-            .slice(this.unmaskedValue.length)
-            .split("")
-            .forEach((mch) => d.aggregate(super._appendCharRaw(mch)));
+          matches[0].slice(this.unmaskedValue.length).split('').forEach(mch => d.aggregate(super._appendCharRaw(mch)));
         }
         return d;
       }
       return new ChangeDetails({
-        skip: !this.isComplete,
+        skip: !this.isComplete
       });
     }
     extractTail(fromPos, toPos) {
@@ -3475,7 +3089,7 @@
         toPos = this.displayValue.length;
       }
       // just drop tail
-      return new ContinuousTailDetails("", fromPos);
+      return new ContinuousTailDetails('', fromPos);
     }
     remove(fromPos, toPos) {
       if (fromPos === void 0) {
@@ -3485,15 +3099,10 @@
         toPos = this.displayValue.length;
       }
       if (fromPos === toPos) return new ChangeDetails();
-      const matchFrom = Math.min(
-        super.nearestInputPos(0, DIRECTION.FORCE_RIGHT),
-        this.value.length,
-      );
+      const matchFrom = Math.min(super.nearestInputPos(0, DIRECTION.FORCE_RIGHT), this.value.length);
       let pos;
       for (pos = fromPos; pos >= 0; --pos) {
-        const matches = this.enum.filter((e) =>
-          this.matchValue(e, this.value.slice(matchFrom, pos), matchFrom),
-        );
+        const matches = this.enum.filter(e => this.matchValue(e, this.value.slice(matchFrom, pos), matchFrom));
         if (matches.length > 1) break;
       }
       const details = super.remove(pos, toPos);
@@ -3507,8 +3116,7 @@
   /** Match enum value */
   MaskedEnum.DEFAULTS = {
     ...MaskedPattern.DEFAULTS,
-    matchValue: (estr, istr, matchFrom) =>
-      estr.indexOf(istr, matchFrom) === matchFrom,
+    matchValue: (estr, istr, matchFrom) => estr.indexOf(istr, matchFrom) === matchFrom
   };
   IMask.MaskedEnum = MaskedEnum;
 
@@ -3530,7 +3138,7 @@
     _update(opts) {
       super._update({
         ...opts,
-        validate: opts.mask,
+        validate: opts.mask
       });
     }
   }
@@ -3570,7 +3178,7 @@
     constructor(opts) {
       super({
         ...MaskedNumber.DEFAULTS,
-        ...opts,
+        ...opts
       });
     }
     updateOptions(opts) {
@@ -3581,43 +3189,28 @@
       this._updateRegExps();
     }
     _updateRegExps() {
-      const start = "^" + (this.allowNegative ? "[+|\\-]?" : "");
-      const mid = "\\d*";
-      const end =
-        (this.scale
-          ? "(" + escapeRegExp(this.radix) + "\\d{0," + this.scale + "})?"
-          : "") + "$";
+      const start = '^' + (this.allowNegative ? '[+|\\-]?' : '');
+      const mid = '\\d*';
+      const end = (this.scale ? "(" + escapeRegExp(this.radix) + "\\d{0," + this.scale + "})?" : '') + '$';
       this._numberRegExp = new RegExp(start + mid + end);
-      this._mapToRadixRegExp = new RegExp(
-        "[" + this.mapToRadix.map(escapeRegExp).join("") + "]",
-        "g",
-      );
-      this._thousandsSeparatorRegExp = new RegExp(
-        escapeRegExp(this.thousandsSeparator),
-        "g",
-      );
+      this._mapToRadixRegExp = new RegExp("[" + this.mapToRadix.map(escapeRegExp).join('') + "]", 'g');
+      this._thousandsSeparatorRegExp = new RegExp(escapeRegExp(this.thousandsSeparator), 'g');
     }
     _removeThousandsSeparators(value) {
-      return value.replace(this._thousandsSeparatorRegExp, "");
+      return value.replace(this._thousandsSeparatorRegExp, '');
     }
     _insertThousandsSeparators(value) {
       // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
       const parts = value.split(this.radix);
-      parts[0] = parts[0].replace(
-        /\B(?=(\d{3})+(?!\d))/g,
-        this.thousandsSeparator,
-      );
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousandsSeparator);
       return parts.join(this.radix);
     }
     doPrepareChar(ch, flags) {
       if (flags === void 0) {
         flags = {};
       }
-      const [prepCh, details] = super.doPrepareChar(
-        this._removeThousandsSeparators(
-          this.scale &&
-            this.mapToRadix.length &&
-            /*
+      const [prepCh, details] = super.doPrepareChar(this._removeThousandsSeparators(this.scale && this.mapToRadix.length && (
+      /*
         radix should be mapped when
         1) input is done from keyboard = flags.input && flags.raw
         2) unmasked value is set = !flags.input && !flags.raw
@@ -3625,15 +3218,9 @@
         1) value is set = flags.input && !flags.raw
         2) raw value is set = !flags.input && flags.raw
       */
-            ((flags.input && flags.raw) || (!flags.input && !flags.raw))
-            ? ch.replace(this._mapToRadixRegExp, this.radix)
-            : ch,
-        ),
-        flags,
-      );
+      flags.input && flags.raw || !flags.input && !flags.raw) ? ch.replace(this._mapToRadixRegExp, this.radix) : ch), flags);
       if (ch && !prepCh) details.skip = true;
-      if (prepCh && !this.allowPositive && !this.value && prepCh !== "-")
-        details.aggregate(this._appendChar("-"));
+      if (prepCh && !this.allowPositive && !this.value && prepCh !== '-') details.aggregate(this._appendChar('-'));
       return [prepCh, details];
     }
     _separatorsCount(to, extendOnSeparators) {
@@ -3653,10 +3240,7 @@
       if (slice === void 0) {
         slice = this._value;
       }
-      return this._separatorsCount(
-        this._removeThousandsSeparators(slice).length,
-        true,
-      );
+      return this._separatorsCount(this._removeThousandsSeparators(slice).length, true);
     }
     extractInput(fromPos, toPos, flags) {
       if (fromPos === void 0) {
@@ -3666,20 +3250,14 @@
         toPos = this.displayValue.length;
       }
       [fromPos, toPos] = this._adjustRangeWithSeparators(fromPos, toPos);
-      return this._removeThousandsSeparators(
-        super.extractInput(fromPos, toPos, flags),
-      );
+      return this._removeThousandsSeparators(super.extractInput(fromPos, toPos, flags));
     }
     _appendCharRaw(ch, flags) {
       if (flags === void 0) {
         flags = {};
       }
-      const prevBeforeTailValue =
-        flags.tail && flags._beforeTailState
-          ? flags._beforeTailState._value
-          : this._value;
-      const prevBeforeTailSeparatorsCount =
-        this._separatorsCountFromSlice(prevBeforeTailValue);
+      const prevBeforeTailValue = flags.tail && flags._beforeTailState ? flags._beforeTailState._value : this._value;
+      const prevBeforeTailSeparatorsCount = this._separatorsCountFromSlice(prevBeforeTailValue);
       this._value = this._removeThousandsSeparators(this.value);
       const oldValue = this._value;
       this._value += ch;
@@ -3688,16 +3266,11 @@
       let skip = false;
       if (accepted) {
         let fixedNum;
-        if (this.min != null && this.min < 0 && this.number < this.min)
-          fixedNum = this.min;
-        if (this.max != null && this.max > 0 && this.number > this.max)
-          fixedNum = this.max;
+        if (this.min != null && this.min < 0 && this.number < this.min) fixedNum = this.min;
+        if (this.max != null && this.max > 0 && this.number > this.max) fixedNum = this.max;
         if (fixedNum != null) {
           if (this.autofix) {
-            this._value = this.format(fixedNum, this).replace(
-              MaskedNumber.UNMASKED_RADIX,
-              this.radix,
-            );
+            this._value = this.format(fixedNum, this).replace(MaskedNumber.UNMASKED_RADIX, this.radix);
             skip || (skip = oldValue === this._value && !flags.tail); // if not changed on tail it's still ok to proceed
           } else {
             accepted = false;
@@ -3712,29 +3285,20 @@
       } else {
         appendDetails = new ChangeDetails({
           inserted: this._value.slice(oldValue.length),
-          rawInserted: skip ? "" : ch,
-          skip,
+          rawInserted: skip ? '' : ch,
+          skip
         });
       }
       this._value = this._insertThousandsSeparators(this._value);
-      const beforeTailValue =
-        flags.tail && flags._beforeTailState
-          ? flags._beforeTailState._value
-          : this._value;
-      const beforeTailSeparatorsCount =
-        this._separatorsCountFromSlice(beforeTailValue);
-      appendDetails.tailShift +=
-        (beforeTailSeparatorsCount - prevBeforeTailSeparatorsCount) *
-        this.thousandsSeparator.length;
+      const beforeTailValue = flags.tail && flags._beforeTailState ? flags._beforeTailState._value : this._value;
+      const beforeTailSeparatorsCount = this._separatorsCountFromSlice(beforeTailValue);
+      appendDetails.tailShift += (beforeTailSeparatorsCount - prevBeforeTailSeparatorsCount) * this.thousandsSeparator.length;
       return appendDetails;
     }
     _findSeparatorAround(pos) {
       if (this.thousandsSeparator) {
         const searchFrom = pos - this.thousandsSeparator.length + 1;
-        const separatorPos = this.value.indexOf(
-          this.thousandsSeparator,
-          searchFrom,
-        );
+        const separatorPos = this.value.indexOf(this.thousandsSeparator, searchFrom);
         if (separatorPos <= pos) return separatorPos;
       }
       return -1;
@@ -3743,8 +3307,7 @@
       const separatorAroundFromPos = this._findSeparatorAround(from);
       if (separatorAroundFromPos >= 0) from = separatorAroundFromPos;
       const separatorAroundToPos = this._findSeparatorAround(to);
-      if (separatorAroundToPos >= 0)
-        to = separatorAroundToPos + this.thousandsSeparator.length;
+      if (separatorAroundToPos >= 0) to = separatorAroundToPos + this.thousandsSeparator.length;
       return [from, to];
     }
     remove(fromPos, toPos) {
@@ -3757,18 +3320,11 @@
       [fromPos, toPos] = this._adjustRangeWithSeparators(fromPos, toPos);
       const valueBeforePos = this.value.slice(0, fromPos);
       const valueAfterPos = this.value.slice(toPos);
-      const prevBeforeTailSeparatorsCount = this._separatorsCount(
-        valueBeforePos.length,
-      );
-      this._value = this._insertThousandsSeparators(
-        this._removeThousandsSeparators(valueBeforePos + valueAfterPos),
-      );
-      const beforeTailSeparatorsCount =
-        this._separatorsCountFromSlice(valueBeforePos);
+      const prevBeforeTailSeparatorsCount = this._separatorsCount(valueBeforePos.length);
+      this._value = this._insertThousandsSeparators(this._removeThousandsSeparators(valueBeforePos + valueAfterPos));
+      const beforeTailSeparatorsCount = this._separatorsCountFromSlice(valueBeforePos);
       return new ChangeDetails({
-        tailShift:
-          (beforeTailSeparatorsCount - prevBeforeTailSeparatorsCount) *
-          this.thousandsSeparator.length,
+        tailShift: (beforeTailSeparatorsCount - prevBeforeTailSeparatorsCount) * this.thousandsSeparator.length
       });
     }
     nearestInputPos(cursorPos, direction) {
@@ -3776,28 +3332,25 @@
       switch (direction) {
         case DIRECTION.NONE:
         case DIRECTION.LEFT:
-        case DIRECTION.FORCE_LEFT: {
-          const separatorAtLeftPos = this._findSeparatorAround(cursorPos - 1);
-          if (separatorAtLeftPos >= 0) {
-            const separatorAtLeftEndPos =
-              separatorAtLeftPos + this.thousandsSeparator.length;
-            if (
-              cursorPos < separatorAtLeftEndPos ||
-              this.value.length <= separatorAtLeftEndPos ||
-              direction === DIRECTION.FORCE_LEFT
-            ) {
-              return separatorAtLeftPos;
+        case DIRECTION.FORCE_LEFT:
+          {
+            const separatorAtLeftPos = this._findSeparatorAround(cursorPos - 1);
+            if (separatorAtLeftPos >= 0) {
+              const separatorAtLeftEndPos = separatorAtLeftPos + this.thousandsSeparator.length;
+              if (cursorPos < separatorAtLeftEndPos || this.value.length <= separatorAtLeftEndPos || direction === DIRECTION.FORCE_LEFT) {
+                return separatorAtLeftPos;
+              }
+            }
+            break;
+          }
+        case DIRECTION.RIGHT:
+        case DIRECTION.FORCE_RIGHT:
+          {
+            const separatorAtRightPos = this._findSeparatorAround(cursorPos);
+            if (separatorAtRightPos >= 0) {
+              return separatorAtRightPos + this.thousandsSeparator.length;
             }
           }
-          break;
-        }
-        case DIRECTION.RIGHT:
-        case DIRECTION.FORCE_RIGHT: {
-          const separatorAtRightPos = this._findSeparatorAround(cursorPos);
-          if (separatorAtRightPos >= 0) {
-            return separatorAtRightPos + this.thousandsSeparator.length;
-          }
-        }
       }
       return cursorPos;
     }
@@ -3809,12 +3362,10 @@
         // check bounds
         if (this.min != null) validnum = Math.max(validnum, this.min);
         if (this.max != null) validnum = Math.min(validnum, this.max);
-        if (validnum !== number)
-          this.unmaskedValue = this.format(validnum, this);
+        if (validnum !== number) this.unmaskedValue = this.format(validnum, this);
         let formatted = this.value;
         if (this.normalizeZeros) formatted = this._normalizeZeros(formatted);
-        if (this.padFractionalZeros && this.scale > 0)
-          formatted = this._padFractionalZeros(formatted);
+        if (this.padFractionalZeros && this.scale > 0) formatted = this._padFractionalZeros(formatted);
         this._value = formatted;
       }
       super.doCommit();
@@ -3823,14 +3374,11 @@
       const parts = this._removeThousandsSeparators(value).split(this.radix);
 
       // remove leading zeros
-      parts[0] = parts[0].replace(
-        /^(\D*)(0*)(\d*)/,
-        (match, sign, zeros, num) => sign + num,
-      );
+      parts[0] = parts[0].replace(/^(\D*)(0*)(\d*)/, (match, sign, zeros, num) => sign + num);
       // add leading zero
-      if (value.length && !/\d$/.test(parts[0])) parts[0] = parts[0] + "0";
+      if (value.length && !/\d$/.test(parts[0])) parts[0] = parts[0] + '0';
       if (parts.length > 1) {
-        parts[1] = parts[1].replace(/0*$/, ""); // remove trailing zeros
+        parts[1] = parts[1].replace(/0*$/, ''); // remove trailing zeros
         if (!parts[1].length) parts.length = 1; // remove fractional
       }
       return this._insertThousandsSeparators(parts.join(this.radix));
@@ -3838,26 +3386,19 @@
     _padFractionalZeros(value) {
       if (!value) return value;
       const parts = value.split(this.radix);
-      if (parts.length < 2) parts.push("");
-      parts[1] = parts[1].padEnd(this.scale, "0");
+      if (parts.length < 2) parts.push('');
+      parts[1] = parts[1].padEnd(this.scale, '0');
       return parts.join(this.radix);
     }
     doSkipInvalid(ch, flags, checkTail) {
       if (flags === void 0) {
         flags = {};
       }
-      const dropFractional =
-        this.scale === 0 &&
-        ch !== this.thousandsSeparator &&
-        (ch === this.radix ||
-          ch === MaskedNumber.UNMASKED_RADIX ||
-          this.mapToRadix.includes(ch));
+      const dropFractional = this.scale === 0 && ch !== this.thousandsSeparator && (ch === this.radix || ch === MaskedNumber.UNMASKED_RADIX || this.mapToRadix.includes(ch));
       return super.doSkipInvalid(ch, flags, checkTail) && !dropFractional;
     }
     get unmaskedValue() {
-      return this._removeThousandsSeparators(
-        this._normalizeZeros(this.value),
-      ).replace(this.radix, MaskedNumber.UNMASKED_RADIX);
+      return this._removeThousandsSeparators(this._normalizeZeros(this.value)).replace(this.radix, MaskedNumber.UNMASKED_RADIX);
     }
     set unmaskedValue(unmaskedValue) {
       super.unmaskedValue = unmaskedValue;
@@ -3866,10 +3407,7 @@
       return this.parse(this.unmaskedValue, this);
     }
     set typedValue(n) {
-      this.rawInputValue = this.format(n, this).replace(
-        MaskedNumber.UNMASKED_RADIX,
-        this.radix,
-      );
+      this.rawInputValue = this.format(n, this).replace(MaskedNumber.UNMASKED_RADIX, this.radix);
     }
 
     /** Parsed Number */
@@ -3880,34 +3418,25 @@
       this.typedValue = number;
     }
     get allowNegative() {
-      return (
-        (this.min != null && this.min < 0) || (this.max != null && this.max < 0)
-      );
+      return this.min != null && this.min < 0 || this.max != null && this.max < 0;
     }
     get allowPositive() {
-      return (
-        (this.min != null && this.min > 0) || (this.max != null && this.max > 0)
-      );
+      return this.min != null && this.min > 0 || this.max != null && this.max > 0;
     }
     typedValueEquals(value) {
       // handle  0 -> '' case (typed = 0 even if value = '')
       // for details see https://github.com/uNmAnNeR/imaskjs/issues/134
-      return (
-        (super.typedValueEquals(value) ||
-          (MaskedNumber.EMPTY_VALUES.includes(value) &&
-            MaskedNumber.EMPTY_VALUES.includes(this.typedValue))) &&
-        !(value === 0 && this.value === "")
-      );
+      return (super.typedValueEquals(value) || MaskedNumber.EMPTY_VALUES.includes(value) && MaskedNumber.EMPTY_VALUES.includes(this.typedValue)) && !(value === 0 && this.value === '');
     }
   }
   _MaskedNumber = MaskedNumber;
-  MaskedNumber.UNMASKED_RADIX = ".";
+  MaskedNumber.UNMASKED_RADIX = '.';
   MaskedNumber.EMPTY_VALUES = [...Masked.EMPTY_VALUES, 0];
   MaskedNumber.DEFAULTS = {
     ...Masked.DEFAULTS,
     mask: Number,
-    radix: ",",
-    thousandsSeparator: "",
+    radix: ',',
+    thousandsSeparator: '',
     mapToRadix: [_MaskedNumber.UNMASKED_RADIX],
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,
@@ -3915,19 +3444,18 @@
     normalizeZeros: true,
     padFractionalZeros: false,
     parse: Number,
-    format: (n) =>
-      n.toLocaleString("en-US", {
-        useGrouping: false,
-        maximumFractionDigits: 20,
-      }),
+    format: n => n.toLocaleString('en-US', {
+      useGrouping: false,
+      maximumFractionDigits: 20
+    })
   };
   IMask.MaskedNumber = MaskedNumber;
 
   /** Mask pipe source and destination types */
   const PIPE_TYPE = {
-    MASKED: "value",
-    UNMASKED: "unmaskedValue",
-    TYPED: "typedValue",
+    MASKED: 'value',
+    UNMASKED: 'unmaskedValue',
+    TYPED: 'typedValue'
   };
   /** Creates new pipe function depending on mask type, source and destination options */
   function createPipe(arg, from, to) {
@@ -3938,11 +3466,10 @@
       to = PIPE_TYPE.MASKED;
     }
     const masked = createMask(arg);
-    return (value) =>
-      masked.runIsolated((m) => {
-        m[from] = value;
-        return m[to];
-      });
+    return value => masked.runIsolated(m => {
+      m[from] = value;
+      return m[to];
+    });
   }
 
   /** Pipes value through mask depending on mask type, source and destination options */
@@ -3957,21 +3484,11 @@
   class RepeatBlock extends MaskedPattern {
     get repeatFrom() {
       var _ref;
-      return (_ref = Array.isArray(this.repeat)
-        ? this.repeat[0]
-        : this.repeat === Infinity
-          ? 0
-          : this.repeat) != null
-        ? _ref
-        : 0;
+      return (_ref = Array.isArray(this.repeat) ? this.repeat[0] : this.repeat === Infinity ? 0 : this.repeat) != null ? _ref : 0;
     }
     get repeatTo() {
       var _ref2;
-      return (_ref2 = Array.isArray(this.repeat)
-        ? this.repeat[1]
-        : this.repeat) != null
-        ? _ref2
-        : Infinity;
+      return (_ref2 = Array.isArray(this.repeat) ? this.repeat[1] : this.repeat) != null ? _ref2 : Infinity;
     }
     constructor(opts) {
       super(opts);
@@ -3981,44 +3498,32 @@
     }
     _update(opts) {
       var _ref3, _ref4, _this$_blocks;
-      const { repeat, ...blockOpts } = normalizeOpts(opts); // TODO type
+      const {
+        repeat,
+        ...blockOpts
+      } = normalizeOpts(opts); // TODO type
       this._blockOpts = Object.assign({}, this._blockOpts, blockOpts);
       const block = createMask(this._blockOpts);
-      this.repeat =
-        (_ref3 =
-          (_ref4 = repeat != null ? repeat : block.repeat) != null
-            ? _ref4
-            : this.repeat) != null
-          ? _ref3
-          : Infinity; // TODO type
+      this.repeat = (_ref3 = (_ref4 = repeat != null ? repeat : block.repeat) != null ? _ref4 : this.repeat) != null ? _ref3 : Infinity; // TODO type
 
       super._update({
-        mask: "m".repeat(
-          Math.max(
-            (this.repeatTo === Infinity &&
-              ((_this$_blocks = this._blocks) == null
-                ? void 0
-                : _this$_blocks.length)) ||
-              0,
-            this.repeatFrom,
-          ),
-        ),
+        mask: 'm'.repeat(Math.max(this.repeatTo === Infinity && ((_this$_blocks = this._blocks) == null ? void 0 : _this$_blocks.length) || 0, this.repeatFrom)),
         blocks: {
-          m: block,
+          m: block
         },
         eager: block.eager,
         overwrite: block.overwrite,
         skipInvalid: block.skipInvalid,
         lazy: block.lazy,
         placeholderChar: block.placeholderChar,
-        displayChar: block.displayChar,
+        displayChar: block.displayChar
       });
     }
     _allocateBlock(bi) {
       if (bi < this._blocks.length) return this._blocks[bi];
       if (this.repeatTo === Infinity || this._blocks.length < this.repeatTo) {
         this._blocks.push(createMask(this._blockOpts));
-        this.mask += "m";
+        this.mask += 'm';
         return this._blocks[this._blocks.length - 1];
       }
     }
@@ -4027,37 +3532,14 @@
         flags = {};
       }
       const details = new ChangeDetails();
-      for (
-        let bi =
-            (_this$_mapPosToBlock$ =
-              (_this$_mapPosToBlock = this._mapPosToBlock(
-                this.displayValue.length,
-              )) == null
-                ? void 0
-                : _this$_mapPosToBlock.index) != null
-              ? _this$_mapPosToBlock$
-              : Math.max(this._blocks.length - 1, 0),
-          block,
-          allocated;
-        // try to get a block or
-        // try to allocate a new block if not allocated already
-        (block =
-          (_this$_blocks$bi = this._blocks[bi]) != null
-            ? _this$_blocks$bi
-            : (allocated = !allocated && this._allocateBlock(bi)));
-        ++bi
-      ) {
-        var _this$_mapPosToBlock$,
-          _this$_mapPosToBlock,
-          _this$_blocks$bi,
-          _flags$_beforeTailSta;
+      for (let bi = (_this$_mapPosToBlock$ = (_this$_mapPosToBlock = this._mapPosToBlock(this.displayValue.length)) == null ? void 0 : _this$_mapPosToBlock.index) != null ? _this$_mapPosToBlock$ : Math.max(this._blocks.length - 1, 0), block, allocated;
+      // try to get a block or
+      // try to allocate a new block if not allocated already
+      block = (_this$_blocks$bi = this._blocks[bi]) != null ? _this$_blocks$bi : allocated = !allocated && this._allocateBlock(bi); ++bi) {
+        var _this$_mapPosToBlock$, _this$_mapPosToBlock, _this$_blocks$bi, _flags$_beforeTailSta;
         const blockDetails = block._appendChar(ch, {
           ...flags,
-          _beforeTailState:
-            (_flags$_beforeTailSta = flags._beforeTailState) == null ||
-            (_flags$_beforeTailSta = _flags$_beforeTailSta._blocks) == null
-              ? void 0
-              : _flags$_beforeTailSta[bi],
+          _beforeTailState: (_flags$_beforeTailSta = flags._beforeTailState) == null || (_flags$_beforeTailSta = _flags$_beforeTailSta._blocks) == null ? void 0 : _flags$_beforeTailSta[bi]
         });
         if (blockDetails.skip && allocated) {
           // remove the last allocated block and break
@@ -4075,26 +3557,12 @@
       if (fromPos === void 0) {
         fromPos = 0;
       }
-      const firstBlockIndex = Math.max(
-        ((_this$_mapPosToBlock2 = this._mapPosToBlock(fromPos)) == null
-          ? void 0
-          : _this$_mapPosToBlock2.index) || 0,
-        this.repeatFrom,
-        0,
-      );
+      const firstBlockIndex = Math.max(((_this$_mapPosToBlock2 = this._mapPosToBlock(fromPos)) == null ? void 0 : _this$_mapPosToBlock2.index) || 0, this.repeatFrom, 0);
       let lastBlockIndex;
-      if (toPos != null)
-        lastBlockIndex =
-          (_this$_mapPosToBlock3 = this._mapPosToBlock(toPos)) == null
-            ? void 0
-            : _this$_mapPosToBlock3.index;
+      if (toPos != null) lastBlockIndex = (_this$_mapPosToBlock3 = this._mapPosToBlock(toPos)) == null ? void 0 : _this$_mapPosToBlock3.index;
       if (lastBlockIndex == null) lastBlockIndex = this._blocks.length - 1;
       let removeCount = 0;
-      for (
-        let blockIndex = lastBlockIndex;
-        firstBlockIndex <= blockIndex;
-        --blockIndex, ++removeCount
-      ) {
+      for (let blockIndex = lastBlockIndex; firstBlockIndex <= blockIndex; --blockIndex, ++removeCount) {
         if (this._blocks[blockIndex].unmaskedValue) break;
       }
       if (removeCount) {
@@ -4167,5 +3635,6 @@
   exports.normalizeOpts = normalizeOpts;
   exports.pipe = pipe;
 
-  Object.defineProperty(exports, "__esModule", { value: true });
-});
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));

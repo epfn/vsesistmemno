@@ -194,6 +194,8 @@
       display: flex;
       flex-direction: column;
       overflow: auto;
+      gap: 20px;
+      padding-top: 20px;
     }
 
     &__menu {
@@ -207,27 +209,35 @@
     }
 
     &__form {
+      width: 100%;
+      padding-inline: 1px;
     }
 
     &__search {
       &-icon {
       }
       &-input {
+        outline-color: $color-border-gray;
       }
     }
 
-    &__nav {
+    &__navigation {
+      width: 100%;
     }
 
     &__list {
+      flex-direction: column;
+      gap: 16px;
       &-item {
       }
 
       &-link {
+        font-size: 16px;
       }
     }
 
     &__user {
+      align-self: start;
       &-avatar {
       }
 

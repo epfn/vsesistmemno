@@ -1,0 +1,44 @@
+.search {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px;
+  align-items: center;
+
+  &__element {
+    grid-area: 1/1/-1/-1;
+    font-size: 14px;
+    padding: 16px;
+    padding-left: 10px;
+    padding-right: 40px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: white;
+    transition: outline 0.38s ease-in-out;
+    border-radius: 4px;
+    line-height: 1;
+    min-width: clamp(300px, 40vw, 540px);
+
+    &::placeholder {
+      color: $color-text-gray;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline-color: $color-border-blue;
+    }
+  }
+
+  &__icon {
+    font-size: 22px;
+    grid-area: 1/2/-1/-1;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    color: $color-text-gray;
+    transition: color 0.38s ease-in-out;
+
+    &:hover {
+      color: $color-text-blue;
+    }
+  }
+}

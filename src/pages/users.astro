@@ -1,6 +1,7 @@
 ---
 import Headline from "@components/Headline.astro";
 import LayoutUser from "@components/LayoutUser.astro";
+import Search from "@components/Search.astro";
 import Section from "@components/Section.astro";
 import Table from "@components/Table.astro";
 import type { TableType } from "@components/Table.astro";
@@ -32,15 +33,15 @@ const body: TableType["body"] = [
   ],
   [
     { text: "3" },
-    { text: "Сидоров Максим Игоревич" },
-    { text: "ООО “Рога и копыта”", type: "link" },
+    { text: "Сидоров Максим Игоревич", type: "link" },
+    { text: "ООО “Рога и копыта”" },
     { text: "Отдел снабжения" },
     { text: "Администратор-пользователь каталога" },
     { text: "Не активен", type: "yellow" },
   ],
   [
     { text: "4" },
-    { text: "Большова Ольга Ивановна", type: "text" },
+    { text: "Большова Ольга Ивановна", type: "link" },
     { text: "ООО “Рога и копыта”" },
     { text: "Отдел снабжения" },
     { text: "Модератор" },
@@ -48,7 +49,7 @@ const body: TableType["body"] = [
   ],
   [
     { text: "5" },
-    { text: "Петров Петр Петрович", type: "text" },
+    { text: "Петров Петр Петрович", type: "link" },
     { text: "ООО “Рога и копыта”" },
     { text: "Отдел снабжения" },
     { text: "Модератор" },
@@ -58,7 +59,9 @@ const body: TableType["body"] = [
 ---
 
 <LayoutUser title="Пользователи">
-  <Headline marginTop="60" title="Пользователи">123</Headline>
+  <Headline marginTop="60" title="Пользователи"
+    ><Search placeholder="Поиск пользователя" /></Headline
+  >
   <Section>
     <Table role status id {head} {body} />
   </Section>

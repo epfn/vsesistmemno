@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="./plugins/air-datepicker/air-datepicker.css" />
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.27169045" />
-    <title>Профиль Пользователя</title>
+    <link rel="stylesheet" href="./css/style.css?v=0.27169034" />
+    <title>Карточка Пользователя</title>
   </head>
   <body>
     <header class="header section">
@@ -47,15 +47,15 @@
 
     <section class="backlink section">
       <div class="backlink__container">
-        <a href="#" class="backlink__element"> <span class="icon-arrow-small"></span>Главная </a>
+        <a href="./users.html" class="backlink__element"> <span class="icon-arrow-small"></span>Пользователи </a>
       </div>
     </section>
     <section class="profile section">
       <div class="profile__container">
         <div class="profile__info">
-          <img src="./img/izmailova.png" alt="" class="profile__avatar" />
-          <div class="profile__name">Измайлова Ольга Ивановна</div>
-          <div class="profile__role">Администратор</div>
+          <img src="./img/petrov.png" alt="" class="profile__avatar" />
+          <div class="profile__name">Петров Петр Петрович</div>
+          <div class="profile__role">Администратор каталога</div>
         </div>
         <form class="profile__form">
           <div class="profile__col">
@@ -70,14 +70,14 @@
               <label for="email" class="field__label field__label--gray"> E-mail </label>
 
               <div class="input">
-                <input name="email" id="email" value="IvanovaOI@email.com" type="email" class="input__element" />
+                <input name="email" id="email" value="PetrovP@email.com" type="email" class="input__element" />
               </div>
             </div>
             <div class="field">
               <label for="company" class="field__label field__label--gray"> Название компании </label>
 
               <select id="company" name="company" class="select">
-                <option value="ООО “Рога и копыта”">ООО “Рога и копыта”</option>
+                <option value="ООО “Ромашка”">ООО “Ромашка”</option>
                 <option value="Энергострой">Энергострой</option>
                 <option value="Яндекс">Яндекс</option>
                 <option value="SpaceApp">SpaceApp</option>
@@ -99,7 +99,7 @@
               <label for="occupation" class="field__label field__label--gray"> Должность пользователя </label>
 
               <div class="input">
-                <input name="occupation" id="occupation" value="Начальник отдела" type="text" class="input__element" />
+                <input name="occupation" id="occupation" value="Заместитель начальника отдела" type="text" class="input__element" />
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@
               <label for="date" class="field__label field__label--gray"> Дата рождения </label>
 
               <div class="input">
-                <input name="date" id="date" value="15.03.1990" type="text" class="input__element input__element--date" />
+                <input name="date" id="date" value="22.02.1980" type="text" class="input__element input__element--date" />
 
                 <div class="input__icon icon-calendar"></div>
               </div>
@@ -117,27 +117,28 @@
               <label for="gender" class="field__label field__label--gray"> Пол </label>
 
               <select id="gender" name="gender" class="select">
-                <option value="Женский">Женский</option>
                 <option value="Мужской">Мужской</option>
+                <option value="Женский">Женский</option>
               </select>
             </div>
             <div class="field">
               <label for="role" class="field__label field__label--gray"> Роль </label>
 
               <select id="role" name="role" class="select">
-                <option value="Администратор">Администратор</option>
+                <option value="Администратор Каталога">Администратор Каталога</option>
                 <option value="Менеджер">Менеджер</option>
                 <option value="Глава отдела">Глава отдела</option>
                 <option value="Линейный сотрудник">Линейный сотрудник</option>
               </select>
             </div>
             <div class="field">
-              <label for="password" class="field__label field__label--gray"> Пароль </label>
+              <label for="status" class="field__label field__label--gray"> Статус </label>
 
-              <div class="input">
-                <input name="password" id="password" value="vova123vova123" type="password" class="input__element input__element--password" />
-                <div class="input__icon icon-eye"></div>
-              </div>
+              <select id="status" name="status" class="select">
+                <option value="Aктивен">Aктивен</option>
+                <option value="Отошёл">Отошёл</option>
+                <option value="Заблокирован">Заблокирован</option>
+              </select>
             </div>
           </div>
           <button type="submit" class="button button--blue button--normal button--mt20">Сохранить изменения</button>
@@ -155,6 +156,6 @@
     <script src="./plugins/imask/imask.js" defer></script>
     <script src="./plugins/choices/choices.min.js" defer></script>
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
-    <script src="./js/script.js?v=0.27169045" defer></script>
+    <script src="./js/script.js?v=0.27169034" defer></script>
   </body>
 </html>
