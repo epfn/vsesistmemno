@@ -1,0 +1,68 @@
+.table {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid $color-border-gray;
+  overflow: hidden;
+  overflow-x: auto;
+  &--status {
+    :is(th, td):nth-last-child(1) {
+      text-align: center;
+    }
+  }
+
+  &--role {
+    :is(th, td):nth-last-child(2) {
+      text-align: center;
+      width: 15%;
+    }
+  }
+
+  &--id {
+    :is(th, td):nth-child(1) {
+      width: 8%;
+    }
+  }
+
+  table {
+    width: 100%;
+    background-color: white;
+  }
+
+  thead {
+    background-color: $color-background-purple;
+    outline: 1px solid $color-background-purple;
+  }
+
+  tbody {
+  }
+  tr:not(:first-of-type) {
+    border-top: 1px solid $color-border-gray;
+  }
+
+  th {
+    font-weight: 500;
+  }
+
+  td {
+    font-weight: 400;
+  }
+
+  th,
+  td {
+    text-align: left;
+    line-height: 1.25;
+    height: 44px;
+    font-size: clamp(12px, 1.25vw, 14px);
+
+    padding: 4px;
+    padding-inline: 10px;
+
+    &:first-of-type {
+      padding-left: 20px;
+    }
+
+    &:last-of-type {
+      padding-right: 20px;
+    }
+  }
+}

@@ -11,14 +11,14 @@ const user: {
   name: string;
   role: string;
 } = {
-  avatar: "/img/izmailova.png",
-  name: "Измайлова Ольга Ивановна",
-  role: "Администратор",
+  avatar: "/img/petrov.png",
+  name: "Петров Петр Петрович",
+  role: "Администратор каталога",
 };
 ---
 
-<LayoutUser title="Профиль Пользователя">
-  <Backlink href="#">Главная</Backlink>
+<LayoutUser title="Карточка Пользователя">
+  <Backlink href="/users.html">Пользователи</Backlink>
   <Profile {...user}>
     <Fragment slot="col1">
       <Field id="phone" label="Телефон" variant="gray">
@@ -30,19 +30,14 @@ const user: {
         />
       </Field>
       <Field id="email" label="E-mail" variant="gray">
-        <Input
-          type="email"
-          name="email"
-          id="email"
-          value="IvanovaOI@email.com"
-        />
+        <Input type="email" name="email" id="email" value="PetrovP@email.com" />
       </Field>
       <Field id="company" label="Название компании" variant="gray">
         <Select
           id="company"
           name="company"
           options={[
-            "ООО “Рога и копыта”",
+            "ООО “Ромашка”",
             "Энергострой",
             "Яндекс",
             "SpaceApp",
@@ -68,35 +63,34 @@ const user: {
           type="text"
           name="occupation"
           id="occupation"
-          value="Начальник отдела"
+          value="Заместитель начальника отдела"
         />
       </Field>
     </Fragment>
     <Fragment slot="col2">
       <Field id="date" label="Дата рождения" variant="gray">
-        <Input type="date" name="date" id="date" value="15.03.1990" />
+        <Input type="date" name="date" id="date" value="22.02.1980" />
       </Field>
       <Field id="gender" label="Пол" variant="gray">
-        <Select id="gender" name="gender" options={["Женский", "Мужской"]} />
+        <Select id="gender" name="gender" options={["Мужской", "Женский"]} />
       </Field>
       <Field id="role" label="Роль" variant="gray">
         <Select
           id="role"
           name="role"
           options={[
-            "Администратор",
+            "Администратор Каталога",
             "Менеджер",
             "Глава отдела",
             "Линейный сотрудник",
           ]}
         />
       </Field>
-      <Field id="password" label="Пароль" variant="gray">
-        <Input
-          type="password"
-          name="password"
-          id="password"
-          value="vova123vova123"
+      <Field id="status" label="Статус" variant="gray">
+        <Select
+          id="status"
+          name="status"
+          options={["Aктивен", "Отошёл", "Заблокирован"]}
         />
       </Field>
     </Fragment>

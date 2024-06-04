@@ -1,0 +1,123 @@
+.profile {
+  flex-grow: 1;
+  margin-bottom: 60px;
+  &__container {
+    grid-area: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: clamp(20px, 2.5vw, 40px);
+    display: grid;
+    grid-template-columns: 1fr 1.75fr;
+    gap: 20px;
+    height: max-content;
+  }
+
+  &__info {
+  }
+
+  &__avatar {
+    $size: clamp(120px, 13vw, 178px);
+    min-height: $size;
+    min-width: $size;
+    height: $size;
+    width: $size;
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: clamp(18px, 2vw, 24px);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  &__role {
+    font-size: 14px;
+    color: $color-text-gray;
+  }
+
+  &__form {
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: min-content;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .profile {
+    &__container {
+      grid-template-columns: 1fr;
+      padding: 16px;
+      border-radius: 10px;
+    }
+
+    &__info {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      column-gap: 20px;
+    }
+
+    &__avatar {
+      grid-row: span 2;
+
+      $size: 60px;
+      min-height: $size;
+      min-width: $size;
+      height: $size;
+      width: $size;
+      margin-bottom: unset;
+    }
+
+    &__name {
+      margin-bottom: unset;
+      font-size: 18px;
+    }
+
+    &__role {
+    }
+
+    &__form {
+      gap: 15px;
+    }
+
+    &__col {
+      gap: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .profile {
+    &__container {
+    }
+
+    &__info {
+    }
+
+    &__avatar {
+    }
+
+    &__name {
+    }
+
+    &__role {
+    }
+
+    &__form {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    &__col {
+    }
+  }
+}

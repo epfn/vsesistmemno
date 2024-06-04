@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  marginTop: "60";
+}
+
+const { title, marginTop } = Astro.props;
+---
+
+<section class:list={["headline", `headline--mt${marginTop}`, "section"]}>
+  <div class="headline__container">
+    <h1 class="headline__title">{title}</h1>
+    <div class="headline__content"><slot /></div>
+  </div>
+</section>

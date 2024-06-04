@@ -1,0 +1,42 @@
+---
+export type TableType = {
+  head: string[];
+  body: {
+    type?: "text" | "link" | "green" | "yellow" | "red";
+    text: string;
+  }[][];
+};
+
+interface Props extends TableType {
+  status?: boolean;
+  role?: boolean;
+  id?: boolean;
+}
+const { head, body, status, role, id } = Astro.props;
+
+let classList = ["table"];
+if (status) classList.push("table--status");
+if (role) classList.push("table--role");
+if (id) classList.push("table--id");
+---
+
+<div class:list={classList}>
+  <table>
+    <thead>
+      <tr>
+        {head.map((title) => <th>{title}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        body.map((row) => (
+          <tr>
+            {row.map((cell) => (
+              <td>{cell.text}</td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

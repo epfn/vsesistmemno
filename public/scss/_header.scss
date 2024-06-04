@@ -117,11 +117,11 @@
       grid-row: span 2;
 
       img {
-        --_size: 50px;
-        min-height: var(--_size);
-        min-width: var(--_size);
-        height: var(--_size);
-        width: var(--_size);
+        $size: 50px;
+        min-height: $size;
+        min-width: $size;
+        height: $size;
+        width: $size;
         object-fit: cover;
         border-radius: 999px;
       }

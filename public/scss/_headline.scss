@@ -1,0 +1,19 @@
+.headline {
+  margin-top: 150px;
+  margin-bottom: 40px;
+  &__container {
+    grid-area: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 26px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 10px;
+  }
+}

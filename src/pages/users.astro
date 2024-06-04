@@ -1,0 +1,65 @@
+---
+import Headline from "@components/Headline.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Section from "@components/Section.astro";
+import Table from "@components/Table.astro";
+import type { TableType } from "@components/Table.astro";
+
+const head: TableType["head"] = [
+  "ID",
+  "ФИО",
+  "Компания",
+  "Подразделение",
+  "Роль",
+  "Статус",
+];
+const body: TableType["body"] = [
+  [
+    { text: "1" },
+    { text: "Измайлова Ольга Ивановна", type: "link" },
+    { text: "ООО “Рога и копыта”" },
+    { text: "Отдел снабжения" },
+    { text: "Администратор системы" },
+    { text: "Активен", type: "green" },
+  ],
+  [
+    { text: "2" },
+    { text: "Петров Петр Петрович", type: "link" },
+    { text: "ООО “Рога и копыта”" },
+    { text: "Отдел снабжения" },
+    { text: "Администратор каталога" },
+    { text: "Заблокирован", type: "red" },
+  ],
+  [
+    { text: "3" },
+    { text: "Сидоров Максим Игоревич" },
+    { text: "ООО “Рога и копыта”", type: "link" },
+    { text: "Отдел снабжения" },
+    { text: "Администратор-пользователь каталога" },
+    { text: "Не активен", type: "yellow" },
+  ],
+  [
+    { text: "4" },
+    { text: "Большова Ольга Ивановна", type: "text" },
+    { text: "ООО “Рога и копыта”" },
+    { text: "Отдел снабжения" },
+    { text: "Модератор" },
+    { text: "Aктивен", type: "green" },
+  ],
+  [
+    { text: "5" },
+    { text: "Петров Петр Петрович", type: "text" },
+    { text: "ООО “Рога и копыта”" },
+    { text: "Отдел снабжения" },
+    { text: "Модератор" },
+    { text: "Пользователь", type: "green" },
+  ],
+];
+---
+
+<LayoutUser title="Пользователи">
+  <Headline marginTop="60" title="Пользователи">123</Headline>
+  <Section>
+    <Table role status id {head} {body} />
+  </Section>
+</LayoutUser>

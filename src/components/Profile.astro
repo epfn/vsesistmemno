@@ -1,0 +1,30 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  avatar: string;
+  name: string;
+  role: string;
+}
+
+const { avatar, name, role } = Astro.props;
+---
+
+<section class="profile section">
+  <div class="profile__container">
+    <div class="profile__info">
+      <img src={avatar} alt="" class="profile__avatar" />
+      <div class="profile__name">{name}</div>
+      <div class="profile__role">{role}</div>
+    </div>
+    <form class="profile__form">
+      <div class="profile__col">
+        <slot name="col1" />
+      </div>
+      <div class="profile__col">
+        <slot name="col2" />
+      </div>
+      <Button submit marginTop="20">Сохранить изменения</Button>
+    </form>
+  </div>
+</section>
