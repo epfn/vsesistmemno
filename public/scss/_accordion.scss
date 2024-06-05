@@ -1,0 +1,75 @@
+.accordion {
+  &-hero {
+    .ac {
+      $radius: 16px;
+      margin-top: unset;
+      border: unset;
+      background-color: transparent;
+      overflow: hidden;
+
+      & .ac-trigger {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+      }
+
+      &--white {
+        .ac-trigger,
+        .ac-panel {
+          background-color: white;
+        }
+      }
+
+      &--blue {
+        .ac-header {
+          background-color: white;
+        }
+        .ac-trigger,
+        .ac-panel {
+          background-color: $color-background-blue;
+          color: white;
+        }
+      }
+
+      &--orange {
+        .ac-header {
+          background-color: $color-background-blue;
+        }
+        .ac-trigger,
+        .ac-panel {
+          background-color: $color-background-peach;
+          color: white;
+        }
+      }
+
+      &-trigger {
+        color: currentColor;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-inline: 40px;
+        font-size: 24px;
+        &::after {
+          display: none;
+        }
+      }
+
+      &-panel {
+        padding-inline: 40px;
+      }
+
+      &-content {
+        height: 210px;
+      }
+
+      .is-active {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,11 @@
 @font-face {
   font-family: "icomoon";
+  src: url("fonts/icomoon.eot?tukdm");
   src:
-    url("fonts/icomoon.ttf?w51ulp") format("truetype"),
-    url("fonts/icomoon.woff?w51ulp") format("woff"),
-    url("fonts/icomoon.svg?w51ulp#icomoon") format("svg");
+    url("fonts/icomoon.eot?tukdm#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?tukdm") format("truetype"),
+    url("fonts/icomoon.woff?tukdm") format("woff"),
+    url("fonts/icomoon.svg?tukdm#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,48 +27,51 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-setting:before {
+.icon-logo:before {
   content: "\e900";
 }
-.icon-computer:before {
+.icon-setting:before {
   content: "\e901";
 }
-.icon-document:before {
+.icon-computer:before {
   content: "\e902";
 }
-.icon-file-left:before {
+.icon-document:before {
   content: "\e903";
 }
-.icon-wifi:before {
+.icon-file-left:before {
   content: "\e904";
 }
-.icon-search:before {
+.icon-wifi:before {
   content: "\e905";
 }
-.icon-eye:before {
+.icon-search:before {
   content: "\e906";
 }
-.icon-eye-off:before {
+.icon-eye:before {
   content: "\e907";
 }
-.icon-calendar:before {
+.icon-eye-off:before {
   content: "\e908";
 }
-.icon-log-out:before {
+.icon-calendar:before {
   content: "\e909";
 }
-.icon-menu:before {
+.icon-log-out:before {
   content: "\e90a";
 }
-.icon-close:before {
+.icon-menu:before {
   content: "\e90b";
 }
-.icon-arrow-small:before {
+.icon-close:before {
   content: "\e90c";
 }
-.icon-plus:before {
+.icon-arrow-small:before {
   content: "\e90d";
 }
-.icon-filter:before {
+.icon-plus:before {
   content: "\e90e";
+}
+.icon-filter:before {
+  content: "\e90f";
 }

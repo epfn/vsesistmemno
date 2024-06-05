@@ -1,0 +1,17 @@
+---
+interface Props {
+  variant: "blue" | "white" | "orange";
+  title: string;
+  text: string;
+}
+
+const { variant, title, text } = Astro.props;
+---
+
+<div class:list={["headingCard", `headingCard--${variant}`]}>
+  <div class="headingCard__row">
+    <div class="headingCard__icon icon-logo"></div>
+    <h2 class="headingCard__title">{title}</h2>
+  </div>
+  <div class="headingCard__text">{text}</div>
+</div>

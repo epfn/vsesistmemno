@@ -1,0 +1,52 @@
+---
+import Layout from "@components/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Menu from "@components/Menu.astro";
+import type { MenuType } from "@components/Menu.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const menu: MenuType = [
+  {
+    text: "Главная",
+    href: "/index.html",
+  },
+  {
+    text: "Управление данными",
+    href: "#manage",
+  },
+  {
+    text: "Система Документы компании",
+    href: "#portal",
+  },
+  {
+    text: "Разработка электронных каталогов",
+    href: "#catalog",
+  },
+  {
+    text: "О компании",
+    href: "#",
+  },
+  {
+    text: "Контакты",
+    href: "#",
+  },
+];
+---
+
+<Layout {title}>
+  <Header shadow>
+    <nav class="header__navigation">
+      <Menu items={menu} variant="small" />
+    </nav>
+  </Header>
+  <slot />
+  <Footer>
+    <Menu items={menu} variant="small" />
+  </Footer>
+</Layout>

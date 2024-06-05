@@ -6,33 +6,147 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./plugins/air-datepicker/air-datepicker.css" />
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
+    <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.27169059" />
-    <title>Главная страница</title>
+    <link rel="stylesheet" href="./css/style.css?v=0.86400333" />
+    <title>Всё системно</title>
   </head>
   <body>
-    <div class="field">
-      <label for="name" class="field__label field__label--black"> Логин </label>
-
-      <div class="input">
-        <input id="name" placeholder="password" type="password" class="input__element input__element--password" />
-        <div class="input__icon icon-eye"></div>
+    <header class="header header--shadow section">
+      <div class="header__container">
+        <img src="./img/logo.svg" alt="" class="header__logo" />
+        <div class="header__wrapper section">
+          <div class="header__content">
+            <nav class="header__navigation">
+              <ul class="menu menu--small">
+                <li class="menu__item">
+                  <a href="./index.html" class="menu__link"> Главная </a>
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link"> Управление данными </a>
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link"> Система Документы компании </a>
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link"> Разработка электронных каталогов </a>
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link"> О компании </a>
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link"> Контакты </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="header__menu icon-menu"></div>
       </div>
-    </div>
-    <div class="field">
-      <label for="name1" class="field__label field__label--gray"> Пароль </label>
+    </header>
 
-      <div class="input">
-        <input id="name1" type="text" class="input__element input__element--date" />
-
-        <div class="input__icon icon-calendar"></div>
+    <section class="hero section">
+      <div class="hero__container">
+        <h1 class="hero__title">
+          Компания <span> Всё системно </span>
+          - предлагает наилучший сервис сопровождения компаний
+        </h1>
+        <div class="hero__accordion">
+          <div class="ac ac--white">
+            <div class="ac-header">
+              <div class="ac-trigger">Управление данными компании</div>
+            </div>
+            <div class="ac-panel">
+              <div class="ac-content">
+                <p>Любые не системные документы, информацию, приводим в системную структуру, каталогизируем, разрабатываем документы в едином стиле, вносим в базы данных компании и сервисы, где эта информация начинает работать.</p>
+                <a>Система Документы компании</a>
+              </div>
+            </div>
+          </div>
+          <div class="ac ac--blue">
+            <div class="ac-header">
+              <div class="ac-trigger">Корпоративный портал Всё системно Документы</div>
+            </div>
+            <div class="ac-panel">
+              <div class="ac-content">
+                <p>Для эффективного управления данными их сбор, каталогизация, работа с актуальными документами</p>
+                <a>Система Документы компании</a>
+              </div>
+            </div>
+          </div>
+          <div class="ac ac--orange">
+            <div class="ac-header">
+              <div class="ac-trigger">Разработка электронных каталогов</div>
+            </div>
+            <div class="ac-panel">
+              <div class="ac-content">
+                <p>Разработка электронных каталогов: информация, документы, объекты и оборудование учета, справочники.</p>
+                <a>Разработка электронных каталогов</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="section section--grow section--mb">
+      <div class="section__container">
+        <div class="headingCard headingCard--white">
+          <div class="headingCard__row">
+            <div class="headingCard__icon icon-logo"></div>
+            <h2 class="headingCard__title">Управление данными компании</h2>
+          </div>
+          <div class="headingCard__text">Любые не системные документы, информацию, приводим в системную структуру, каталогизируем, разрабатываем документы в едином стиле, вносим в базы данных компании и сервисы, где эта информация начинает работать.</div>
+        </div>
+        <div class="headingCard headingCard--blue">
+          <div class="headingCard__row">
+            <div class="headingCard__icon icon-logo"></div>
+            <h2 class="headingCard__title">Корпоративный портал Все системно Документы vcdocs.ru</h2>
+          </div>
+          <div class="headingCard__text">Для эффективного управления данными их сбор, каталогизация, работа с актуальными документами</div>
+        </div>
+        <div class="headingCard headingCard--orange">
+          <div class="headingCard__row">
+            <div class="headingCard__icon icon-logo"></div>
+            <h2 class="headingCard__title">Разработка электронных каталогов</h2>
+          </div>
+          <div class="headingCard__text">Разработка электронных каталогов: информация, документы, объекты и оборудование учета, справочники.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer section">
+      <div class="footer__container">
+        <div class="footer__copyright">©2024 Все системно</div>
+
+        <ul class="menu menu--small">
+          <li class="menu__item">
+            <a href="./index.html" class="menu__link"> Главная </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"> Управление данными </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"> Система Документы компании </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"> Разработка электронных каталогов </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"> О компании </a>
+          </li>
+          <li class="menu__item">
+            <a href="#" class="menu__link"> Контакты </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
 
     <script src="./plugins/air-datepicker/air-datepicker.js" defer></script>
     <script src="./plugins/imask/imask.js" defer></script>
     <script src="./plugins/choices/choices.min.js" defer></script>
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
-    <script src="./js/script.js?v=0.27169059" defer></script>
+    <script src="./plugins/accordion/accordion.min.js" defer></script>
+    <script src="./js/script.js?v=0.86400333" defer></script>
   </body>
 </html>

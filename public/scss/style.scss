@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "normalize";
 @import "layout";
 @import "section";
@@ -17,3 +18,7 @@
 @import "table";
 @import "storage";
 @import "search";
+@import "menu";
+@import "headingCard";
+@import "hero"; 
+@import "frontSection"; 

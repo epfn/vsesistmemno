@@ -99,3 +99,10 @@ function storageMasonry() {
 }
 
 storageMasonry();
+
+if (document.querySelector(".hero__accordion")) {
+  new Accordion(".hero__accordion", {
+    openOnInit: [2],
+    collapse: false,
+  });
+}

@@ -1,0 +1,14 @@
+---
+interface Props {
+  id: string;
+  variant: "white" | "blue" | "orange";
+}
+
+const { variant, id } = Astro.props;
+---
+
+<section {id} class:list={["frontSection section", `frontSection--${variant}`]}>
+  <div class="frontSection__container">
+    <slot />
+  </div>
+</section>

@@ -2,16 +2,52 @@
 import Layout from "@components/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Menu from "@components/Menu.astro";
+import type { MenuType } from "@components/Menu.astro";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
+const menu: MenuType = [
+  {
+    text: "Пользователи",
+    href: "/users.html",
+  },
+  {
+    text: "Хранилище документов",
+    href: "/storage.html",
+  },
+];
 ---
 
 <Layout {title}>
-  <Header />
+  <Header>
+    <form class="header__form">
+      <div class="header__search">
+        <input
+          type="text"
+          class="header__search-input"
+          placeholder="Поиск документов"
+        />
+        <button type="submit" class="header__search-icon icon-search"></button>
+      </div>
+    </form>
+    <nav class="header__navigation">
+      <Menu items={menu} />
+    </nav>
+    <div class="header__user">
+      <a href="/userProfile.html" class="header__user-avatar">
+        <img src="/img/izmailova.png" alt="" />
+      </a>
+      <a href="/userProfile.html" class="header__user-name">Измайлова Ольга</a>
+      <a href="#" class="header__user-logout">
+        <span class="header__user-logout-icon icon-log-out"></span> Выход
+      </a>
+    </div>
+  </Header>
   <slot />
   <Footer />
 </Layout>

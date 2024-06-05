@@ -1,0 +1,165 @@
+.hero {
+  padding-top: 130px;
+  padding-bottom: 60px;
+  &__container {
+    grid-area: center;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 16px;
+  }
+
+  &__content {
+  }
+
+  &__title {
+    margin-top: 80px;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.25;
+    max-width: 20ch;
+
+    span {
+      color: $color-text-blue;
+    }
+  }
+
+  &__accordion {
+    .ac {
+      $radius: 16px;
+      margin-top: unset;
+      border: unset;
+      background-color: transparent;
+      overflow: hidden;
+
+      & .ac-trigger {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+        font-family: "Onest", sans-serif;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+      }
+
+      &--white {
+        .ac-trigger,
+        .ac-panel {
+          background-color: white;
+        }
+      }
+
+      &--blue {
+        .ac-header {
+          background-color: white;
+        }
+        .ac-trigger,
+        .ac-panel {
+          background-color: $color-background-blue;
+          color: white;
+        }
+      }
+
+      &--orange {
+        .ac-header {
+          background-color: $color-background-blue;
+        }
+        .ac-trigger,
+        .ac-panel {
+          background-color: $color-background-peach;
+          color: white;
+        }
+      }
+
+      &-trigger {
+        font: unset;
+        color: currentColor;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-inline: 40px;
+        font-size: 24px;
+        font-weight: 600;
+        &::after {
+          display: none;
+        }
+      }
+
+      &-panel {
+        padding-inline: 40px;
+      }
+
+      &-content {
+        height: 210px;
+      }
+
+      .is-active {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    &__container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    &__content {
+    }
+
+    &__title {
+    }
+
+    &__accordion {
+      .ac {
+        & .ac-trigger {
+        }
+
+        &:last-child {
+        }
+
+        &--white {
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &--blue {
+          .ac-header {
+          }
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &--orange {
+          .ac-header {
+          }
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &-trigger {
+          &::after {
+          }
+        }
+
+        &-panel {
+        }
+
+        &-content {
+        }
+
+        .is-active {
+          &::after {
+          }
+        }
+      }
+    }
+  }
+}

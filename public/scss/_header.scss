@@ -6,6 +6,10 @@
   width: 100%;
   z-index: 10;
 
+  &--shadow {
+    box-shadow: 0px 0px 35px 0px #24203817;
+  }
+
   &__wrapper {
   }
 
@@ -85,25 +89,6 @@
 
   &__navigation {
     justify-self: end;
-  }
-
-  &__list {
-    display: flex;
-    gap: clamp(8px, 2.5vw, 40px);
-
-    &-item {
-    }
-
-    &-link {
-      font-size: clamp(14px, 1.25vw, 16px);
-      line-height: 1;
-      font-weight: 400;
-      transition: color 0.38s ease-in-out;
-
-      &:hover {
-        color: $color-text-blue;
-      }
-    }
   }
 
   &__user {
@@ -223,17 +208,6 @@
 
     &__navigation {
       width: 100%;
-    }
-
-    &__list {
-      flex-direction: column;
-      gap: 16px;
-      &-item {
-      }
-
-      &-link {
-        font-size: 16px;
-      }
     }
 
     &__user {

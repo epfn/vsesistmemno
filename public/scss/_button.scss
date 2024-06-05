@@ -30,24 +30,24 @@
     color: white;
 
     &:hover {
-      background-color: color-mix(
-        in srgb,
-        $color-background-blue 90%,
-        black 10%
-      );
+      background-color: $color-background-blue-dark;
     }
   }
 
   &--orange {
     background-color: $color-background-peach;
     color: white;
+
+    &:hover {
+      background-color: $color-background-peach-dark;
+    }
   }
 
   &--white {
     background-color: white;
 
     &:hover {
-      background-color: color-mix(in srgb, white 95%, black 5%);
+      background-color: $color-background-blue-light-2;
     }
   }
 

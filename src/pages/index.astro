@@ -1,33 +1,69 @@
 ---
-import Layout from "@components/Layout.astro";
-import Field from "@components/Field.astro";
-import Input from "@components/Input.astro";
-import Select from "@components/Select.astro";
+import LayoutSite from "@components/LayoutSite.astro";
+import HeadingCard from "@components/HeadingCard.astro";
+import Section from "@components/Section.astro";
+import AccordionHero from "@components/AccordionHero.astro";
+import FrontSection from "@components/FrontSection.astro";
 ---
 
-<Layout title="Главная страница">
-  <Field label="Логин" id="name">
-    <Input id="name" type="password" placeholder="password" />
-  </Field>
-  <Field label="Пароль" id="name1" variant="gray">
-    <Input id="name1" type="date" />
-  </Field>
+<LayoutSite title="Всё системно">
+  <section class="hero section">
+    <div class="hero__container">
+      <h1 class="hero__title">
+        Компания <span> Всё системно </span>
+        - предлагает наилучший сервис сопровождения компаний
+      </h1>
+      <div class="hero__accordion">
+        <AccordionHero />
+      </div>
+    </div>
+  </section>
 
-  <!-- <select name="123" id="">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </select> -->
-
-  <!-- <Select name="select1">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </Select> -->
-</Layout>
+  <FrontSection id="manage" variant="white">
+    <HeadingCard
+      variant="white"
+      title="Управление данными компании"
+      text="Любые не системные документы, информацию, приводим в системную структуру, каталогизируем, разрабатываем документы в едином стиле, вносим в базы данных компании и сервисы, где эта информация начинает работать."
+    />
+  </FrontSection>
+  <FrontSection id="portal" variant="blue">
+    <HeadingCard
+      variant="blue"
+      title="Корпоративный портал Все системно Документы vcdocs.ru"
+      text="Для эффективного управления данными их сбор, каталогизация, работа с актуальными документами"
+    />
+  </FrontSection>
+  <FrontSection id="catalog" variant="orange">
+    <HeadingCard
+      variant="orange"
+      title="Разработка электронных каталогов"
+      text="Разработка электронных каталогов: информация, документы, объекты и оборудование учета, справочники."
+    />
+    <div class="frontSection__card frontSection__card--gray">
+      <div class="frontSection__card-content">
+        <h3 class="frontSection__title">Разработка электронных каталогов</h3>
+        <ul class="frontSection__list frontSection__list--blue">
+          <li>
+            Разработка электронных каталогов: информация, документы, объекты и
+            оборудование учета, справочники.
+          </li>
+          <li>
+            Отбор данных (фильтры, регистры учета, теги, характеристики) в
+            различных разрезах учета.
+          </li>
+          <li>Электронные книги в виде статей по разделам.</li>
+          <li>
+            К каждой сущности элемента учета к информации можно привязать общие
+            группы, объединяющие характеристики, что позволяет существенно
+            улучшить поиск и работу с информацией.
+          </li>
+          <li>
+            Электронные справочники по отраслям: пример, медицинские
+            справочники.
+          </li>
+        </ul>
+      </div>
+      <img src="/img/create.png" alt="" class="frontSection__card-image">
+    </div>
+  </FrontSection>
+</LayoutSite>

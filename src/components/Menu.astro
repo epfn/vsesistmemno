@@ -1,0 +1,22 @@
+---
+export type MenuType = { text: string; href: string }[];
+
+interface Props {
+  items: MenuType;
+  variant?: "normal" | "small";
+}
+
+const { variant = "normal", items } = Astro.props;
+---
+
+<ul class:list={["menu", `menu--${variant}`]}>
+  {
+    items.map(({ href, text }) => (
+      <li class="menu__item">
+        <a {href} class="menu__link">
+          {text}
+        </a>
+      </li>
+    ))
+  }
+</ul>
