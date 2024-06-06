@@ -18,6 +18,9 @@
     display: grid;
     gap: 40px;
     grid-template-rows: auto;
+  }
+
+  &--even &__container {
     grid-auto-rows: 1fr;
   }
 
@@ -49,7 +52,7 @@
     }
 
     ul {
-      margin-bottom: #{fluid(20px, 40px)};
+      // margin-bottom: #{fluid(20px, 40px)};
     }
 
     p {

@@ -1,0 +1,30 @@
+.tab {
+  display: flex;
+  flex-direction: column;
+  gap: #{fluid(20px, 40px)};
+
+  &__list {
+    display: flex;
+    gap: #{fluid(5px, 10px)};
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 5px 15px;
+    border: 1px solid $color-border-gray;
+
+    &--active {
+      background-color: $color-background-blue;
+      border-color: $color-background-blue;
+      color: white;
+    }
+  }
+
+  &__container {
+  }
+
+  &__content {
+  }
+}

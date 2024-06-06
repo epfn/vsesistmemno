@@ -14,7 +14,7 @@ const { title } = Astro.props;
 const menu: MenuType = [
   {
     text: "Главная",
-    href: "/index.html",
+    href: "/",
   },
   {
     text: "Управление данными",
@@ -47,6 +47,6 @@ const menu: MenuType = [
   </Header>
   <slot />
   <Footer>
-    <Menu items={menu} variant="small" />
+    <Menu items={menu} variant="mini" />
   </Footer>
 </Layout>

@@ -2,12 +2,20 @@
 interface Props {
   id: string;
   variant: "white" | "blue" | "orange";
+  even?: boolean;
 }
 
-const { variant, id } = Astro.props;
+const { variant, id, even = false } = Astro.props;
 ---
 
-<section {id} class:list={["frontSection section", `frontSection--${variant}`]}>
+<section
+  {id}
+  class:list={[
+    "frontSection section",
+    `frontSection--${variant}`,
+    { "frontSection--even": even },
+  ]}
+>
   <div class="frontSection__container">
     <slot />
   </div>

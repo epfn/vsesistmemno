@@ -25,12 +25,12 @@ import Button from "@components/Button.astro";
   <FrontSection id="manage" variant="white">
     <HeadingCard
       variant="white"
-      title="Управление данными компании"
+      title="Управление информационными данными компании"
       text="Любые не системные документы, информацию, приводим в системную структуру, каталогизируем, разрабатываем документы в едином стиле, вносим в базы данных компании и сервисы, где эта информация начинает работать."
     />
     <div class="manage">
       <div class="manage__content">
-        <h3 class="front__title">Разработка электронных каталогов</h3>
+        <h3 class="front__title">Для чего необходим сервис</h3>
         <ul class="front__list front__list--blue">
           <li>
             Любая компания, в какой-то момент сталкивается с проблемой
@@ -56,6 +56,71 @@ import Button from "@components/Button.astro";
       </div>
       <img src="/img/doc.png" alt="" class="manage__image" />
     </div>
+
+    <div class="blocks">
+      <h2 class="blocks__title">Состав документации:</h2>
+      <div class="blocks__list">
+        <div class="blocks__item blocks__item--gray">
+          <div class="blocks__border">
+            <h3 class="front__title">
+              Группа общие правила работы организации
+            </h3>
+          </div>
+          <ul class="front__list front__list--blue">
+            <li>Правила и требования работы в организации и подразделениях</li>
+            <li>Правила безопасности труда</li>
+            <li>Телефонные и контактные справочники</li>
+          </ul>
+        </div>
+        <div class="blocks__item blocks__item--blue">
+          <div class="blocks__border">
+            <h3 class="front__title">
+              Группа документации по правилам работы сотрудников
+            </h3>
+          </div>
+          <ul class="front__list front__list--white">
+            <li>Персональные офферы сотрудников при приеме на работу.</li>
+            <li>Должностные инструкции</li>
+            <li>
+              Регламенты работы сотрудников на конкретных рабочих участках
+            </li>
+            <li>Персональные требования к сотрудникам</li>
+            <li>Протоколы собраний, закрепление договоренностей</li>
+          </ul>
+        </div>
+        <div class="blocks__item blocks__item--orange">
+          <div class="blocks__border">
+            <h3 class="front__title">Группа производственной документации</h3>
+          </div>
+          <ul class="front__list front__list--white">
+            <li>Инструкции по выполнению производственных операций</li>
+            <li>
+              Календарь повторяющихся событий, дни рождения сотрудников,
+              календарь ТОИР обслуживания оборудования и сервисов и др.
+            </li>
+          </ul>
+        </div>
+        <div class="blocks__item blocks__item--gray">
+          <div class="blocks__border">
+            <h3 class="front__title">Группа информационных данных</h3>
+          </div>
+          <ul class="front__list front__list--blue">
+            <li>
+              Базы данных ресурсов компании.Пример, архив выполненных работ
+              (описание, фотоотчет), база объектов и т.п.
+            </li>
+          </ul>
+        </div>
+        <div class="blocks__item blocks__item--gray">
+          <div class="blocks__border">
+            <h3 class="front__title">Группа договора с контрагентами</h3>
+          </div>
+          <ul class="front__list front__list--blue">
+            <li>Договора, приложения.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </FrontSection>
   <FrontSection id="portal" variant="blue">
     <HeadingCard
@@ -70,7 +135,7 @@ import Button from "@components/Button.astro";
       </div>
     </div>
   </FrontSection>
-  <FrontSection id="catalog" variant="orange">
+  <FrontSection id="catalog" variant="orange" even>
     <HeadingCard
       variant="orange"
       title="Разработка электронных каталогов"
@@ -166,7 +231,7 @@ import Button from "@components/Button.astro";
           ><span class="icon-mail"></span> info@vsesistemno.ru</a
         >
         <a href="https://t.me/vsesistemno" class="contact__link">
-          <span class="icon-telegram"></span> info@vsesistemno.ru</a
+          <span class="icon-telegram"></span> @VseSistemno</a
         >
       </div>
       <form class="contact__form">
@@ -201,14 +266,19 @@ import Button from "@components/Button.astro";
           <Button submit size="small">Отправить</Button>
           <span class="contact__subtext">
             Заполняя данную форму, я подтверждаю, что ознакомился с <a
-              href="#"
+              href="/files/Политика_конфиденциальности.pdf"
               class="link"
+              download
             >
               политикой конфиденциальности
             </a>
 
             и даю
-            <a href="#" class="link">
+            <a
+              href="/files/Cогласие_на_обработку_персональных_данных.pdf"
+              class="link"
+              download
+            >
               согласие на обработку персональных данных
             </a>
           </span>

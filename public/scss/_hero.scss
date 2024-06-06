@@ -1,7 +1,7 @@
 .hero {
   background-color: $color-background-purple-light;
   padding-top: 130px;
-  padding-bottom: 60px;
+  padding-bottom: 90px;
   &__container {
     grid-area: center;
     display: grid;
@@ -147,6 +147,7 @@
 @media (max-width: 992px) {
   .hero {
     padding-top: 90px;
+    padding-bottom: 60px;
     &__container {
       gap: 20px;
     }

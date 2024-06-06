@@ -1,0 +1,52 @@
+---
+import Field from "@components/Field.astro";
+import Input from "@components/Input.astro";
+import Backlink from "@components/Backlink.astro";
+import Profile from "@components/Profile.astro";
+import Select from "@components/Select.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Surface from "@components/Surface.astro";
+import Section from "@components/Section.astro";
+import Button from "@components/Button.astro";
+
+const tabs: string[] = [
+  "Все",
+  "Название тега 1",
+  "Тег 2",
+  "Название 3",
+  "Название тега 4",
+  "Название тега 5",
+];
+---
+
+<LayoutUser title="Карточка Пользователя">
+  <Backlink href="/storage.html">Вернуться к хранилищу документов</Backlink>
+
+  <Section>
+    <Surface variant="catalog" title="Название категории">
+      <Button size="small" slot="options" icon="plus">Создать категорию</Button>
+
+      <div class="tab">
+        <div class="tab__list">
+          {
+            tabs.map((tab, index) => (
+              <div class="tab__item" data-tab={index}>
+                {tab}
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="tab__container">
+          {
+            tabs.map((tab, index) => (
+              <div class="tab__content" data-content={index}>
+                {index}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </Surface>
+  </Section>
+</LayoutUser>

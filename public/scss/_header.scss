@@ -37,7 +37,7 @@
   &__logo {
     object-fit: contain;
     height: 50px;
-    width: 148px;
+    width: #{fluid(130px, 148px)};
     z-index: 15;
     object-position: left;
   }

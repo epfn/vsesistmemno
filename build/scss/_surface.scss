@@ -1,0 +1,39 @@
+.surface {
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: #{fluid(20px, 40px)};
+
+  &--catalog {
+    padding: #{fluid(15px, 30px)};
+  }
+
+  &--create {
+    padding: #{fluid(20px, 40px)};
+  }
+
+  &__title {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  &--catalog &__title {
+    font-size: #{fluid(22px, 26px)};
+  }
+
+  &--create &__title {
+    font-size: #{fluid(20px, 24px)};
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__options {
+  }
+}

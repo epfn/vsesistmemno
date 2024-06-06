@@ -28,3 +28,14 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .manage {
+    &__content {
+    }
+
+    &__image {
+      height: 60vw;
+    }
+  }
+}

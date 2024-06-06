@@ -74,6 +74,7 @@
 @media (max-width: 768px) {
   .about {
     &__container {
+      gap: 30px;
       padding-top: 15px;
       padding-bottom: 15px;
     }

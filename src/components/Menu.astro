@@ -3,7 +3,7 @@ export type MenuType = { text: string; href: string }[];
 
 interface Props {
   items: MenuType;
-  variant?: "normal" | "small";
+  variant?: "normal" | "small" | "mini";
 }
 
 const { variant = "normal", items } = Astro.props;

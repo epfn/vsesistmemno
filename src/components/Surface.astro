@@ -1,0 +1,22 @@
+---
+interface Props {
+  variant: "catalog" | "create";
+  title: string;
+}
+
+const { variant, title } = Astro.props;
+---
+
+<div class:list={["surface", `surface--${variant}`]}>
+  <div class="surface__head">
+    <h1 class="surface__title">{title}</h1>
+    {
+      Astro.slots.has("options") && (
+        <div class="surface__options">
+          <slot name="options" />
+        </div>
+      )
+    }
+  </div>
+  <slot />
+</div>
