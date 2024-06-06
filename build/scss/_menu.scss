@@ -1,11 +1,14 @@
 .menu {
   display: flex;
-  gap: clamp(8px, 2.5vw, 40px);
-  font-size: clamp(0.875rem, 0.459rem + 0.649vw, 1rem);
+
+  &--normal {
+    gap: #{fluid(12px, 40px)};
+    font-size: #{fluid(14px, 16px)};
+  }
 
   &--small {
-    gap: clamp(8px, 1.5vw, 30px);
-    font-size: clamp(0.75rem, 0.334rem + 0.649vw, 0.875rem);
+    gap: #{fluid(12px, 30px)};
+    font-size: #{fluid(12px, 14px)};
   }
 
   &__item {

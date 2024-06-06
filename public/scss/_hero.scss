@@ -43,6 +43,8 @@
         margin-top: auto;
         margin-bottom: auto;
         text-align: center;
+        transition: all 0.38s ease-in-out;
+        transition-property: color, background-color;
       }
 
       &:last-child {
@@ -59,6 +61,10 @@
         .ac-button {
           background-color: $color-background-blue;
           color: white;
+
+          &:hover {
+            background-color: $color-background-blue-dark;
+          }
         }
       }
 
@@ -75,6 +81,10 @@
         .ac-button {
           background-color: white;
           color: $color-text-blue;
+          &:hover {
+            background-color: $color-background-blue-light;
+            color: $color-text-black;
+          }
         }
       }
 
@@ -91,6 +101,11 @@
         .ac-button {
           background-color: white;
           color: $color-text-peach;
+
+          &:hover {
+            background-color: $color-background-peach-light;
+            color: $color-text-black;
+          }
         }
       }
 
@@ -192,7 +207,7 @@
         }
 
         &-content {
-          height: 15em;
+          height: 14em;
         }
 
         .is-active {
@@ -329,6 +344,7 @@
         }
 
         &-content {
+          height: 16em;
         }
 
         .is-active {

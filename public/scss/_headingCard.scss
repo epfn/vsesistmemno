@@ -29,7 +29,7 @@
   &__row {
     display: flex;
     align-items: center;
-    font-size: clamp(1.5rem, -0.162rem + 2.597vw, 2rem);
+    font-size: #{fluid(24px, 32px)};
     gap: 1em;
   }
 
@@ -44,7 +44,7 @@
   }
 
   &__text {
-    font-size: clamp(0.875rem, 0.459rem + 0.649vw, 1rem);
+    font-size: #{fluid(14px, 16px)};
     text-align: center;
     line-height: 1.4;
     text-wrap: balance;
@@ -52,6 +52,39 @@
 }
 
 @media (max-width: 992px) {
+  .headingCard {
+    padding: 15px 30px;
+    &--white {
+    }
+
+    &--white &__icon {
+    }
+
+    &--blue {
+    }
+
+    &--orange {
+    }
+
+    &__row {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    &__icon {
+      font-size: 28px;
+    }
+
+    &__title {
+      text-align: center;
+    }
+
+    &__text {
+    }
+  }
+}
+
+@media (max-width: 576px) {
   .headingCard {
     padding: 15px;
     &--white {
@@ -67,16 +100,13 @@
     }
 
     &__row {
-        flex-direction: column;
-        gap: 15px;
     }
 
     &__icon {
-        font-size: 28px;
     }
 
     &__title {
-        text-align: center;
+      font-size: 22px;
     }
 
     &__text {

@@ -71,15 +71,15 @@ body {
   @return $rems;
 }
 
-$min-breakpoint: 993px;
-$max-breakpoint: 1338px;
+$min-breakpoint: 1024px;
+$max-breakpoint: 1350px;
 
 @function fluid($min-size, $max-size, $unit: vw) {
   $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
-  $slope-to-unit: round($slope * 100, 2);
-  $intercept-rem: round(px-to-rem($min-size - $slope * $min-breakpoint), 2);
-  $min-size-rem: round(px-to-rem($min-size), 2);
-  $max-size-rem: round(px-to-rem($max-size), 2);
+  $slope-to-unit: round($slope * 100, 3);
+  $intercept-rem: round(px-to-rem($min-size - $slope * $min-breakpoint), 3);
+  $min-size-rem: round(px-to-rem($min-size), 3);
+  $max-size-rem: round(px-to-rem($max-size), 3);
 
   @return clamp(
     #{$min-size-rem},

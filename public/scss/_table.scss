@@ -53,7 +53,7 @@
     text-align: left;
     line-height: 1.25;
     height: 44px;
-    font-size: clamp(12px, 1.25vw, 14px);
+    font-size: #{fluid(12px, 14px)};
 
     padding: 4px;
     padding-inline: 10px;

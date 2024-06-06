@@ -29,7 +29,7 @@
   &__row {
     display: flex;
     align-items: center;
-    font-size: clamp(1.5rem, -0.162rem + 2.597vw, 2rem);
+    font-size: #{fluid(24px, 32px)};
     gap: 1em;
   }
 
@@ -40,10 +40,11 @@
   &__title {
     font-weight: 600;
     line-height: 1.15;
+    text-wrap: balance;
   }
 
   &__text {
-    font-size: clamp(0.875rem, 0.459rem + 0.649vw, 1rem);
+    font-size: #{fluid(14px, 16px)};
     text-align: center;
     line-height: 1.4;
     text-wrap: balance;
@@ -52,7 +53,7 @@
 
 @media (max-width: 992px) {
   .headingCard {
-    padding: 15px;
+    padding: 15px 30px;
     &--white {
     }
 
@@ -76,6 +77,36 @@
 
     &__title {
       text-align: center;
+    }
+
+    &__text {
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .headingCard {
+    padding: 15px;
+    &--white {
+    }
+
+    &--white &__icon {
+    }
+
+    &--blue {
+    }
+
+    &--orange {
+    }
+
+    &__row {
+    }
+
+    &__icon {
+    }
+
+    &__title {
+      font-size: 22px;
     }
 
     &__text {

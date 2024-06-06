@@ -104,5 +104,26 @@ if (document.querySelector(".hero__accordion")) {
   new Accordion(".hero__accordion", {
     openOnInit: [2],
     collapse: false,
+    duration: 380,
+  });
+}
+
+const portalAccordion = document.querySelector(".portal__accordion");
+
+if (portalAccordion) {
+  let w = 0;
+  new Accordion(portalAccordion, {
+    openOnInit: [0],
+    collapse: false,
+    duration: 380,
+    beforeOpen: () => {
+      const content = portalAccordion.querySelectorAll(".ac-content");
+      content.forEach((con) => {
+        w = Math.max(w, con.clientHeight);
+      });
+      content.forEach((con) => {
+        con.style.minHeight = w + "px";
+      });
+    },
   });
 }

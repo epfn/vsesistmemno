@@ -1,9 +1,12 @@
 ---
 import LayoutSite from "@components/LayoutSite.astro";
 import HeadingCard from "@components/HeadingCard.astro";
-import Section from "@components/Section.astro";
 import AccordionHero from "@components/AccordionHero.astro";
 import FrontSection from "@components/FrontSection.astro";
+import AccordionPortal from "@components/AccordionPortal.astro";
+import Field from "@components/Field.astro";
+import Input from "@components/Input.astro";
+import Button from "@components/Button.astro";
 ---
 
 <LayoutSite title="Всё системно">
@@ -25,6 +28,34 @@ import FrontSection from "@components/FrontSection.astro";
       title="Управление данными компании"
       text="Любые не системные документы, информацию, приводим в системную структуру, каталогизируем, разрабатываем документы в едином стиле, вносим в базы данных компании и сервисы, где эта информация начинает работать."
     />
+    <div class="manage">
+      <div class="manage__content">
+        <h3 class="front__title">Разработка электронных каталогов</h3>
+        <ul class="front__list front__list--blue">
+          <li>
+            Любая компания, в какой-то момент сталкивается с проблемой
+            управления и хранением рабочей документацией, разрывается связи
+            сотрудников компании с надлежащим исполнением должностных
+            обязанностей если это связано с соблюдением регламентов и
+            заполнением информацией данных.
+          </li>
+          <li>
+            Это правила работы, инструкции (регламенты) работы сотрудников,
+            персональные требования к сотрудникам, описание рабочих участков,
+            инструкций по выполнению производственных операций, качественное
+            заполнение данными информационных ресурсов компании (частичное, не
+            полное, вообще не заполняется).
+          </li>
+          <li>
+            Для такой работы чаще всего требуются руководители и сотрудники с
+            высокой организационной мотивацией и системных подходом для
+            выполнения такого рода работы. Эту часть работы берет на себя
+            компания Всё системно.
+          </li>
+        </ul>
+      </div>
+      <img src="/img/doc.png" alt="" class="manage__image" />
+    </div>
   </FrontSection>
   <FrontSection id="portal" variant="blue">
     <HeadingCard
@@ -32,6 +63,12 @@ import FrontSection from "@components/FrontSection.astro";
       title="Корпоративный портал Все системно Документы vcdocs.ru"
       text="Для эффективного управления данными их сбор, каталогизация, работа с актуальными документами"
     />
+    <div class="portal">
+      <img src="/img/devices.png" alt="" class="portal__image" />
+      <div class="portal__accordion">
+        <AccordionPortal />
+      </div>
+    </div>
   </FrontSection>
   <FrontSection id="catalog" variant="orange">
     <HeadingCard
@@ -41,8 +78,8 @@ import FrontSection from "@components/FrontSection.astro";
     />
     <div class="frontSection__card frontSection__card--gray">
       <div class="frontSection__card-content">
-        <h3 class="frontSection__title">Разработка электронных каталогов</h3>
-        <ul class="frontSection__list frontSection__list--blue">
+        <h3 class="front__title">Разработка электронных каталогов</h3>
+        <ul class="front__list front__list--blue">
           <li>
             Разработка электронных каталогов: информация, документы, объекты и
             оборудование учета, справочники.
@@ -63,7 +100,120 @@ import FrontSection from "@components/FrontSection.astro";
           </li>
         </ul>
       </div>
-      <img src="/img/create.png" alt="" class="frontSection__card-image">
+      <img src="/img/create.png" alt="" class="frontSection__card-image" />
+    </div>
+    <div class="frontSection__card frontSection__card--blue">
+      <div class="frontSection__card-content">
+        <h3 class="front__title">
+          Разработка электронных каталогов: <span> Арт направление </span>
+        </h3>
+
+        <ul class="front__list front__list--blue">
+          <li>Создание электронных каталогов произведений искусств.</li>
+          <li>
+            Персональные коллекции, федеральные каталоги по различным тематикам
+          </li>
+        </ul>
+
+        <p>
+          Компания <strong> Все системно </strong>
+          разработала и
+          <strong> запустила федеральный </strong>
+          проект электронный музей для публичного пользования - электронный филателистический
+          каталог почтовых марок vcstamps.ru
+        </p>
+        <p>
+          В каталоге более 10.000 элементов, которые структурированы по темам,
+          разделам, имеют мощный инструмент фильтрации для отбора данных.
+        </p>
+        <p>Проект поддерживается и постоянно актуализируется.</p>
+      </div>
+      <img src="/img/ussr.png" alt="" class="frontSection__card-image" />
     </div>
   </FrontSection>
+  <section class="about section" id="about">
+    <div class="about__container">
+      <h3 class="about__title">О компании</h3>
+      <div class="about__list">
+        <div class="about__item">
+          <img src="/img/manages.svg" alt="" class="about__image" />
+          <p class="about__text">
+            Компания по сопровождению и управлению данными
+          </p>
+        </div>
+        <div class="about__item">
+          <img src="/img/documents.svg" alt="" class="about__image" />
+          <p class="about__text">
+            Эксперт в области внедрения и ведения электронных систем
+            внутрикорпоративного документооборота
+          </p>
+        </div>
+        <div class="about__item">
+          <img src="/img/folders.svg" alt="" class="about__image" />
+          <p class="about__text">
+            Эксперт по разработке и сопровождению электронных каталогов
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact section" id="contacts">
+    <div class="contact__container">
+      <h2 class="contact__title">Контакты</h2>
+      <div class="contact__social">
+        <a href="mailto:info@vsesistemno.ru" class="contact__link"
+          ><span class="icon-mail"></span> info@vsesistemno.ru</a
+        >
+        <a href="https://t.me/vsesistemno" class="contact__link">
+          <span class="icon-telegram"></span> info@vsesistemno.ru</a
+        >
+      </div>
+      <form class="contact__form">
+        <div class="contact__text">
+          Оставьте свои контактные данные, мы свяжемся с Вами и ответим на все
+          интересующие вас вопросы
+        </div>
+        <div class="contact__row">
+          <Field id="name" label="Имя">
+            <Input id="name" name="name" placeholder="Имя" />
+          </Field>
+        </div>
+        <div class="contact__row">
+          <Field id="phone" label="Телефон">
+            <Input
+              id="phone"
+              name="phone"
+              type="text"
+              placeholder="+ 7 (___) ___ - __ - __"
+            />
+          </Field>
+          <Field id="email" label="E-mail">
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="your@email.com"
+            />
+          </Field>
+        </div>
+        <div class="contact__submit">
+          <Button submit size="small">Отправить</Button>
+          <span class="contact__subtext">
+            Заполняя данную форму, я подтверждаю, что ознакомился с <a
+              href="#"
+              class="link"
+            >
+              политикой конфиденциальности
+            </a>
+
+            и даю
+            <a href="#" class="link">
+              согласие на обработку персональных данных
+            </a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </section>
 </LayoutSite>

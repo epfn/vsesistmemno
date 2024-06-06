@@ -1,4 +1,5 @@
 .hero {
+  background-color: $color-background-purple-light;
   padding-top: 130px;
   padding-bottom: 60px;
   &__container {
@@ -8,12 +9,9 @@
     gap: 16px;
   }
 
-  &__content {
-  }
-
   &__title {
     margin-top: 80px;
-    font-size: 40px;
+    font-size: #{fluid(32px, 40px)};
     font-weight: 600;
     line-height: 1.25;
     max-width: 20ch;
@@ -37,6 +35,18 @@
         font-family: "Onest", sans-serif;
       }
 
+      &-button {
+        font-weight: 500;
+        padding: 0.85em 2.25em;
+        border-radius: 8px;
+        width: max-content;
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align: center;
+        transition: all 0.38s ease-in-out;
+        transition-property: color, background-color;
+      }
+
       &:last-child {
         border-bottom-left-radius: $radius;
         border-bottom-right-radius: $radius;
@@ -46,6 +56,15 @@
         .ac-trigger,
         .ac-panel {
           background-color: white;
+        }
+
+        .ac-button {
+          background-color: $color-background-blue;
+          color: white;
+
+          &:hover {
+            background-color: $color-background-blue-dark;
+          }
         }
       }
 
@@ -58,6 +77,15 @@
           background-color: $color-background-blue;
           color: white;
         }
+
+        .ac-button {
+          background-color: white;
+          color: $color-text-blue;
+          &:hover {
+            background-color: $color-background-blue-light;
+            color: $color-text-black;
+          }
+        }
       }
 
       &--orange {
@@ -69,15 +97,26 @@
           background-color: $color-background-peach;
           color: white;
         }
+
+        .ac-button {
+          background-color: white;
+          color: $color-text-peach;
+
+          &:hover {
+            background-color: $color-background-peach-light;
+            color: $color-text-black;
+          }
+        }
       }
 
       &-trigger {
+        text-wrap: balance;
         font: unset;
         color: currentColor;
         padding-top: 30px;
         padding-bottom: 20px;
         padding-inline: 40px;
-        font-size: 24px;
+        font-size: #{fluid(16px, 24px)};
         font-weight: 600;
         &::after {
           display: none;
@@ -89,7 +128,11 @@
       }
 
       &-content {
-        height: 210px;
+        text-wrap: balance;
+        height: 12em;
+        font-size: #{fluid(14px, 16px)};
+        display: flex;
+        flex-direction: column;
       }
 
       .is-active {
@@ -103,8 +146,8 @@
 
 @media (max-width: 992px) {
   .hero {
+    padding-top: 90px;
     &__container {
-      grid-template-columns: 1fr;
       gap: 20px;
     }
 
@@ -112,6 +155,83 @@
     }
 
     &__title {
+      margin-top: 64px;
+      font-size: 26px;
+    }
+
+    &__accordion {
+      .ac {
+        $radius: 12px;
+        & .ac-trigger {
+          border-top-left-radius: $radius;
+          border-top-right-radius: $radius;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $radius;
+          border-bottom-right-radius: $radius;
+        }
+
+        &--white {
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &--blue {
+          .ac-header {
+          }
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &--orange {
+          .ac-header {
+          }
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &-trigger {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          padding-inline: 20px;
+          &::after {
+          }
+        }
+
+        &-panel {
+          padding-inline: 20px;
+        }
+
+        &-content {
+          height: 14em;
+        }
+
+        .is-active {
+          &::after {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+
+    &__content {
+    }
+
+    &__title {
+      font-size: 32px;
+      margin-top: unset;
+      max-width: unset;
     }
 
     &__accordion {
@@ -120,6 +240,10 @@
         }
 
         &:last-child {
+        }
+
+        &-button {
+          width: 100%;
         }
 
         &--white {
@@ -153,6 +277,74 @@
         }
 
         &-content {
+        }
+
+        .is-active {
+          &::after {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    &__container {
+    }
+
+    &__content {
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__accordion {
+      .ac {
+        & .ac-trigger {
+        }
+
+        &:last-child {
+        }
+
+        &-button {
+          width: 100%;
+          padding-inline: 10px;
+        }
+
+        &--white {
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &--blue {
+          .ac-header {
+          }
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &--orange {
+          .ac-header {
+          }
+          .ac-trigger,
+          .ac-panel {
+          }
+        }
+
+        &-trigger {
+          &::after {
+          }
+        }
+
+        &-panel {
+        }
+
+        &-content {
+          height: 16em;
         }
 
         .is-active {

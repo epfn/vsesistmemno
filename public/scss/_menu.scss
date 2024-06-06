@@ -2,12 +2,12 @@
   display: flex;
 
   &--normal {
-    gap: clamp(8px, 2.5vw, 40px);
+    gap: #{fluid(12px, 40px)};
     font-size: #{fluid(14px, 16px)};
   }
 
   &--small {
-    gap: clamp(8px, 1.5vw, 30px);
+    gap: #{fluid(12px, 30px)};
     font-size: #{fluid(12px, 14px)};
   }
 
