@@ -4,11 +4,13 @@ import type { HTMLAttributes } from "astro/types";
 interface Props extends HTMLAttributes<"input"> {
   variant?: "normal" | "small";
   marginTop?: "20";
+  marginInline?: "-10";
 }
 
-const { variant = "normal", type, id, marginTop, ...restProps } = Astro.props;
+const { variant = "normal", type, id, marginTop, marginInline, ...restProps } = Astro.props;
 let classList = ["checkbox"];
 if (marginTop) classList.push(`checkbox--mt${marginTop}`);
+if (marginInline) classList.push(`checkbox--mi${marginInline}`);
 ---
 
 <div class:list={classList}>

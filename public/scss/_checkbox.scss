@@ -8,6 +8,12 @@
     }
   }
 
+  &--mi {
+    &-10 {
+      margin-inline: -10px;
+    }
+  }
+
   &__label {
     cursor: pointer;
     hyphens: auto;
@@ -72,5 +78,11 @@
     &:hover {
       color: color-mix(in srgb, $color-background-blue 75%, black 25%);
     }
+  }
+}
+
+@media (max-width: 576px) {
+  .checkbox {
+    margin-inline: unset;
   }
 }

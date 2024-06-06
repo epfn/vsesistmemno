@@ -555,15 +555,20 @@ body {
 .guest__card {
   --_padding: 80px;
   display: grid;
-  padding-top: var(--_padding);
-  padding-bottom: 60px;
-  grid-template-columns: var(--_padding) minmax(auto, 455px) var(--_padding);
+  padding-top: 70px;
+  grid-template-columns: var(--_padding) minmax(auto, 440px) var(--_padding);
   border-radius: 20px;
   width: fit-content;
   background-color: white;
 }
 .guest__card > * {
   grid-column: 2/-2;
+}
+.guest__card--pb60 {
+  padding-bottom: 60px;
+}
+.guest__card--pb80 {
+  padding-bottom: 80px;
 }
 .guest__title {
   font-weight: 600;
@@ -573,11 +578,17 @@ body {
 }
 .guest__subtitle {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: center;
   padding-inline: 1ch;
 }
 .guest__title, .guest__subtitle {
+  margin-bottom: 20px;
+}
+.guest__title {
+  margin-bottom: 20px;
+}
+.guest__subtitle {
   margin-bottom: 30px;
 }
 .guest__form {
@@ -594,7 +605,7 @@ body {
   line-height: 1;
 }
 .guest__footer {
-  margin-top: 60px;
+  margin-top: 55px;
   font-size: 14px;
   text-align: center;
 }
@@ -644,6 +655,9 @@ body {
 }
 .checkbox--mt20 {
   margin-top: 20px;
+}
+.checkbox--mi-10 {
+  margin-inline: -10px;
 }
 .checkbox__label {
   cursor: pointer;
@@ -700,6 +714,11 @@ body {
   color: color-mix(in srgb, #5c7ef4 75%, black 25%);
 }
 
+@media (max-width: 576px) {
+  .checkbox {
+    margin-inline: unset;
+  }
+}
 .button {
   font-weight: 500;
   line-height: 1.25;

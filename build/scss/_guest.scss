@@ -20,15 +20,21 @@
   &__card {
     --_padding: 80px;
     display: grid;
-    padding-top: var(--_padding);
-    padding-bottom: 60px;
-    grid-template-columns: var(--_padding) minmax(auto, 455px) var(--_padding);
+    padding-top: 70px;
+    grid-template-columns: var(--_padding) minmax(auto, 440px) var(--_padding);
     border-radius: 20px;
     width: fit-content;
     background-color: white;
 
     & > * {
       grid-column: 2 / -2;
+    }
+
+    &--pb60 {
+      padding-bottom: 60px;
+    }
+    &--pb80 {
+      padding-bottom: 80px;
     }
   }
 
@@ -41,12 +47,19 @@
 
   &__subtitle {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
     text-align: center;
     padding-inline: 1ch;
   }
 
   &__title,
+  &__subtitle {
+    margin-bottom: 20px;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+
   &__subtitle {
     margin-bottom: 30px;
   }
@@ -67,7 +80,7 @@
   }
 
   &__footer {
-    margin-top: 60px;
+    margin-top: 55px;
     font-size: 14px;
     text-align: center;
   }
