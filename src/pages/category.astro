@@ -16,11 +16,16 @@ const tabs: string[] = [
 ---
 
 <LayoutUser title="Каталог">
-  <Backlink href="/storage.html">Вернуться к хранилищу документов</Backlink>
+  <Backlink href="/storage.html">Вернуться к “ Название каталога”</Backlink>
 
   <Section>
     <Surface variant="catalog" title="Название категории">
-      <Button size="small" slot="options" icon="plus">Создать категорию</Button>
+      <Button size="small" slot="options" icon="plus" color="blue"
+        >Создать подкатегорию</Button
+      >
+      <Button size="small" slot="options" icon="plus" color="orange"
+        >Создать документ</Button
+      >
 
       <div class="tab">
         <div class="tab__list">

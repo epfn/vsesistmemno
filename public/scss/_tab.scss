@@ -21,7 +21,6 @@
     transition-timing-function: ease-in-out;
 
     &:hover:not(&--active) {
-
       background-color: $color-background-blue-light;
     }
     &--active {
@@ -43,6 +42,73 @@
     &--active {
       display: block;
       // opacity: 1;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: #{fluid(40px, 100px)};
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: #{fluid(14px, 18px)};
+  }
+
+  &__link {
+    font-size: #{fluid(14px, 16px)};
+    transition: color 0.38s ease-in-out;
+
+    &:hover {
+      color: $color-text-blue;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .tab {
+
+
+    &__list {
+
+    }
+
+    &__item {
+
+
+      &:hover:not(&--active) {
+      }
+      &--active {
+  
+      }
+    }
+
+    &__container {
+    }
+
+    &__content {
+
+
+      &--active {
+       
+      }
+    }
+
+    &__row {
+    
+    }
+
+    &__col {
+  
+    }
+
+    &__link {
+
+
+      &:hover {
+      }
     }
   }
 }
