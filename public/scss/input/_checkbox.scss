@@ -14,19 +14,21 @@
     }
   }
 
+  &--normal {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  &--small {
+    font-size: 12px;
+  }
+
   &__label {
     cursor: pointer;
     hyphens: auto;
     font-weight: 400;
-
-    &--normal {
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    &--small {
-      font-size: 12px;
-    }
   }
 
   &__element {

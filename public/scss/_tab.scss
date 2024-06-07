@@ -10,11 +10,20 @@
   }
 
   &__item {
+    cursor: pointer;
     border-radius: 8px;
     font-size: 12px;
-    padding: 5px 15px;
+    padding: 6px 14px;
     border: 1px solid $color-border-gray;
+    user-select: none;
+    transition-property: color, border-color, background-color;
+    transition-duration: 0.38s;
+    transition-timing-function: ease-in-out;
 
+    &:hover:not(&--active) {
+
+      background-color: $color-background-blue-light;
+    }
     &--active {
       background-color: $color-background-blue;
       border-color: $color-background-blue;
@@ -26,5 +35,14 @@
   }
 
   &__content {
+    display: none;
+    // opacity: 0;
+    // transition: display 0.38s ease-in-out allow-discrete;
+    // transition-property: display, opacity;
+
+    &--active {
+      display: block;
+      // opacity: 1;
+    }
   }
 }

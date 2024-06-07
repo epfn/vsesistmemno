@@ -2,12 +2,15 @@
 interface Props {
   variant: "catalog" | "create";
   title: string;
+  form?: boolean;
 }
 
-const { variant, title } = Astro.props;
+const { variant, title, form = false } = Astro.props;
+
+const Element = form ? "form" : "div";
 ---
 
-<div class:list={["surface", `surface--${variant}`]}>
+<Element class:list={["surface", `surface--${variant}`]}>
   <div class="surface__head">
     <h1 class="surface__title">{title}</h1>
     {
@@ -19,4 +22,4 @@ const { variant, title } = Astro.props;
     }
   </div>
   <slot />
-</div>
+</Element>

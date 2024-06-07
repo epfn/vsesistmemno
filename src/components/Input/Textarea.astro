@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"textarea"> {}
+
+const { ...restProps } = Astro.props;
+---
+
+<textarea {...restProps} class="textarea"></textarea>

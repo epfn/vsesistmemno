@@ -8,7 +8,7 @@ interface Props extends HTMLAttributes<"input"> {
 }
 
 const { variant = "normal", type, id, marginTop, marginInline, ...restProps } = Astro.props;
-let classList = ["checkbox"];
+let classList = ["checkbox", `checkbox--${variant}`];
 if (marginTop) classList.push(`checkbox--mt${marginTop}`);
 if (marginInline) classList.push(`checkbox--mi${marginInline}`);
 ---
@@ -17,7 +17,7 @@ if (marginInline) classList.push(`checkbox--mi${marginInline}`);
   <input {...restProps} {id} type="checkbox" class="checkbox__element" />
   <label
     for={id}
-    class:list={["checkbox__label", `checkbox__label--${variant}`]}
+    class:list={["checkbox__label"]}
   >
     <slot />
   </label>

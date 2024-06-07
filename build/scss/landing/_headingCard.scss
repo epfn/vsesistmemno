@@ -41,6 +41,13 @@
     font-weight: 600;
     line-height: 1.15;
     text-wrap: balance;
+
+    a {
+      transition: color 0.38s ease-in-out;
+      &:hover {
+        color: $color-text-peach;
+      }
+    }
   }
 
   &__text {

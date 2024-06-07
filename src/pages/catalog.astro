@@ -1,9 +1,9 @@
 ---
-import Field from "@components/Field.astro";
-import Input from "@components/Input.astro";
+import Field from "@components/Input/Field.astro";
+import Input from "@components/Input/Input.astro";
 import Backlink from "@components/Backlink.astro";
 import Profile from "@components/Profile.astro";
-import Select from "@components/Select.astro";
+import Select from "@components/Input/Select.astro";
 import LayoutUser from "@components/LayoutUser.astro";
 import Surface from "@components/Surface.astro";
 import Section from "@components/Section.astro";
@@ -28,23 +28,11 @@ const tabs: string[] = [
 
       <div class="tab">
         <div class="tab__list">
-          {
-            tabs.map((tab, index) => (
-              <div class="tab__item" data-tab={index}>
-                {tab}
-              </div>
-            ))
-          }
+          {tabs.map((tab, index) => <div class="tab__item">{tab}</div>)}
         </div>
 
         <div class="tab__container">
-          {
-            tabs.map((tab, index) => (
-              <div class="tab__content" data-content={index}>
-                {index}
-              </div>
-            ))
-          }
+          {tabs.map((tab, index) => <div class="tab__content">{index}</div>)}
         </div>
       </div>
     </Surface>

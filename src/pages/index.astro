@@ -1,11 +1,11 @@
 ---
-import LayoutSite from "@components/LayoutSite.astro";
-import HeadingCard from "@components/HeadingCard.astro";
-import AccordionHero from "@components/AccordionHero.astro";
-import FrontSection from "@components/FrontSection.astro";
-import AccordionPortal from "@components/AccordionPortal.astro";
-import Field from "@components/Field.astro";
-import Input from "@components/Input.astro";
+import LayoutSite from "@components/Landing/LayoutSite.astro";
+import HeadingCard from "@components/Landing/HeadingCard.astro";
+import AccordionHero from "@components/Landing/AccordionHero.astro";
+import FrontSection from "@components/Landing/FrontSection.astro";
+import AccordionPortal from "@components/Landing/AccordionPortal.astro";
+import Field from "@components/Input/Field.astro";
+import Input from "@components/Input/Input.astro";
 import Button from "@components/Button.astro";
 ---
 
@@ -120,11 +120,22 @@ import Button from "@components/Button.astro";
     </div>
   </FrontSection>
   <FrontSection id="portal" variant="blue">
-    <HeadingCard
-      variant="blue"
-      title="Корпоративный портал Все системно Документы vcdocs.ru"
-      text="Для эффективного управления данными их сбор, каталогизация, работа с актуальными документами"
-    />
+    <div class:list={["headingCard", `headingCard--blue`]}>
+      <div class="headingCard__row">
+        <div class="headingCard__icon icon-logo"></div>
+        <h2 class="headingCard__title">
+          Корпоративный портал Все системно Документы <a
+            href="https://vcdocs.ru/"
+          >
+            vcdocs.ru
+          </a>
+        </h2>
+      </div>
+      <div class="headingCard__text">
+        Для эффективного управления данными их сбор, каталогизация, работа с
+        актуальными документами
+      </div>
+    </div>
     <div class="portal">
       <img src="/img/devices.png" alt="" class="portal__image" />
       <div class="portal__accordion">

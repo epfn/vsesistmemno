@@ -42,12 +42,29 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+
+.is-flipped.is-open .choices__inner {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 .is-open .choices__list--dropdown,
 .is-open .choices__list[aria-expanded] {
   border-color: $color-border-blue;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-width: 0;
+}
+
+.is-flipped .choices__list--dropdown,
+.is-flipped .choices__list[aria-expanded] {
+  border-color: $color-border-blue;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-width: 1px;
+  border-bottom-width: 0;
 }
 .choices__list--dropdown .choices__item--selectable.is-highlighted,
 .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {

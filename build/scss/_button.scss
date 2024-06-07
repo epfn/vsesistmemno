@@ -27,6 +27,10 @@
     padding-top: 13px;
   }
 
+  &--wide {
+    min-width: 310px;
+  }
+
   &--blue {
     background-color: $color-background-blue;
     color: white;
@@ -68,6 +72,21 @@
 
     &--small {
       font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .button {
+    &--normal {
+    }
+
+    &--small {
+    }
+
+    &--wide {
+      min-width: unset;
+      width: 100%;
     }
   }
 }

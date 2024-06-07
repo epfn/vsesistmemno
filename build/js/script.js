@@ -1,4 +1,32 @@
-const datepicker = new AirDatepicker(".input__element--date", {});
+const datepickers = document.querySelectorAll(".input__element--date");
+
+if (datepickers.length) {
+  datepickers.forEach((datepicker) => {
+    const currentDate = datepicker.getAttribute("value");
+    let selected = new Date();
+
+    if (currentDate) {
+      const date = currentDate.split(".");
+      selected = new Date(+date[2], +date[1] - 1, +date[0]);
+    }
+
+    const picker = new AirDatepicker(datepicker, {
+      selectedDates: [selected],
+      dateFormat(date) {
+        return date.toLocaleString("ru", {
+          year: "numeric",
+          day: "2-digit",
+          month: "2-digit",
+        });
+      },
+    });
+
+    datepicker.addEventListener("change", (e) => {
+      const date = e.target.value.split(".");
+      picker.selectDate(new Date(+date[2], +date[1] - 1, +date[0]));
+    });
+  });
+}
 
 function passwordToggle() {
   const passwordElement = document.querySelector(".input__element--password");
@@ -94,6 +122,7 @@ function customSelects() {
       const choices = new Choices(select, {
         searchEnabled: false,
         itemSelectText: "",
+        allowHTML: false,
       });
     });
   }
@@ -149,24 +178,58 @@ const tabs = document.querySelectorAll(".tab");
 if (tabs.length) tabs.forEach((tab) => tabLogic(tab));
 
 function tabLogic(tab) {
-  const triggers = tab.document.querySelectorAll("tab__item");
-  const contents = tab.document.querySelectorAll("tab__content");
+  const triggers = tab.querySelectorAll(".tab__item");
+  const contents = tab.querySelectorAll(".tab__content");
+  const tabList = document.querySelector(".tab__list");
+  const tabContainer = document.querySelector(".tab__container");
 
   triggers.forEach((trigger, index) => {
     trigger.setAttribute("data-tab", index);
-
-    trigger.addEventListener("click", (element, i) => {
-      triggers.forEach((trigger) => {
-        trigger.classList.remove("tab__item--active");
-      });
-
-      contents.forEach((content) => {
-        content.classList.remove("tab__content--active");
-      });
-    });
   });
 
   contents.forEach((content, index) => {
-    content.setAttribute("data-content", index);
+    content.setAttribute("data-tab", index);
+  });
+
+  const clickHandler = (event) => {
+    triggers.forEach((t) => {
+      t.classList.remove("tab__item--active");
+    });
+
+    contents.forEach((c) => {
+      c.classList.remove("tab__content--active");
+    });
+
+    const index = event.target.getAttribute("data-tab");
+    tabList
+      .querySelector(`[data-tab="${index}"]`)
+      .classList.add("tab__item--active");
+    tabContainer
+      .querySelector(`[data-tab="${index}"]`)
+      .classList.add("tab__content--active");
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", clickHandler);
   });
 }
+
+function addTag() {
+  const trigger = document.querySelector(".fieldset__add");
+  const fieldset = document.querySelector(".fieldset__row--tag");
+
+  const n = window.innerWidth > 992 ? 4 : window.innerWidth > 576 ? 2 : 1;
+
+  if (trigger && fieldset) {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      for (let i = 0; i < n; i++) {
+        const newInput = fieldset.querySelector(".input").cloneNode(true);
+        newInput.querySelector("input").value = "";
+        fieldset.insertBefore(newInput, trigger);
+      }
+    });
+  }
+}
+
+addTag();

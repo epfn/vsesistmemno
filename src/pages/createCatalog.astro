@@ -1,0 +1,46 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Button from "@components/Button.astro";
+import Checkbox from "@components/Checkbox.astro";
+import Fieldset from "@components/Input/Fieldset.astro";
+import Input from "@components/Input/Input.astro";
+import Textarea from "@components/Input/Textarea.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Section from "@components/Section.astro";
+import Surface from "@components/Surface.astro";
+---
+
+<LayoutUser title="Создать каталог">
+  <Backlink href="/storage.html">Назад</Backlink>
+  <Section>
+    <Surface variant="create" title="Создать каталог" form>
+      <Fieldset legend="Название каталога" variant="third">
+        <Input name="catalog" placeholder="Название" />
+      </Fieldset>
+      <Fieldset legend="Краткое описание" variant="full">
+        <Textarea placeholder="Описание" name="description" />
+      </Fieldset>
+      <Fieldset legend="Основные теги" variant="tag">
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <div class="fieldset__add">Добавить</div>
+      </Fieldset>
+      <Fieldset legend="Уровень доступа" variant="full">
+        <Checkbox checked name="personal_catalog" id="personal_catalog"
+          >Персональный каталог</Checkbox
+        >
+        <Checkbox name="company_catalor" id="company_catalor"
+          >Каталог компании</Checkbox
+        >
+        <Checkbox name="department__catalog" id="department__catalog"
+          >Каталог отдела компании</Checkbox
+        >
+      </Fieldset>
+      <div>
+        <Button size="wide" submit>Сохранить изменения</Button>
+      </div>
+    </Surface>
+  </Section>
+</LayoutUser>

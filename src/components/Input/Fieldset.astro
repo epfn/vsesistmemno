@@ -1,0 +1,15 @@
+---
+interface Props {
+  legend: string;
+  variant: "tag" | 'full' | 'third';
+}
+
+const { legend, variant } = Astro.props;
+---
+
+<fieldset class="fieldset">
+  <legend class="fieldset__legend">{legend}</legend>
+  <div class:list={["fieldset__row", `fieldset__row--${variant}`]}>
+    <slot />
+  </div>
+</fieldset>

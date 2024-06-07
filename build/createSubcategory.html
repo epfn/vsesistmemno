@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.28174196" />
-    <title>Карточка Пользователя</title>
+    <link rel="stylesheet" href="./css/style.css?v=0.28174233" />
+    <title>Создать подкатегорию</title>
   </head>
   <body>
     <header class="header section">
@@ -48,43 +48,65 @@
 
     <section class="backlink section">
       <div class="backlink__container">
-        <a href="./storage.html" class="backlink__element"> <span class="icon-arrow-small"></span>Вернуться к хранилищу документов </a>
+        <a href="./category.html" class="backlink__element"> <span class="icon-arrow-small"></span>Назад </a>
       </div>
     </section>
-
     <section class="section section--grow section--mb">
       <div class="section__container">
-        <div class="surface surface--catalog">
+        <form class="surface surface--create">
           <div class="surface__head">
-            <h1 class="surface__title">Название категории</h1>
-            <div class="surface__options">
-              <div class="button button--blue button--small">
-                <span class="button__icon icon-plus"> </span>
-                Создать категорию
+            <h1 class="surface__title">Создать подкатегорию</h1>
+          </div>
+
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Название категории</legend>
+            <div class="fieldset__row fieldset__row--third">
+              <select id="category" name="category" class="select">
+                <option value="Подкатегория 1">Подкатегория 1</option>
+                <option value="Подкатегория 2">Подкатегория 2</option>
+                <option value="Подкатегория 3">Подкатегория 3</option>
+                <option value="Подкатегория 4">Подкатегория 4</option>
+                <option value="Подкатегория 5">Подкатегория 5</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Название подкатегории</legend>
+            <div class="fieldset__row fieldset__row--third">
+              <div class="input">
+                <input name="subcategory" placeholder="Название" class="input__element" />
               </div>
             </div>
-          </div>
+          </fieldset>
 
-          <div class="tab">
-            <div class="tab__list">
-              <div class="tab__item">Все</div>
-              <div class="tab__item">Название тега 1</div>
-              <div class="tab__item">Тег 2</div>
-              <div class="tab__item">Название 3</div>
-              <div class="tab__item">Название тега 4</div>
-              <div class="tab__item">Название тега 5</div>
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Краткое описание</legend>
+            <div class="fieldset__row fieldset__row--full">
+              <textarea placeholder="Описание" name="description" class="textarea"></textarea>
             </div>
-
-            <div class="tab__container">
-              <div class="tab__content">0</div>
-              <div class="tab__content">1</div>
-              <div class="tab__content">2</div>
-              <div class="tab__content">3</div>
-              <div class="tab__content">4</div>
-              <div class="tab__content">5</div>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Основные теги</legend>
+            <div class="fieldset__row fieldset__row--tag">
+              <div class="input">
+                <input name="tag" placeholder="Тег" class="input__element" />
+              </div>
+              <div class="input">
+                <input name="tag" placeholder="Тег" class="input__element" />
+              </div>
+              <div class="input">
+                <input name="tag" placeholder="Тег" class="input__element" />
+              </div>
+              <div class="input">
+                <input name="tag" placeholder="Тег" class="input__element" />
+              </div>
+              <div class="fieldset__add">Добавить</div>
             </div>
+          </fieldset>
+          <div>
+            <button type="submit" class="button button--blue button--wide">Сохранить</button>
           </div>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -99,6 +121,6 @@
     <script src="./plugins/choices/choices.min.js" defer></script>
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
-    <script src="./js/script.js?v=0.28174196" defer></script>
+    <script src="./js/script.js?v=0.28174233" defer></script>
   </body>
 </html>

@@ -1,0 +1,49 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Button from "@components/Button.astro";
+import Fieldset from "@components/Input/Fieldset.astro";
+import Input from "@components/Input/Input.astro";
+import Select from "@components/Input/Select.astro";
+import Textarea from "@components/Input/Textarea.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Section from "@components/Section.astro";
+import Surface from "@components/Surface.astro";
+---
+
+<LayoutUser title="Создать категорию">
+  <Backlink href="/category.html">Назад</Backlink>
+  <Section>
+    <Surface variant="create" title="Создать категорию" form>
+      <Fieldset legend="Название каталога" variant="third">
+        <Select
+          id="catalog"
+          name="catalog"
+          options={[
+            "Каталог 1",
+            "Каталог 2",
+            "Каталог 3",
+            "Каталог 4",
+            "Каталог 5",
+          ]}
+        />
+      </Fieldset>
+      <Fieldset legend="Название категории" variant="third">
+        <Input name="category" placeholder="Название" />
+      </Fieldset>
+
+      <Fieldset legend="Краткое описание" variant="full">
+        <Textarea placeholder="Описание" name="description" value='' />
+      </Fieldset>
+      <Fieldset legend="Основные теги" variant="tag">
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <div class="fieldset__add">Добавить</div>
+      </Fieldset>
+      <div >
+        <Button size="wide" submit >Сохранить</Button>
+      </div>
+    </Surface>
+  </Section>
+</LayoutUser>
