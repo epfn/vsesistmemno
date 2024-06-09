@@ -14,10 +14,12 @@ interface Props extends TableType {
 }
 const { head, body, status, role, id } = Astro.props;
 
-let classList = ["table"];
-if (status) classList.push("table--status");
-if (role) classList.push("table--role");
-if (id) classList.push("table--id");
+let classList = [
+  "table",
+  { "table--id": id },
+  { "table--role": role },
+  { "table--status": status },
+];
 ---
 
 <div class:list={classList}>

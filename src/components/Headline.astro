@@ -4,18 +4,21 @@ interface Props {
   top?: "60" | "40";
   type?: "content" | "form";
   variant?: "content" | "form" | "search";
+  div?: boolean;
 }
 
-const { title, top, type = "content", variant = "content" } = Astro.props;
+const { title, top, type = "content", variant = "content", div } = Astro.props;
 
 const Element = type === "form" ? "form" : "div";
-const classList = ["headline", "section"];
+const Container = div ? "div" : "section";
+
+const classList = ["headline", { "headline--mb": !div }, { section: !div }];
 if (top) classList.push(`headline--mt${top}`);
 ---
 
-<section class:list={classList}>
+<Container class:list={classList}>
   <div class="headline__container">
     <h1 class="headline__title">{title}</h1>
     <Element class={`headline__${variant}`}><slot /></Element>
   </div>
-</section>
+</Container>

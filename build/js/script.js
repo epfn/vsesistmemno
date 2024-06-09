@@ -3,7 +3,7 @@ const datepickers = document.querySelectorAll(".input__element--date");
 if (datepickers.length) {
   datepickers.forEach((datepicker) => {
     const currentDate = datepicker.getAttribute("value");
-    let selected = new Date();
+    let selected = undefined;
 
     if (currentDate) {
       const date = currentDate.split(".");
@@ -115,11 +115,18 @@ if (menuLinks.length) {
   });
 }
 
+const selectCopy = [];
+
 function customSelects() {
   const selects = document.querySelectorAll(".select");
   if (selects.length) {
     selects.forEach((select) => {
-      const choices = new Choices(select, {
+      if (select.parentElement.classList.contains("fieldset__row--copy")) {
+        const copy = select.cloneNode(true);
+        selectCopy.push(copy);
+      }
+
+      const choice = new Choices(select, {
         searchEnabled: false,
         itemSelectText: "",
         allowHTML: false,
@@ -229,21 +236,76 @@ function tabLogic(tab) {
 }
 
 function addTag() {
-  const trigger = document.querySelector(".fieldset__add");
-  const fieldset = document.querySelector(".fieldset__row--tag");
+  const trigger = document.querySelector(".fieldset__add--tag");
 
-  const n = window.innerWidth > 992 ? 4 : window.innerWidth > 576 ? 2 : 1;
-
-  if (trigger && fieldset) {
+  if (trigger) {
     trigger.addEventListener("click", (e) => {
       e.preventDefault();
+      const fieldset = trigger.parentElement;
+      const row = fieldset.querySelector(".fieldset__row");
+      const n = window.innerWidth > 992 ? 4 : window.innerWidth > 576 ? 2 : 1;
       for (let i = 0; i < n; i++) {
         const newInput = fieldset.querySelector(".input").cloneNode(true);
         newInput.querySelector("input").value = "";
-        fieldset.insertBefore(newInput, trigger);
+        row.appendChild(newInput, trigger);
       }
     });
   }
 }
 
 addTag();
+
+function addChoices() {
+  const trigger = document.querySelector(".fieldset__add--choices");
+
+  if (trigger) {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const fieldset = trigger.parentElement;
+      const row = fieldset.querySelector(".fieldset__row");
+
+      selectCopy.forEach((copy) => {
+        row.appendChild(copy.cloneNode(true));
+        const choice = new Choices(row.lastElementChild, {
+          searchEnabled: false,
+          itemSelectText: "",
+          allowHTML: false,
+        });
+      });
+    });
+  }
+}
+
+addChoices();
+
+function initTinyMCE(params) {
+  tinymce.init({
+    selector: ".tinymce",
+    language: "ru",
+    theme: "silver",
+    skin: "oxide",
+    promotion: false,
+    license_key: "gpl",
+    height: 380,
+    resize: true,
+    branding: false,
+    elementpath: false,
+    min_height: 380,
+  });
+}
+
+initTinyMCE();
+
+// const form = document.querySelector(".surface");
+
+// if (form) {
+//   form.addEventListener("submit", (e) => {
+//     e.preventDefault();
+
+//     formData = new FormData(form);
+//     for (let [key, value] of formData) {
+//       console.log(`${key} — ${value}`);
+//     }
+//   });
+// }

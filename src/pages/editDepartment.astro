@@ -1,0 +1,78 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Button from "@components/Button.astro";
+import Headline from "@components/Headline.astro";
+import Field from "@components/Input/Field.astro";
+import Input from "@components/Input/Input.astro";
+import Select from "@components/Input/Select.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Profile from "@components/Profile.astro";
+import Search from "@components/Search.astro";
+import Section from "@components/Section.astro";
+import type { TableType } from "@components/Table.astro";
+import Table from "@components/Table.astro";
+
+const head: TableType["head"] = ["ФИО", "Должность", "Статус"];
+const body: TableType["body"] = [
+  [
+    { text: "Измайлова Ольга Ивановна", type: "link" },
+    { text: "Директор" },
+    { text: "Активен", type: "green" },
+  ],
+  [
+    { text: "Петров Петр Петрович", type: "link" },
+    { text: "Логист" },
+    { text: "Заблокирован", type: "red" },
+  ],
+  [
+    { text: "Сидоров Максим Игоревич", type: "link" },
+    { text: "Мерчендайзер" },
+    { text: "Не активен", type: "yellow" },
+  ],
+  [
+    { text: "Большова Ольга Ивановна", type: "link" },
+    { text: "Уборщица" },
+    { text: "Aктивен", type: "green" },
+  ],
+  [
+    { text: "Петров Петр Петрович", type: "link" },
+    { text: "Финансовый директор" },
+    { text: "Активен", type: "green" },
+  ],
+];
+---
+
+<LayoutUser title="Редактировать подразделение">
+  <Backlink href="/companies.html">Компании</Backlink>
+  <Profile>
+    <Fragment slot="col1">
+      <Field id="company" label="Название" variant="gray">
+        <Input
+          type="text"
+          name="department"
+          id="department"
+          value="Отдел продаж"
+        />
+      </Field>
+      <Field id="company" label="Компания" variant="gray">
+        <Input
+          type="text"
+          name="company"
+          id="company"
+          value="ООО “Ромашка”"
+          readonly
+        />
+      </Field>
+      <Field id="status" label="Статус" variant="gray">
+        <Select id="status" name="status" options={["Активно", "Не активно"]} />
+      </Field>
+    </Fragment>
+    <Button slot="row" submit>Сохранить изменения</Button>
+  </Profile>
+  <Headline title="Сотрудники подразделения" type="form" variant="search">
+    <Search placeholder="Поиск пользователя" name="search" />
+  </Headline>
+  <Section>
+    <Table status {head} {body} />
+  </Section>
+</LayoutUser>

@@ -1,0 +1,38 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Button from "@components/Button.astro";
+import Field from "@components/Input/Field.astro";
+import Input from "@components/Input/Input.astro";
+import Select from "@components/Input/Select.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Profile from "@components/Profile.astro";
+---
+
+<LayoutUser title="Создать подразделение">
+  <Backlink href="/companies.html">Компании</Backlink>
+  <Profile grow>
+    <Fragment slot="col1">
+      <Field id="company" label="Название" variant="gray">
+        <Input
+          type="text"
+          name="department"
+          id="department"
+          value="Отдел продаж"
+        />
+      </Field>
+      <Field id="company" label="Компания" variant="gray">
+        <Input
+          type="text"
+          name="company"
+          id="company"
+          value="ООО “Ромашка”"
+          readonly
+        />
+      </Field>
+      <Field id="status" label="Статус" variant="gray">
+        <Select id="status" name="status" options={["Активно", "Не активно"]} />
+      </Field>
+    </Fragment>
+    <Button slot="row" submit>Создать подразделение</Button>
+  </Profile>
+</LayoutUser>

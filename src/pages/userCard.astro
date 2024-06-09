@@ -2,15 +2,12 @@
 import Field from "@components/Input/Field.astro";
 import Input from "@components/Input/Input.astro";
 import Backlink from "@components/Backlink.astro";
-import Profile from "@components/Profile.astro";
+import Profile, { type ProfileType } from "@components/Profile.astro";
 import Select from "@components/Input/Select.astro";
 import LayoutUser from "@components/LayoutUser.astro";
+import Button from "@components/Button.astro";
 
-const user: {
-  avatar: string;
-  name: string;
-  role: string;
-} = {
+const user: ProfileType = {
   avatar: "/img/petrov.png",
   name: "Петров Петр Петрович",
   role: "Администратор каталога",
@@ -19,7 +16,7 @@ const user: {
 
 <LayoutUser title="Карточка Пользователя">
   <Backlink href="/users.html">Пользователи</Backlink>
-  <Profile {...user}>
+  <Profile profile={user} grow>
     <Fragment slot="col1">
       <Field id="phone" label="Телефон" variant="gray">
         <Input
@@ -94,5 +91,6 @@ const user: {
         />
       </Field>
     </Fragment>
+    <Button slot="row" submit>Сохранить изменения</Button>
   </Profile>
 </LayoutUser>

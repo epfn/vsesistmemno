@@ -7,9 +7,19 @@
   }
 
   &__row {
+    &--one {
+      display: grid;
+      grid-auto-columns: minmax(auto, 375px);
+    }
+
     &--third {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
     }
 
     &--full {
@@ -21,11 +31,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
+      margin-bottom: 15px;
     }
   }
 
   &__add {
-    margin-top: 8px;
     font-size: 14px;
     color: $color-text-peach;
     text-decoration: underline;

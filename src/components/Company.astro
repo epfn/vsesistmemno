@@ -1,0 +1,51 @@
+---
+type ColType = {
+  label: string;
+  text: string;
+};
+
+const col1: ColType[] = [
+  { label: "Телефон", text: "+ 7 (999) 111-22-33" },
+  {
+    label: "E-mail",
+    text: "IvanovaOI@email.com",
+  },
+];
+
+const col2: ColType[] = [
+  { label: "Дата регистрации", text: "02.12.2024" },
+  {
+    label: "Статус",
+    text: "Активна",
+  },
+];
+---
+
+<section class="company section">
+  <div class="company__container">
+    <div class="company__row">
+      <img src="/img/vespero.png" class="company__image" />
+      <h1 class="company__title">ООО “Ромашка”</h1>
+    </div>
+    <div class="company__column">
+      {
+        col1.map(({ label, text }) => (
+          <div class="company__item">
+            <div class="company__label">{label}</div>
+            <div class="company__text">{text}</div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="company__column">
+      {
+        col2.map(({ label, text }) => (
+          <div class="company__item">
+            <div class="company__label">{label}</div>
+            <div class="company__text">{text}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Company from "@components/Company.astro";
+import Headline from "@components/Headline.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Search from "@components/Search.astro";
+import Section from "@components/Section.astro";
+import Table, { type TableType } from "@components/Table.astro";
+
+const headDepartment: TableType["head"] = ["Подразделение", "Статус"];
+const bodyDepartment: TableType["body"] = [
+  [
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Активен", type: "green" },
+  ],
+  [
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Заблокирован", type: "red" },
+  ],
+  [
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Не активен", type: "yellow" },
+  ],
+  [
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Aктивен", type: "green" },
+  ],
+  [
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Активен", type: "green" },
+  ],
+];
+
+const headUsers: TableType["head"] = [
+  "ФИО",
+  "Подразделение",
+  "Должность",
+  "Статус",
+];
+const bodyUsers: TableType["body"] = [
+  [
+    { text: "Измайлова Ольга Ивановна", type: "link" },
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Директор" },
+    { text: "Активен", type: "green" },
+  ],
+  [
+    { text: "Петров Петр Петрович", type: "link" },
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Логист" },
+    { text: "Заблокирован", type: "red" },
+  ],
+  [
+    { text: "Сидоров Максим Игоревич", type: "link" },
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Мерчендайзер" },
+    { text: "Не активен", type: "yellow" },
+  ],
+  [
+    { text: "Большова Ольга Ивановна", type: "link" },
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Уборщица" },
+    { text: "Aктивен", type: "green" },
+  ],
+  [
+    { text: "Петров Петр Петрович", type: "link" },
+    { text: "Отдел снабжения", type: "link" },
+    { text: "Финансовый директор" },
+    { text: "Активен", type: "green" },
+  ],
+];
+---
+
+<LayoutUser title="Карточка компании">
+  <Backlink href="/companies.html">Компании</Backlink>
+  <Company />
+
+  <Headline title="Подразделения" type="form" variant="search" div>
+    <Search placeholder="Поиск подразделения" name="search" />
+  </Headline>
+  <Table status head={headDepartment} body={bodyDepartment} />
+
+  <Headline title="Сотрудники компании" type="form" variant="search" div>
+    <Search placeholder="Поиск пользователя" name="search" />
+  </Headline>
+  <Table status head={headUsers} body={bodyUsers} />
+</LayoutUser>

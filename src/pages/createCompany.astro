@@ -1,0 +1,49 @@
+---
+import Field from "@components/Input/Field.astro";
+import Input from "@components/Input/Input.astro";
+import Backlink from "@components/Backlink.astro";
+import Profile, { type ProfileType } from "@components/Profile.astro";
+import Select from "@components/Input/Select.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Button from "@components/Button.astro";
+
+const user: ProfileType = {
+  avatar: "/img/vespero.png",
+};
+---
+
+<LayoutUser title="Создать компанию">
+  <Backlink href="/companies.html">Компании</Backlink>
+  <Profile profile={user} grow>
+    <Fragment slot="col1">
+      <Field id="company" label="Название" variant="gray">
+        <Input type="text" name="company" id="company" value="ООО “Ромашка”" />
+      </Field>
+      <Field id="phone" label="Телефон" variant="gray">
+        <Input
+          type="text"
+          name="phone"
+          id="phone"
+          value="+ 7 (999) 111-22-33"
+        />
+      </Field>
+      <Field id="email" label="E-mail" variant="gray">
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          value="IvanovaOI@email.com"
+        />
+      </Field>
+    </Fragment>
+    <Fragment slot="col2">
+      <Field id="date" label="Дата регистрации" variant="gray">
+        <Input type="date" name="date" id="date" placeholder="ДД.ММ.ГГГГ" />
+      </Field>
+      <Field id="status" label="Статус" variant="gray">
+        <Select id="status" name="status" options={["Активна", "Не активна"]} />
+      </Field>
+    </Fragment>
+    <Button slot="row" submit>Создать компанию</Button>
+  </Profile>
+</LayoutUser>

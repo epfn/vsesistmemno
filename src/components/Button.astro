@@ -12,30 +12,23 @@ const {
   href,
   color = "blue",
   submit = false,
-  size = "normal",
+  size,
   marginTop,
   icon,
 } = Astro.props;
 
-const classList = ["button", `button--${color}`, `button--${size}`];
+const classList = ["button", `button--${color}`];
 if (marginTop) classList.push(`button--mt${marginTop}`);
+if (size) classList.push(`button--${size}`);
+
+const Element = href ? "a" : submit ? "button" : "div";
 ---
 
-{
-  href ? (
-    <a {href} class:list={classList}>
-      {icon && <span class={`button__icon icon-${icon}`}> </span>}
-      <slot />
-    </a>
-  ) : submit ? (
-    <button type="submit" class:list={classList}>
-      {icon && <span class={`button__icon icon-${icon}`}> </span>}
-      <slot />
-    </button>
-  ) : (
-    <div class:list={classList}>
-      {icon && <span class={`button__icon icon-${icon}`}> </span>}
-      <slot />
-    </div>
-  )
-}
+<Element
+  href={href ? href : undefined}
+  type={submit ? "submit" : undefined}
+  class:list={classList}
+>
+  {icon && <span class={`button__icon icon-${icon}`}> </span>}
+  <slot />
+</Element>

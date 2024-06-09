@@ -1,6 +1,4 @@
 .headline {
-  margin-bottom: 40px;
-
   &--mt {
     &60 {
       margin-top: 150px;
@@ -9,6 +7,10 @@
     &40 {
       margin-top: 130px;
     }
+  }
+
+  &--mb {
+    margin-bottom: fluid(20px, 40px);
   }
 
   &__container {
@@ -46,8 +48,6 @@
 
 @media (max-width: 992px) {
   .headline {
-    margin-bottom: 30px;
-
     &--mt60,
     &--mt40 {
       margin-top: 90px;

@@ -1,16 +1,17 @@
 .surface {
   background-color: white;
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: fluid(20px, 40px);
 
   &--catalog {
     padding: fluid(15px, 30px);
+    border-radius: 16px;
   }
 
   &--create {
     padding: fluid(20px, 40px);
+    border-radius: fluid(16px, 30px);
   }
 
   &__title {
@@ -43,6 +44,7 @@
 
 @media (max-width: 992px) {
   .surface {
+    border-radius: 12px;
     &--catalog {
     }
 

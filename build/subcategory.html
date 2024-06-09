@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.35512560" />
+    <link rel="stylesheet" href="./css/style.css?v=0.37276673" />
     <title>Каталог</title>
   </head>
   <body>
@@ -25,6 +25,9 @@
             </form>
             <nav class="header__navigation">
               <ul class="menu menu--normal">
+                <li class="menu__item">
+                  <a href="./storage.html" class="menu__link">Компании</a>
+                </li>
                 <li class="menu__item">
                   <a href="./users.html" class="menu__link">Пользователи</a>
                 </li>
@@ -75,22 +78,21 @@
             </div>
           </div>
 
-          <div class="tab">
+          <div class="tab" data-open="2">
             <div class="tab__list">
               <div class="tab__item">Все</div>
-              <div class="tab__item tab__item--active">Название тега 1</div>
+              <div class="tab__item">Название тега 1</div>
               <div class="tab__item">Тег 2</div>
               <div class="tab__item">Название 3</div>
               <div class="tab__item">Название тега 4</div>
               <div class="tab__item">Название тега 5</div>
             </div>
-
             <div class="tab__container">
               <div class="tab__content">
                 <div class="tab__wrap">
                   <div class="tab__title">Название подкатегории</div>
                   <div class="tab__row">
-                    <div class="tab__col tab__col--small">
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название подкатегории следующего порядка</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка</a>
@@ -103,17 +105,43 @@
                 </div>
 
                 <div class="tab__wrap">
-                  <div class="tab__title">Документы относящиеся к “Название подкатегории”</div>
-                  <div class="tab__grid">
-                    <form>
-                      <div class="search">
-                        <input placeholder="Поиск " type="text" class="search__element" />
-                        <button type="submit" class="search__icon icon-search"></button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab__grid">
-                    <div class="tab__col tab__col--small">
+                  <div class="tab__title">Документы относящиеся к “Название подкатегории ”</div>
+                  <form class="tab__form">
+                    <div class="search search--small">
+                      <input name="search" placeholder="Поиск" type="text" class="search__element" />
+                      <button type="submit" class="search__icon icon-search"></button>
+                    </div>
+                    <div class="field field--horizontal">
+                      <label for="sort" class="field__label field__label--gray">Сортировка</label>
+                      <select id="sort" name="sort" class="select">
+                        <option value="По алфавиту">По алфавиту</option>
+                        <option value="По дате">По дате</option>
+                        <option value="По важности">По важности</option>
+                      </select>
+                    </div>
+                  </form>
+
+                  <div class="tab__row">
+                    <div class="tab__col tab__col--subcategory">
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+                    </div>
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название документа</a>
                       <a href="#" class="tab__link">Более длинное название документа</a>
 
@@ -135,11 +163,11 @@
                   </div>
                 </div>
               </div>
-              <div class="tab__content tab__content--active">
+              <div class="tab__content">
                 <div class="tab__wrap">
                   <div class="tab__title">Название подкатегории</div>
                   <div class="tab__row">
-                    <div class="tab__col tab__col--small">
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название подкатегории следующего порядка</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка</a>
@@ -152,17 +180,43 @@
                 </div>
 
                 <div class="tab__wrap">
-                  <div class="tab__title">Документы относящиеся к “Название подкатегории”</div>
-                  <div class="tab__grid">
-                    <form>
-                      <div class="search">
-                        <input placeholder="Поиск " type="text" class="search__element" />
-                        <button type="submit" class="search__icon icon-search"></button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab__grid">
-                    <div class="tab__col tab__col--small">
+                  <div class="tab__title">Документы относящиеся к “Название подкатегории ”</div>
+                  <form class="tab__form">
+                    <div class="search search--small">
+                      <input name="search" placeholder="Поиск" type="text" class="search__element" />
+                      <button type="submit" class="search__icon icon-search"></button>
+                    </div>
+                    <div class="field field--horizontal">
+                      <label for="sort" class="field__label field__label--gray">Сортировка</label>
+                      <select id="sort" name="sort" class="select">
+                        <option value="По алфавиту">По алфавиту</option>
+                        <option value="По дате">По дате</option>
+                        <option value="По важности">По важности</option>
+                      </select>
+                    </div>
+                  </form>
+
+                  <div class="tab__row">
+                    <div class="tab__col tab__col--subcategory">
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+
+                      <a href="#" class="tab__link">Название документа</a>
+                      <a href="#" class="tab__link">Более длинное название документа</a>
+                    </div>
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название документа</a>
                       <a href="#" class="tab__link">Более длинное название документа</a>
 
@@ -188,7 +242,7 @@
                 <div class="tab__wrap">
                   <div class="tab__title">Название подкатегории 2</div>
                   <div class="tab__row">
-                    <div class="tab__col tab__col--small">
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 2</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 2</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 2</a>
@@ -201,17 +255,43 @@
                 </div>
 
                 <div class="tab__wrap">
-                  <div class="tab__title">Документы относящиеся к “Название подкатегории”</div>
-                  <div class="tab__grid">
-                    <form>
-                      <div class="search">
-                        <input placeholder="Поиск " type="text" class="search__element" />
-                        <button type="submit" class="search__icon icon-search"></button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab__grid">
-                    <div class="tab__col tab__col--small">
+                  <div class="tab__title">Документы относящиеся к “Название подкатегории 2”</div>
+                  <form class="tab__form">
+                    <div class="search search--small">
+                      <input name="search" placeholder="Поиск" type="text" class="search__element" />
+                      <button type="submit" class="search__icon icon-search"></button>
+                    </div>
+                    <div class="field field--horizontal">
+                      <label for="sort" class="field__label field__label--gray">Сортировка</label>
+                      <select id="sort" name="sort" class="select">
+                        <option value="По алфавиту">По алфавиту</option>
+                        <option value="По дате">По дате</option>
+                        <option value="По важности">По важности</option>
+                      </select>
+                    </div>
+                  </form>
+
+                  <div class="tab__row">
+                    <div class="tab__col tab__col--subcategory">
+                      <a href="#" class="tab__link">Название документа 2</a>
+                      <a href="#" class="tab__link">Более длинное название документа 2</a>
+
+                      <a href="#" class="tab__link">Название документа 2</a>
+                      <a href="#" class="tab__link">Более длинное название документа 2</a>
+
+                      <a href="#" class="tab__link">Название документа 2</a>
+                      <a href="#" class="tab__link">Более длинное название документа 2</a>
+
+                      <a href="#" class="tab__link">Название документа 2</a>
+                      <a href="#" class="tab__link">Более длинное название документа 2</a>
+
+                      <a href="#" class="tab__link">Название документа 2</a>
+                      <a href="#" class="tab__link">Более длинное название документа 2</a>
+
+                      <a href="#" class="tab__link">Название документа 2</a>
+                      <a href="#" class="tab__link">Более длинное название документа 2</a>
+                    </div>
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название документа 2</a>
                       <a href="#" class="tab__link">Более длинное название документа 2</a>
 
@@ -237,7 +317,7 @@
                 <div class="tab__wrap">
                   <div class="tab__title">Название подкатегории 3</div>
                   <div class="tab__row">
-                    <div class="tab__col tab__col--small">
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 3</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 3</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 3</a>
@@ -250,17 +330,43 @@
                 </div>
 
                 <div class="tab__wrap">
-                  <div class="tab__title">Документы относящиеся к “Название подкатегории”</div>
-                  <div class="tab__grid">
-                    <form>
-                      <div class="search">
-                        <input placeholder="Поиск " type="text" class="search__element" />
-                        <button type="submit" class="search__icon icon-search"></button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab__grid">
-                    <div class="tab__col tab__col--small">
+                  <div class="tab__title">Документы относящиеся к “Название подкатегории 3”</div>
+                  <form class="tab__form">
+                    <div class="search search--small">
+                      <input name="search" placeholder="Поиск" type="text" class="search__element" />
+                      <button type="submit" class="search__icon icon-search"></button>
+                    </div>
+                    <div class="field field--horizontal">
+                      <label for="sort" class="field__label field__label--gray">Сортировка</label>
+                      <select id="sort" name="sort" class="select">
+                        <option value="По алфавиту">По алфавиту</option>
+                        <option value="По дате">По дате</option>
+                        <option value="По важности">По важности</option>
+                      </select>
+                    </div>
+                  </form>
+
+                  <div class="tab__row">
+                    <div class="tab__col tab__col--subcategory">
+                      <a href="#" class="tab__link">Название документа 3</a>
+                      <a href="#" class="tab__link">Более длинное название документа 3</a>
+
+                      <a href="#" class="tab__link">Название документа 3</a>
+                      <a href="#" class="tab__link">Более длинное название документа 3</a>
+
+                      <a href="#" class="tab__link">Название документа 3</a>
+                      <a href="#" class="tab__link">Более длинное название документа 3</a>
+
+                      <a href="#" class="tab__link">Название документа 3</a>
+                      <a href="#" class="tab__link">Более длинное название документа 3</a>
+
+                      <a href="#" class="tab__link">Название документа 3</a>
+                      <a href="#" class="tab__link">Более длинное название документа 3</a>
+
+                      <a href="#" class="tab__link">Название документа 3</a>
+                      <a href="#" class="tab__link">Более длинное название документа 3</a>
+                    </div>
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название документа 3</a>
                       <a href="#" class="tab__link">Более длинное название документа 3</a>
 
@@ -286,7 +392,7 @@
                 <div class="tab__wrap">
                   <div class="tab__title">Название подкатегории 4</div>
                   <div class="tab__row">
-                    <div class="tab__col tab__col--small">
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 4</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 4</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 4</a>
@@ -299,17 +405,43 @@
                 </div>
 
                 <div class="tab__wrap">
-                  <div class="tab__title">Документы относящиеся к “Название подкатегории”</div>
-                  <div class="tab__grid">
-                    <form>
-                      <div class="search">
-                        <input placeholder="Поиск " type="text" class="search__element" />
-                        <button type="submit" class="search__icon icon-search"></button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab__grid">
-                    <div class="tab__col tab__col--small">
+                  <div class="tab__title">Документы относящиеся к “Название подкатегории 4”</div>
+                  <form class="tab__form">
+                    <div class="search search--small">
+                      <input name="search" placeholder="Поиск" type="text" class="search__element" />
+                      <button type="submit" class="search__icon icon-search"></button>
+                    </div>
+                    <div class="field field--horizontal">
+                      <label for="sort" class="field__label field__label--gray">Сортировка</label>
+                      <select id="sort" name="sort" class="select">
+                        <option value="По алфавиту">По алфавиту</option>
+                        <option value="По дате">По дате</option>
+                        <option value="По важности">По важности</option>
+                      </select>
+                    </div>
+                  </form>
+
+                  <div class="tab__row">
+                    <div class="tab__col tab__col--subcategory">
+                      <a href="#" class="tab__link">Название документа 4</a>
+                      <a href="#" class="tab__link">Более длинное название документа 4</a>
+
+                      <a href="#" class="tab__link">Название документа 4</a>
+                      <a href="#" class="tab__link">Более длинное название документа 4</a>
+
+                      <a href="#" class="tab__link">Название документа 4</a>
+                      <a href="#" class="tab__link">Более длинное название документа 4</a>
+
+                      <a href="#" class="tab__link">Название документа 4</a>
+                      <a href="#" class="tab__link">Более длинное название документа 4</a>
+
+                      <a href="#" class="tab__link">Название документа 4</a>
+                      <a href="#" class="tab__link">Более длинное название документа 4</a>
+
+                      <a href="#" class="tab__link">Название документа 4</a>
+                      <a href="#" class="tab__link">Более длинное название документа 4</a>
+                    </div>
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название документа 4</a>
                       <a href="#" class="tab__link">Более длинное название документа 4</a>
 
@@ -335,7 +467,7 @@
                 <div class="tab__wrap">
                   <div class="tab__title">Название подкатегории 5</div>
                   <div class="tab__row">
-                    <div class="tab__col tab__col--small">
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 5</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 5</a>
                       <a href="#" class="tab__link">Название подкатегории следующего порядка 5</a>
@@ -348,17 +480,43 @@
                 </div>
 
                 <div class="tab__wrap">
-                  <div class="tab__title">Документы относящиеся к “Название подкатегории”</div>
-                  <div class="tab__grid">
-                    <form>
-                      <div class="search">
-                        <input placeholder="Поиск " type="text" class="search__element" />
-                        <button type="submit" class="search__icon icon-search"></button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab__grid">
-                    <div class="tab__col tab__col--small">
+                  <div class="tab__title">Документы относящиеся к “Название подкатегории 5”</div>
+                  <form class="tab__form">
+                    <div class="search search--small">
+                      <input name="search" placeholder="Поиск" type="text" class="search__element" />
+                      <button type="submit" class="search__icon icon-search"></button>
+                    </div>
+                    <div class="field field--horizontal">
+                      <label for="sort" class="field__label field__label--gray">Сортировка</label>
+                      <select id="sort" name="sort" class="select">
+                        <option value="По алфавиту">По алфавиту</option>
+                        <option value="По дате">По дате</option>
+                        <option value="По важности">По важности</option>
+                      </select>
+                    </div>
+                  </form>
+
+                  <div class="tab__row">
+                    <div class="tab__col tab__col--subcategory">
+                      <a href="#" class="tab__link">Название документа 5</a>
+                      <a href="#" class="tab__link">Более длинное название документа 5</a>
+
+                      <a href="#" class="tab__link">Название документа 5</a>
+                      <a href="#" class="tab__link">Более длинное название документа 5</a>
+
+                      <a href="#" class="tab__link">Название документа 5</a>
+                      <a href="#" class="tab__link">Более длинное название документа 5</a>
+
+                      <a href="#" class="tab__link">Название документа 5</a>
+                      <a href="#" class="tab__link">Более длинное название документа 5</a>
+
+                      <a href="#" class="tab__link">Название документа 5</a>
+                      <a href="#" class="tab__link">Более длинное название документа 5</a>
+
+                      <a href="#" class="tab__link">Название документа 5</a>
+                      <a href="#" class="tab__link">Более длинное название документа 5</a>
+                    </div>
+                    <div class="tab__col tab__col--subcategory">
                       <a href="#" class="tab__link">Название документа 5</a>
                       <a href="#" class="tab__link">Более длинное название документа 5</a>
 
@@ -397,6 +555,7 @@
     <script src="./plugins/choices/choices.min.js" defer></script>
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
-    <script src="./js/script.js?v=0.35512560" defer></script>
+    <script src="./plugins/tinymce/tinymce.min.js" defer></script>
+    <script src="./js/script.js?v=0.37276673" defer></script>
   </body>
 </html>

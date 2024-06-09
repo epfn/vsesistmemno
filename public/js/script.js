@@ -3,7 +3,7 @@ const datepickers = document.querySelectorAll(".input__element--date");
 if (datepickers.length) {
   datepickers.forEach((datepicker) => {
     const currentDate = datepicker.getAttribute("value");
-    let selected = new Date();
+    let selected = undefined;
 
     if (currentDate) {
       const date = currentDate.split(".");
@@ -286,7 +286,6 @@ function initTinyMCE(params) {
     theme: "silver",
     skin: "oxide",
     promotion: false,
-    // statusbar: false,
     license_key: "gpl",
     height: 380,
     resize: true,
