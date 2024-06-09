@@ -180,6 +180,15 @@ if (portalAccordion) {
   });
 }
 
+if (document.querySelector(".accordion")) {
+  new Accordion(".accordion", {
+    collapse: true,
+    showMultiple: true,
+    duration: 380,
+    triggerClass: "headline__title",
+  });
+}
+
 const tabs = document.querySelectorAll(".tab");
 
 if (tabs.length) tabs.forEach((tab) => tabLogic(tab));

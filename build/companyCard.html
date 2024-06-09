@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="stylesheet" href="./plugins/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
+    <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
+    <link rel="stylesheet" href="./fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="./css/style.css?v=0.64481190" />
+    <title>Карточка компании</title>
+  </head>
+  <body>
+    <header class="header section">
+      <div class="header__container">
+        <img src="./img/logo.svg" alt="" class="header__logo" />
+        <div class="header__wrapper section">
+          <div class="header__content">
+            <form class="header__form">
+              <div class="header__search">
+                <input type="text" class="header__search-input" placeholder="Поиск документов" />
+                <button type="submit" class="header__search-icon icon-search"></button>
+              </div>
+            </form>
+            <nav class="header__navigation">
+              <ul class="menu menu--normal">
+                <li class="menu__item">
+                  <a href="./storage.html" class="menu__link">Компании</a>
+                </li>
+                <li class="menu__item">
+                  <a href="./users.html" class="menu__link">Пользователи</a>
+                </li>
+                <li class="menu__item">
+                  <a href="./storage.html" class="menu__link">Хранилище документов</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header__user">
+              <a href="./userProfile.html" class="header__user-avatar">
+                <img src="./img/izmailova.png" alt="" />
+              </a>
+              <a href="./userProfile.html" class="header__user-name">Измайлова Ольга</a>
+              <a href="#" class="header__user-logout">
+                <span class="header__user-logout-icon icon-log-out"></span>
+                Выход
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="header__menu icon-menu"></div>
+      </div>
+    </header>
+
+    <section class="backlink section">
+      <div class="backlink__container">
+        <a href="./companies.html" class="backlink__element">
+          <span class="icon-arrow-small"></span>
+          Компании
+        </a>
+      </div>
+    </section>
+    <section class="company section">
+      <div class="company__container">
+        <div class="company__row">
+          <img src="./img/vespero.png" class="company__image" />
+          <h1 class="company__title">ООО “Ромашка”</h1>
+        </div>
+        <div class="company__column">
+          <div class="company__item">
+            <div class="company__label">Телефон</div>
+            <div class="company__text">+ 7 (999) 111-22-33</div>
+          </div>
+          <div class="company__item">
+            <div class="company__label">E-mail</div>
+            <div class="company__text">IvanovaOI@email.com</div>
+          </div>
+        </div>
+        <div class="company__column">
+          <div class="company__item">
+            <div class="company__label">Дата регистрации</div>
+            <div class="company__text">02.12.2024</div>
+          </div>
+          <div class="company__item">
+            <div class="company__label">Статус</div>
+            <div class="company__text">Активна</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section--grow section--mb">
+      <div class="section__container">
+        <div class="accordion">
+          <div class="ac">
+            <div class="ac-header">
+              <div class="ac-trigger">
+                <div class="headline">
+                  <div class="headline__container">
+                    <h2 class="headline__title">Подразделения</h2>
+                    <form class="headline__search">
+                      <div class="search">
+                        <input name="search" placeholder="Поиск подразделения" type="text" class="search__element" />
+                        <button type="submit" class="search__icon icon-search"></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ac-panel">
+              <div class="ac-content">
+                <div class="table table--status">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Подразделение</th>
+                        <th>Статус</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>
+                          <span class="green">Активен</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>
+                          <span class="red">Заблокирован</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>
+                          <span class="yellow">Не активен</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>
+                          <span class="green">Aктивен</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>
+                          <span class="green">Активен</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ac">
+            <div class="ac-header">
+              <div class="ac-trigger">
+                <div class="headline">
+                  <div class="headline__container">
+                    <h2 class="headline__title">Сотрудники компании</h2>
+                    <form class="headline__search">
+                      <div class="search">
+                        <input name="search" placeholder="Поиск пользователя" type="text" class="search__element" />
+                        <button type="submit" class="search__icon icon-search"></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ac-panel">
+              <div class="ac-content">
+                <div class="table table--status">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ФИО</th>
+                        <th>Подразделение</th>
+                        <th>Должность</th>
+                        <th>Статус</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Измайлова Ольга Ивановна</a>
+                        </td>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>Директор</td>
+                        <td>
+                          <span class="green">Активен</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Петров Петр Петрович</a>
+                        </td>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>Логист</td>
+                        <td>
+                          <span class="red">Заблокирован</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Сидоров Максим Игоревич</a>
+                        </td>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>Мерчендайзер</td>
+                        <td>
+                          <span class="yellow">Не активен</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Большова Ольга Ивановна</a>
+                        </td>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>Уборщица</td>
+                        <td>
+                          <span class="green">Aктивен</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a class="link" href="#">Петров Петр Петрович</a>
+                        </td>
+                        <td>
+                          <a class="link" href="#">Отдел снабжения</a>
+                        </td>
+                        <td>Финансовый директор</td>
+                        <td>
+                          <span class="green">Активен</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer section">
+      <div class="footer__container">
+        <div class="footer__copyright">©2024 Все системно</div>
+      </div>
+    </footer>
+
+    <script src="./plugins/air-datepicker/air-datepicker.js" defer></script>
+    <script src="./plugins/imask/imask.js" defer></script>
+    <script src="./plugins/choices/choices.min.js" defer></script>
+    <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
+    <script src="./plugins/accordion/accordion.min.js" defer></script>
+    <script src="./plugins/tinymce/tinymce.min.js" defer></script>
+    <script src="./js/script.js?v=0.64481190" defer></script>
+  </body>
+</html>

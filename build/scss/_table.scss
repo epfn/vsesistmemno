@@ -7,6 +7,7 @@
   &--status {
     :is(th, td):nth-last-child(1) {
       text-align: center;
+      width: 12%;
     }
   }
 
@@ -93,6 +94,7 @@
 
 @media (max-width: 992px) {
   .table {
+    border-radius: 12px;
     table {
       width: max-content;
     }

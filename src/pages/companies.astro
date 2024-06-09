@@ -1,10 +1,10 @@
 ---
+import Button from "@components/Button.astro";
 import Headline from "@components/Headline.astro";
 import LayoutUser from "@components/LayoutUser.astro";
 import Section from "@components/Section.astro";
-import Table from "@components/Table.astro";
 import type { TableType } from "@components/Table.astro";
-import Button from "@components/Button.astro";
+import Table from "@components/Table.astro";
 
 const head: TableType["head"] = [
   "Название",
@@ -52,7 +52,7 @@ const body: TableType["body"] = [
       Добавить компанию
     </Button>
   </Headline>
-  <Section>
+  <Section >
     <Table status {head} {body} />
   </Section>
 </LayoutUser>

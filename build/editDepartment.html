@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.64481378" />
-    <title>Пользователи</title>
+    <link rel="stylesheet" href="./css/style.css?v=0.64481291" />
+    <title>Редактировать подразделение</title>
   </head>
   <body>
     <header class="header section">
@@ -52,9 +52,46 @@
       </div>
     </header>
 
-    <section class="headline headline--mb section headline--mt60">
+    <section class="backlink section">
+      <div class="backlink__container">
+        <a href="./companies.html" class="backlink__element">
+          <span class="icon-arrow-small"></span>
+          Компании
+        </a>
+      </div>
+    </section>
+    <section class="profile section">
+      <div class="profile__container">
+        <form class="profile__form">
+          <div class="profile__col">
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Название</label>
+              <div class="input">
+                <input name="department" id="department" value="Отдел продаж" type="text" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Компания</label>
+              <div class="input">
+                <input name="company" id="company" value="ООО “Ромашка”" readonly type="text" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="status" class="field__label field__label--gray">Статус</label>
+              <select id="status" name="status" class="select">
+                <option value="Активно">Активно</option>
+                <option value="Не активно">Не активно</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="button button--blue">Сохранить изменения</button>
+        </form>
+      </div>
+    </section>
+    <section class="headline headline--mb section">
       <div class="headline__container">
-        <h1 class="headline__title">Пользователи</h1>
+        <h1 class="headline__title">Сотрудники подразделения</h1>
         <form class="headline__search">
           <div class="search">
             <input name="search" placeholder="Поиск пользователя" type="text" class="search__element" />
@@ -65,75 +102,57 @@
     </section>
     <section class="section section--grow section--mb">
       <div class="section__container">
-        <div class="table table--id table--role table--status">
+        <div class="table table--status">
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>ФИО</th>
-                <th>Компания</th>
-                <th>Подразделение</th>
-                <th>Роль</th>
+                <th>Должность</th>
                 <th>Статус</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
                 <td>
                   <a class="link" href="#">Измайлова Ольга Ивановна</a>
                 </td>
-                <td>ООО “Рога и копыта”</td>
-                <td>Отдел снабжения</td>
-                <td>Администратор системы</td>
+                <td>Директор</td>
                 <td>
                   <span class="green">Активен</span>
                 </td>
               </tr>
               <tr>
-                <td>2</td>
                 <td>
                   <a class="link" href="#">Петров Петр Петрович</a>
                 </td>
-                <td>ООО “Рога и копыта”</td>
-                <td>Отдел снабжения</td>
-                <td>Администратор каталога</td>
+                <td>Логист</td>
                 <td>
                   <span class="red">Заблокирован</span>
                 </td>
               </tr>
               <tr>
-                <td>3</td>
                 <td>
                   <a class="link" href="#">Сидоров Максим Игоревич</a>
                 </td>
-                <td>ООО “Рога и копыта”</td>
-                <td>Отдел снабжения</td>
-                <td>Администратор-пользователь каталога</td>
+                <td>Мерчендайзер</td>
                 <td>
                   <span class="yellow">Не активен</span>
                 </td>
               </tr>
               <tr>
-                <td>4</td>
                 <td>
                   <a class="link" href="#">Большова Ольга Ивановна</a>
                 </td>
-                <td>ООО “Рога и копыта”</td>
-                <td>Отдел снабжения</td>
-                <td>Модератор</td>
+                <td>Уборщица</td>
                 <td>
                   <span class="green">Aктивен</span>
                 </td>
               </tr>
               <tr>
-                <td>5</td>
                 <td>
                   <a class="link" href="#">Петров Петр Петрович</a>
                 </td>
-                <td>ООО “Рога и копыта”</td>
-                <td>Отдел снабжения</td>
-                <td>Модератор</td>
+                <td>Финансовый директор</td>
                 <td>
                   <span class="green">Активен</span>
                 </td>
@@ -156,6 +175,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.64481378" defer></script>
+    <script src="./js/script.js?v=0.64481291" defer></script>
   </body>
 </html>

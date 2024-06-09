@@ -21,6 +21,13 @@
       outline: unset;
       border-color: $color-border-blue;
     }
+
+    &:read-only {
+      border-color: $color-border-gray;
+      background-color: $color-border-gray;
+      color: $color-text-gray;
+    }
+
     &--password {
       padding-right: 50px;
     }

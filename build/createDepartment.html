@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.64481180" />
-    <title>Компании</title>
+    <link rel="stylesheet" href="./css/style.css?v=0.64481255" />
+    <title>Создать подразделение</title>
   </head>
   <body>
     <header class="header section">
@@ -52,83 +52,41 @@
       </div>
     </header>
 
-    <section class="headline headline--mb section headline--mt40">
-      <div class="headline__container">
-        <h1 class="headline__title">Компании</h1>
-        <div class="headline__content">
-          <a href="./createCompany.html" class="button button--orange button--small">
-            <span class="button__icon icon-plus"></span>
-            Добавить компанию
-          </a>
-        </div>
+    <section class="backlink section">
+      <div class="backlink__container">
+        <a href="./companies.html" class="backlink__element">
+          <span class="icon-arrow-small"></span>
+          Компании
+        </a>
       </div>
     </section>
-    <section class="section section--grow section--mb">
-      <div class="section__container">
-        <div class="table table--status">
-          <table>
-            <thead>
-              <tr>
-                <th>Название</th>
-                <th>Дата регистрации</th>
-                <th>Сотрудников</th>
-                <th>Статус</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a class="link" href="#">ООО “Ромашка”</a>
-                </td>
-                <td>03.03.2024</td>
-                <td>14</td>
-                <td>
-                  <span class="green">Активна</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a class="link" href="#">ООО “Ромашка”</a>
-                </td>
-                <td>03.03.2024</td>
-                <td>24</td>
-                <td>
-                  <span class="yellow">Не активна</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a class="link" href="#">ООО “Ромашка”</a>
-                </td>
-                <td>03.03.2024</td>
-                <td>1245</td>
-                <td>
-                  <span class="yellow">Не активна</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a class="link" href="#">ООО “Ромашка”</a>
-                </td>
-                <td>03.03.2024</td>
-                <td>62223</td>
-                <td>
-                  <span class="yellow">Не активна</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a class="link" href="#">ООО “Ромашка”</a>
-                </td>
-                <td>03.03.2024</td>
-                <td>1409</td>
-                <td>
-                  <span class="green">Не активна</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <section class="profile profile--grow section">
+      <div class="profile__container">
+        <form class="profile__form">
+          <div class="profile__col">
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Название</label>
+              <div class="input">
+                <input name="department" id="department" value="Отдел продаж" type="text" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Компания</label>
+              <div class="input">
+                <input name="company" id="company" value="ООО “Ромашка”" readonly type="text" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="status" class="field__label field__label--gray">Статус</label>
+              <select id="status" name="status" class="select">
+                <option value="Активно">Активно</option>
+                <option value="Не активно">Не активно</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="button button--blue">Создать подразделение</button>
+        </form>
       </div>
     </section>
 
@@ -144,6 +102,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.64481180" defer></script>
+    <script src="./js/script.js?v=0.64481255" defer></script>
   </body>
 </html>

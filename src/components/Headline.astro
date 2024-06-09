@@ -11,6 +11,7 @@ const { title, top, type = "content", variant = "content", div } = Astro.props;
 
 const Element = type === "form" ? "form" : "div";
 const Container = div ? "div" : "section";
+const H = div ? "h2" : "h1";
 
 const classList = ["headline", { "headline--mb": !div }, { section: !div }];
 if (top) classList.push(`headline--mt${top}`);
@@ -18,7 +19,7 @@ if (top) classList.push(`headline--mt${top}`);
 
 <Container class:list={classList}>
   <div class="headline__container">
-    <h1 class="headline__title">{title}</h1>
+    <H class="headline__title">{title}</H>
     <Element class={`headline__${variant}`}><slot /></Element>
   </div>
 </Container>

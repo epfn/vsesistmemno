@@ -74,14 +74,41 @@ const bodyUsers: TableType["body"] = [
 <LayoutUser title="Карточка компании">
   <Backlink href="/companies.html">Компании</Backlink>
   <Company />
-
-  <Headline title="Подразделения" type="form" variant="search" div>
-    <Search placeholder="Поиск подразделения" name="search" />
-  </Headline>
-  <Table status head={headDepartment} body={bodyDepartment} />
-
-  <Headline title="Сотрудники компании" type="form" variant="search" div>
-    <Search placeholder="Поиск пользователя" name="search" />
-  </Headline>
-  <Table status head={headUsers} body={bodyUsers} />
+  <Section>
+    <div class="accordion">
+      <div class="ac">
+        <div class="ac-header">
+          <div class="ac-trigger">
+            <Headline title="Подразделения" type="form" variant="search" div>
+              <Search placeholder="Поиск подразделения" name="search" />
+            </Headline>
+          </div>
+        </div>
+        <div class="ac-panel">
+          <div class="ac-content">
+            <Table status head={headDepartment} body={bodyDepartment} />
+          </div>
+        </div>
+      </div>
+      <div class="ac">
+        <div class="ac-header">
+          <div class="ac-trigger">
+            <Headline
+              title="Сотрудники компании"
+              type="form"
+              variant="search"
+              div
+            >
+              <Search placeholder="Поиск пользователя" name="search" />
+            </Headline>
+          </div>
+        </div>
+        <div class="ac-panel">
+          <div class="ac-content">
+            <Table status head={headUsers} body={bodyUsers} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
 </LayoutUser>
