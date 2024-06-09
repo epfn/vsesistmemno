@@ -14,7 +14,7 @@ import Button from "@components/Button.astro";
     <div class="hero__container">
       <h1 class="hero__title">
         Компания <span> Всё системно </span>
-        - предлагает наилучший сервис сопровождения компаний
+        - предлагает сервис сопровождения информационных данных компании
       </h1>
       <div class="hero__accordion">
         <AccordionHero />
@@ -125,6 +125,7 @@ import Button from "@components/Button.astro";
         <div class="headingCard__icon icon-logo"></div>
         <h2 class="headingCard__title">
           Корпоративный портал Все системно Документы <a
+            target="_blank"
             href="https://vcdocs.ru/"
           >
             vcdocs.ru
@@ -181,7 +182,7 @@ import Button from "@components/Button.astro";
           Разработка электронных каталогов: <span> Арт направление </span>
         </h3>
 
-        <ul class="front__list front__list--blue">
+        <ul class="front__list front__list--blue front__list--mb">
           <li>Создание электронных каталогов произведений искусств.</li>
           <li>
             Персональные коллекции, федеральные каталоги по различным тематикам
@@ -193,7 +194,9 @@ import Button from "@components/Button.astro";
           разработала и
           <strong> запустила федеральный </strong>
           проект электронный музей для публичного пользования - электронный филателистический
-          каталог почтовых марок vcstamps.ru
+          каталог почтовых марок <a href="https://vcstamps.ru/" target="_blank">
+            vcstamps.ru
+          </a>
         </p>
         <p>
           В каталоге более 10.000 элементов, которые структурированы по темам,
@@ -238,7 +241,11 @@ import Button from "@components/Button.astro";
         <a href="mailto:info@vsesistemno.ru" class="contact__link"
           ><span class="icon-mail"></span> info@vsesistemno.ru</a
         >
-        <a href="https://t.me/vsesistemno" class="contact__link">
+        <a
+          href="https://t.me/vsesistemno"
+          target="_blank"
+          class="contact__link"
+        >
           <span class="icon-telegram"></span> @VseSistemno</a
         >
       </div>

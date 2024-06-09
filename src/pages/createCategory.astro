@@ -32,17 +32,16 @@ import Surface from "@components/Surface.astro";
       </Fieldset>
 
       <Fieldset legend="Краткое описание" variant="full">
-        <Textarea placeholder="Описание" name="description" value='' />
+        <Textarea placeholder="Описание" name="description" value="" />
       </Fieldset>
-      <Fieldset legend="Основные теги" variant="tag">
+      <Fieldset legend="Основные теги" variant="tag" add="tag">
         <Input name="tag" placeholder="Тег" />
         <Input name="tag" placeholder="Тег" />
         <Input name="tag" placeholder="Тег" />
         <Input name="tag" placeholder="Тег" />
-        <div class="fieldset__add">Добавить</div>
       </Fieldset>
-      <div >
-        <Button size="wide" submit >Сохранить</Button>
+      <div>
+        <Button size="wide" submit>Сохранить</Button>
       </div>
     </Surface>
   </Section>

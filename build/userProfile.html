@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.33478988" />
+    <link rel="stylesheet" href="./css/style.css?v=0.35512584" />
     <title>Профиль Пользователя</title>
   </head>
   <body>
@@ -26,10 +26,10 @@
             <nav class="header__navigation">
               <ul class="menu menu--normal">
                 <li class="menu__item">
-                  <a href="./users.html" class="menu__link"> Пользователи </a>
+                  <a href="./users.html" class="menu__link">Пользователи</a>
                 </li>
                 <li class="menu__item">
-                  <a href="./storage.html" class="menu__link"> Хранилище документов </a>
+                  <a href="./storage.html" class="menu__link">Хранилище документов</a>
                 </li>
               </ul>
             </nav>
@@ -38,7 +38,10 @@
                 <img src="./img/izmailova.png" alt="" />
               </a>
               <a href="./userProfile.html" class="header__user-name">Измайлова Ольга</a>
-              <a href="#" class="header__user-logout"> <span class="header__user-logout-icon icon-log-out"></span> Выход </a>
+              <a href="#" class="header__user-logout">
+                <span class="header__user-logout-icon icon-log-out"></span>
+                Выход
+              </a>
             </div>
           </div>
         </div>
@@ -48,7 +51,10 @@
 
     <section class="backlink section">
       <div class="backlink__container">
-        <a href="#" class="backlink__element"> <span class="icon-arrow-small"></span>Главная </a>
+        <a href="#" class="backlink__element">
+          <span class="icon-arrow-small"></span>
+          Главная
+        </a>
       </div>
     </section>
     <section class="profile section">
@@ -61,22 +67,19 @@
         <form class="profile__form">
           <div class="profile__col">
             <div class="field">
-              <label for="phone" class="field__label field__label--gray"> Телефон </label>
-
+              <label for="phone" class="field__label field__label--gray">Телефон</label>
               <div class="input">
                 <input name="phone" id="phone" value="+ 7 (999) 111-22-33" type="text" class="input__element" />
               </div>
             </div>
             <div class="field">
-              <label for="email" class="field__label field__label--gray"> E-mail </label>
-
+              <label for="email" class="field__label field__label--gray">E-mail</label>
               <div class="input">
                 <input name="email" id="email" value="IvanovaOI@email.com" type="email" class="input__element" />
               </div>
             </div>
             <div class="field">
-              <label for="company" class="field__label field__label--gray"> Название компании </label>
-
+              <label for="company" class="field__label field__label--gray">Название компании</label>
               <select id="company" name="company" class="select">
                 <option value="ООО “Рога и копыта”">ООО “Рога и копыта”</option>
                 <option value="Энергострой">Энергострой</option>
@@ -86,8 +89,7 @@
               </select>
             </div>
             <div class="field">
-              <label for="department" class="field__label field__label--gray"> Название подразделения </label>
-
+              <label for="department" class="field__label field__label--gray">Название подразделения</label>
               <select id="department" name="department" class="select">
                 <option value="Отдел снабжения">Отдел снабжения</option>
                 <option value="Отдел маркетинга">Отдел маркетинга</option>
@@ -97,8 +99,7 @@
               </select>
             </div>
             <div class="field">
-              <label for="occupation" class="field__label field__label--gray"> Должность пользователя </label>
-
+              <label for="occupation" class="field__label field__label--gray">Должность пользователя</label>
               <div class="input">
                 <input name="occupation" id="occupation" value="Начальник отдела" type="text" class="input__element" />
               </div>
@@ -106,8 +107,7 @@
           </div>
           <div class="profile__col">
             <div class="field">
-              <label for="date" class="field__label field__label--gray"> Дата рождения </label>
-
+              <label for="date" class="field__label field__label--gray">Дата рождения</label>
               <div class="input">
                 <input name="date" id="date" value="15.03.1990" type="text" class="input__element input__element--date" />
 
@@ -115,16 +115,14 @@
               </div>
             </div>
             <div class="field">
-              <label for="gender" class="field__label field__label--gray"> Пол </label>
-
+              <label for="gender" class="field__label field__label--gray">Пол</label>
               <select id="gender" name="gender" class="select">
                 <option value="Женский">Женский</option>
                 <option value="Мужской">Мужской</option>
               </select>
             </div>
             <div class="field">
-              <label for="role" class="field__label field__label--gray"> Роль </label>
-
+              <label for="role" class="field__label field__label--gray">Роль</label>
               <select id="role" name="role" class="select">
                 <option value="Администратор">Администратор</option>
                 <option value="Менеджер">Менеджер</option>
@@ -133,8 +131,7 @@
               </select>
             </div>
             <div class="field">
-              <label for="password" class="field__label field__label--gray"> Пароль </label>
-
+              <label for="password" class="field__label field__label--gray">Пароль</label>
               <div class="input">
                 <input name="password" id="password" value="vova123vova123" type="password" class="input__element input__element--password" />
                 <div class="input__icon icon-eye"></div>
@@ -157,6 +154,6 @@
     <script src="./plugins/choices/choices.min.js" defer></script>
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
-    <script src="./js/script.js?v=0.33478988" defer></script>
+    <script src="./js/script.js?v=0.35512584" defer></script>
   </body>
 </html>

@@ -3,14 +3,14 @@
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: #{fluid(20px, 40px)};
+  gap: fluid(20px, 40px);
 
   &--catalog {
-    padding: #{fluid(15px, 30px)};
+    padding: fluid(15px, 30px);
   }
 
   &--create {
-    padding: #{fluid(20px, 40px)};
+    padding: fluid(20px, 40px);
   }
 
   &__title {
@@ -19,11 +19,11 @@
   }
 
   &--catalog &__title {
-    font-size: #{fluid(20px, 26px)};
+    font-size: fluid(20px, 26px);
   }
 
   &--create &__title {
-    font-size: #{fluid(18px, 24px)};
+    font-size: fluid(18px, 24px);
   }
 
   &__head {

@@ -8,6 +8,6 @@ interface Props extends HTMLAttributes<"select"> {
 const { options, ...restProps } = Astro.props;
 ---
 
-<select {...restProps} class="select">
+<select {...restProps} class:list={["select"]}>
   {options.map((value) => <option {value}>{value}</option>)}
 </select>

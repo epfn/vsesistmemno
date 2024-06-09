@@ -1,15 +1,15 @@
 .blocks {
   display: grid;
-  gap: #{fluid(20px, 40px)};
-  margin-top: #{fluid(10px, 20px)};
+  gap: fluid(20px, 40px);
+  margin-top: fluid(10px, 20px);
 
   &__border {
-    padding-bottom: #{fluid(10px, 20px)};
+    padding-bottom: fluid(10px, 20px);
     border-bottom: 2px solid currentColor;
   }
 
   &__title {
-    font-size: #{fluid(24px, 32px)};
+    font-size: fluid(24px, 32px);
     font-weight: 600;
     text-align: center;
   }
@@ -18,12 +18,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: #{fluid(15px, 20px)};
+    gap: fluid(15px, 20px);
   }
 
   &__item {
-    padding: #{fluid(20px, 40px)};
-    gap: #{fluid(20px, 40px)};
+    padding: fluid(20px, 40px);
+    gap: fluid(20px, 40px);
     display: flex;
     flex-direction: column;
     border-radius: 16px;

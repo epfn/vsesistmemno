@@ -1,0 +1,17 @@
+---
+interface Props {
+  items: string[];
+  open: number;
+}
+
+const { items, open } = Astro.props;
+---
+
+<div class="tab" data-open={open}>
+  <div class="tab__list">
+    {items.map((tab) => <div class="tab__item">{tab}</div>)}
+  </div>
+  <div class="tab__container">
+    <slot />
+  </div>
+</div>

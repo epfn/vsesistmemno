@@ -11,10 +11,10 @@
 
   &__title {
     margin-top: 80px;
-    font-size: #{fluid(32px, 40px)};
+    font-size: fluid(32px, 40px);
     font-weight: 600;
     line-height: 1.25;
-    max-width: 20ch;
+    max-width: 23ch;
 
     span {
       color: $color-text-blue;
@@ -116,7 +116,7 @@
         padding-top: 30px;
         padding-bottom: 20px;
         padding-inline: 40px;
-        font-size: #{fluid(16px, 24px)};
+        font-size: fluid(16px, 22px);
         font-weight: 600;
         &::after {
           display: none;
@@ -130,7 +130,7 @@
       &-content {
         text-wrap: balance;
         height: 12em;
-        font-size: #{fluid(14px, 16px)};
+        font-size: fluid(14px, 16px);
         display: flex;
         flex-direction: column;
       }
@@ -157,7 +157,7 @@
 
     &__title {
       margin-top: 64px;
-      font-size: 26px;
+      font-size: 24px;
     }
 
     &__accordion {

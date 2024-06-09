@@ -16,6 +16,6 @@ const { type, ...restProps } = Astro.props;
       { "input__element--password": type === "password" },
     ]}
   />
-  {type === "password" ? <div class="input__icon icon-eye"></div> : null}
-  {type === "date" ? <div class="input__icon icon-calendar"></div> : null}
+  {type === "password" ? <div class="input__icon icon-eye" /> : null}
+  {type === "date" ? <div class="input__icon icon-calendar" /> : null}
 </div>

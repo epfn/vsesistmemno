@@ -17,7 +17,7 @@
   }
 
   &__title {
-    font-size: #{fluid(24px, 32px)};
+    font-size: fluid(24px, 32px);
     font-weight: 700;
     line-height: 1.15;
     width: max-content;
@@ -44,7 +44,7 @@
 
   &__text {
     text-align: center;
-    font-size: #{fluid(14px, 16px)};
+    font-size: fluid(14px, 16px);
   }
 }
 

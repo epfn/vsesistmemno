@@ -1,0 +1,52 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Button from "@components/Button.astro";
+import Fieldset from "@components/Input/Fieldset.astro";
+import File from "@components/Input/File.astro";
+import Input from "@components/Input/Input.astro";
+import Select from "@components/Input/Select.astro";
+import Textarea from "@components/Input/Textarea.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Section from "@components/Section.astro";
+import Surface from "@components/Surface.astro";
+---
+
+<LayoutUser title="Создать Документ">
+  <Backlink href="/category.html">Назад</Backlink>
+  <Section>
+    <Surface variant="create" title="Создать допдокумент" form>
+      <Fieldset legend="Название документа" variant="one">
+        <Input
+          placeholder="Название документа"
+          name="name"
+          value="Название документа"
+        />
+      </Fieldset>
+
+      <Fieldset legend="Название допдокумента" variant="one">
+        <Input placeholder="Название" name="name" />
+      </Fieldset>
+
+      <Fieldset legend="Краткое описание" variant="full">
+        <Textarea placeholder="Описание" name="description" />
+      </Fieldset>
+
+      <Fieldset legend="Основные теги" variant="tag" add="tag">
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+        <Input name="tag" placeholder="Тег" />
+      </Fieldset>
+
+      <Fieldset legend="Текст" variant="full">
+        <textarea class="tinymce" name="text"></textarea>
+      </Fieldset>
+      <Fieldset legend="Прикрепить файл" variant="third">
+        <File name="file" id="file">Прикрепить файл</File>
+      </Fieldset>
+      <div>
+        <Button size="wide" submit>Сохранить</Button>
+      </div>
+    </Surface>
+  </Section>
+</LayoutUser>

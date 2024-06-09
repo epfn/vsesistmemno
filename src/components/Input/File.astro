@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {}
+
+const { id, name, ...restProps } = Astro.props;
+---
+
+<div class="file">
+  <input
+    {...restProps}
+    {name}
+    {id}
+    type="file"
+    class="file__element"
+    multiple
+  />
+  <label for={id} class="file__label">
+    <span class="file__icon icon-upload"></span><slot /></label
+  >
+</div>

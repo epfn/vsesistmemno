@@ -14,7 +14,7 @@
   }
 
   &__title {
-    font-size: #{fluid(24px, 32px)};
+    font-size: fluid(24px, 32px);
     border-bottom: 2px solid currentColor;
     font-weight: 700;
     padding-bottom: 0.5em;
@@ -30,7 +30,7 @@
   }
 
   &__link {
-    font-size: #{fluid(14px, 16px)};
+    font-size: fluid(14px, 16px);
     display: flex;
     align-items: center;
     gap: 2em;
@@ -63,7 +63,7 @@
   }
 
   &__text {
-    font-size: #{fluid(14px, 16px)};
+    font-size: fluid(14px, 16px);
     text-wrap: balance;
   }
 

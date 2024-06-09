@@ -1,14 +1,16 @@
 ---
 interface Props {
+  name: string;
   placeholder: string;
+  variant?: "small";
 }
 
-const { placeholder } = Astro.props;
+const { placeholder, name, variant } = Astro.props;
+const classList = ["search"];
+if (variant) classList.push(`search--${variant}`);
 ---
 
-<form>
-  <div class="search">
-    <input {placeholder} type="text" class="search__element" />
-    <button type="submit" class="search__icon icon-search"></button>
-  </div>
-</form>
+<div class:list={classList}>
+  <input {name} {placeholder} type="text" class="search__element" />
+  <button type="submit" class="search__icon icon-search"></button>
+</div>

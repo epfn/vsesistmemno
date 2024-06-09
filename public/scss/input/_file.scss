@@ -1,0 +1,28 @@
+.file {
+  &__element {
+    display: none;
+  }
+  &__label {
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid $color-border-gray;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    cursor: pointer;
+    background-color: $color-background-gray-light;
+    transition: background-color 0.38s ease-in-out;
+
+    &:hover {
+      background-color: $color-background-blue-light-2;
+      border-color: $color-background-blue-light;
+    }
+  }
+
+  &__icon {
+    color: $color-text-blue;
+    font-size: 20px;
+  }
+}

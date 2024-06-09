@@ -1,11 +1,11 @@
 .tab {
   display: flex;
   flex-direction: column;
-  gap: #{fluid(20px, 40px)};
+  gap: fluid(20px, 40px);
 
   &__list {
     display: flex;
-    gap: #{fluid(5px, 10px)};
+    gap: fluid(5px, 10px);
     flex-wrap: wrap;
   }
 
@@ -35,30 +35,66 @@
 
   &__content {
     display: none;
-    // opacity: 0;
-    // transition: display 0.38s ease-in-out allow-discrete;
-    // transition-property: display, opacity;
+    gap: fluid(30px, 60px);
+    opacity: 0;
+    transition: opacity 0.38s ease-in-out;
 
     &--active {
-      display: block;
-      // opacity: 1;
+      display: flex;
+      flex-direction: column;
     }
+
+    &--opacity {
+      opacity: 1;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(15px, 30px);
+  }
+
+  &__title {
+    font-size: fluid(16px, 20px);
+    line-height: 1.2;
+    font-weight: 500;
   }
 
   &__row {
     display: flex;
-    gap: #{fluid(40px, 100px)};
+    gap: fluid(20px, 40px);
     flex-wrap: wrap;
+    row-gap: 15px;
+  }
+
+  &__form {
+    display: grid;
+    gap: fluid(20px, 40px);
+    grid-template-columns: repeat(2, minmax(auto, fluid(295px, 335px)));
   }
 
   &__col {
     display: flex;
     flex-direction: column;
-    gap: #{fluid(14px, 18px)};
+    gap: fluid(14px, 18px);
+
+    &--subcategory {
+      line-height: 1.2;
+    }
+  }
+
+  &__col &__link {
+    max-width: 40ch;
+    min-width: min(25ch, 70vw);
+  }
+  &__col--subcategory &__link {
+    max-width: 40ch;
+    min-width: min(32ch, 70vw);
   }
 
   &__link {
-    font-size: #{fluid(14px, 16px)};
+    font-size: fluid(14px, 16px);
     transition: color 0.38s ease-in-out;
 
     &:hover {
@@ -69,19 +105,14 @@
 
 @media (max-width: 992px) {
   .tab {
-
-
     &__list {
-
     }
 
     &__item {
-
-
+      padding-inline: 12px;
       &:hover:not(&--active) {
       }
       &--active {
-  
       }
     }
 
@@ -89,24 +120,22 @@
     }
 
     &__content {
-
-
       &--active {
-       
       }
     }
 
     &__row {
-    
+    }
+
+    &__form {
+      grid-template-columns: 1fr;
+      gap: 15px;
     }
 
     &__col {
-  
     }
 
     &__link {
-
-
       &:hover {
       }
     }

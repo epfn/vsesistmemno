@@ -1,15 +1,30 @@
 ---
 interface Props {
   legend: string;
-  variant: "tag" | 'full' | 'third';
+  variant: "tag" | "full" | "third" | "one";
+  add?: "tag" | "choices";
+  copy?: boolean;
 }
 
-const { legend, variant } = Astro.props;
+const { legend, variant, add, copy } = Astro.props;
 ---
 
 <fieldset class="fieldset">
   <legend class="fieldset__legend">{legend}</legend>
-  <div class:list={["fieldset__row", `fieldset__row--${variant}`]}>
+  <div
+    class:list={[
+      "fieldset__row",
+      `fieldset__row--${variant}`,
+      { "fieldset__row--copy": copy },
+    ]}
+  >
     <slot />
   </div>
+  {
+    add && (
+      <div class:list={["fieldset__add", `fieldset__add--${add}`]}>
+        Добавить
+      </div>
+    )
+  }
 </fieldset>

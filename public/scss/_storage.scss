@@ -44,6 +44,7 @@
   &__link {
     color: $color-text-black;
     transition: color 0.38s ease-in-out;
+    line-height: 1.35;
 
     &:hover {
       color: $color-text-blue;

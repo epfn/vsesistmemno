@@ -59,9 +59,9 @@ const body: TableType["body"] = [
 ---
 
 <LayoutUser title="Пользователи">
-  <Headline marginTop="60" title="Пользователи"
-    ><Search placeholder="Поиск пользователя" /></Headline
-  >
+  <Headline top="60" title="Пользователи" type="form" variant="search">
+    <Search placeholder="Поиск пользователя" name="search" />
+  </Headline>
   <Section>
     <Table role status id {head} {body} />
   </Section>

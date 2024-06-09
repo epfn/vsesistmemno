@@ -34,10 +34,10 @@
   &__title {
     color: $color-text-blue;
     font-weight: 600;
-    font-size: #{fluid(24px, 30px)};
+    font-size: fluid(24px, 30px);
   }
 
   &__text {
-    font-size: #{fluid(18px, 24px)};
+    font-size: fluid(18px, 24px);
   }
 }

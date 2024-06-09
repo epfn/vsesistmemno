@@ -1,0 +1,100 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Button from "@components/Button.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Section from "@components/Section.astro";
+import Surface from "@components/Surface.astro";
+import Search from "@components/Search.astro";
+import Tab from "@components/Tab.astro";
+import Select from "@components/Input/Select.astro";
+import Field from "@components/Input/Field.astro";
+
+const items: string[] = [
+  "Все",
+  "Название тега 1",
+  "Тег 2",
+  "Название 3",
+  "Название тега 4",
+  "Название тега 5",
+];
+---
+
+<LayoutUser title="Каталог">
+  <Backlink href="/storage.html">Вернуться к “Название категории”</Backlink>
+
+  <Section>
+    <Surface variant="catalog" title="Название подкатегории">
+      <Button href="#" size="small" slot="options" icon="plus" color="blue"
+        >Создать подкатегорию следующего уровня</Button
+      >
+      <Button href="#" size="small" slot="options" icon="plus" color="orange"
+        >Создать документ</Button
+      >
+
+      <Tab {items} open={2}>
+        {
+          items.map((tab, index) => (
+            <div class:list={["tab__content"]}>
+              <div class="tab__wrap">
+                <div class="tab__title">
+                  Название подкатегории {index > 1 && index}
+                </div>
+                <div class="tab__row">
+                  <div class="tab__col tab__col--subcategory">
+                    {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                      <a href="#" class="tab__link">
+                        Название подкатегории следующего порядка
+                        {index > 1 && index}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab__wrap">
+                <div class="tab__title">
+                  Документы относящиеся к “Название подкатегории {index > 1 && index}”
+                </div>
+                <form class="tab__form">
+                  <Search placeholder="Поиск" name="search" variant="small" />
+                  <Field
+                    id="sort"
+                    label="Сортировка"
+                    variant="gray"
+                    align="horizontal"
+                  >
+                    <Select
+                      id="sort"
+                      name="sort"
+                      options={["По алфавиту", "По дате", "По важности"]}
+                    />
+                  </Field>
+                </form>
+                <>
+                  <div class="tab__row">
+                    {[1, 2].map(() => (
+                      <div class="tab__col tab__col--subcategory">
+                        {[1, 2, 3, 4, 5, 6].map((n) => (
+                          <Fragment>
+                            <a href="#" class="tab__link">
+                              Название документа
+                              {index > 1 && index}
+                            </a>
+                            <a href="#" class="tab__link">
+                              Более длинное название документа
+                              {index > 1 && index}
+                            </a>
+                          </Fragment>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              </div>
+            </div>
+          ))
+        }
+      </Tab>
+    </Surface>
+  </Section>
+</LayoutUser>

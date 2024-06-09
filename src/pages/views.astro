@@ -1,0 +1,98 @@
+---
+import Backlink from "@components/Backlink.astro";
+import Headline from "@components/Headline.astro";
+import Field from "@components/Input/Field.astro";
+import Select from "@components/Input/Select.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Search from "@components/Search.astro";
+import Section from "@components/Section.astro";
+import Table from "@components/Table.astro";
+import type { TableType } from "@components/Table.astro";
+
+const head: TableType["head"] = [
+  "ФИО",
+  "Компания",
+  "Подразделение",
+  "Название документа",
+  "Дата и время",
+];
+const body: TableType["body"] = [
+  [
+    { text: "Измайлова Ольга Ивановна" },
+    { text: "ООО “Ромашка”" },
+    { text: "Отдел снабжения" },
+    { text: "Более длинное название  документа" },
+    { text: "03.03.2024 16:57" },
+  ],
+  [
+    { text: "Петров Петр Петрович" },
+    { text: "ООО “Ромашка”" },
+    { text: "Отдел снабжения" },
+    { text: "Более длинное название  документа" },
+    { text: "03.03.2024 16:57" },
+  ],
+  [
+    { text: "Сидоров Максим Игоревич" },
+    { text: "ООО “Ромашка”" },
+    { text: "Отдел снабжения" },
+    { text: "Более длинное название  документа" },
+    { text: "03.03.2024 16:57" },
+  ],
+  [
+    { text: "Большова Ольга Ивановна" },
+    { text: "ООО “Ромашка”" },
+    { text: "Отдел снабжения" },
+    { text: "Более длинное название  документа" },
+    { text: "03.03.2024 16:57" },
+  ],
+  [
+    { text: "Петров Петр Петрович" },
+    { text: "ООО “Ромашка”" },
+    { text: "Отдел снабжения" },
+    { text: "Более длинное название  документа" },
+    { text: "03.03.2024 16:57" },
+  ],
+];
+---
+
+<LayoutUser title="Ознакомились с документами">
+  <Backlink href="/category.html">Документ</Backlink>
+  <Headline title="Ознакомились" type="form" variant="form">
+    <Field
+      id="company"
+      label="Компания"
+      variant="gray"
+      align="horizontal"
+      size="even"
+    >
+      <Select
+        id="company"
+        name="company"
+        options={["ООО “Ромашка”", "Яндекс", "SpaceApp"]}
+      />
+    </Field>
+    <Field
+      id="department"
+      label="Подразделение"
+      variant="gray"
+      align="horizontal"
+      size="even"
+    >
+      <Select
+        id="department"
+        name="department"
+        options={[
+          "Отдел снабжения",
+          "Отдел маркетинга",
+          "Отдел продаж",
+          "Отдел безопасности",
+          "Отдел обучения",
+        ]}
+      />
+    </Field>
+    <Search placeholder="Поиск пользователя" name="search" variant="small" />
+  </Headline>
+  <Section>
+    <Table {head} {body} />
+  </Section>
+</LayoutUser>

@@ -24,17 +24,17 @@
       background-color: transparent;
 
       &:not(:last-child) {
-        margin-bottom: #{fluid(15px, 20px)};
+        margin-bottom: fluid(15px, 20px);
       }
       & .ac-trigger {
         font-family: "Onest", sans-serif;
         color: white;
         font-weight: 500;
         font: unset;
-        font-size: #{fluid(16px, 20px)};
+        font-size: fluid(16px, 20px);
         border-bottom: 2px solid white;
         padding: unset;
-        padding-bottom: #{fluid(15px, 20px)};
+        padding-bottom: fluid(15px, 20px);
         display: flex;
         justify-content: space-between;
 

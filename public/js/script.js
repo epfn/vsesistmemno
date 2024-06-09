@@ -115,11 +115,18 @@ if (menuLinks.length) {
   });
 }
 
+const selectCopy = [];
+
 function customSelects() {
   const selects = document.querySelectorAll(".select");
   if (selects.length) {
     selects.forEach((select) => {
-      const choices = new Choices(select, {
+      if (select.parentElement.classList.contains("fieldset__row--copy")) {
+        const copy = select.cloneNode(true);
+        selectCopy.push(copy);
+      }
+
+      const choice = new Choices(select, {
         searchEnabled: false,
         itemSelectText: "",
         allowHTML: false,
@@ -183,12 +190,21 @@ function tabLogic(tab) {
   const tabList = document.querySelector(".tab__list");
   const tabContainer = document.querySelector(".tab__container");
 
+  const open = tab.getAttribute("data-open") || 1;
+
   triggers.forEach((trigger, index) => {
-    trigger.setAttribute("data-tab", index);
+    trigger.setAttribute("data-tab", index + 1);
+    if (+open === index + 1) {
+      trigger.classList.add("tab__item--active");
+    }
   });
 
   contents.forEach((content, index) => {
-    content.setAttribute("data-tab", index);
+    content.setAttribute("data-tab", index + 1);
+    if (+open === index + 1) {
+      content.classList.add("tab__content--active");
+      content.classList.add("tab__content--opacity");
+    }
   });
 
   const clickHandler = (event) => {
@@ -198,15 +214,20 @@ function tabLogic(tab) {
 
     contents.forEach((c) => {
       c.classList.remove("tab__content--active");
+      c.classList.remove("tab__content--opacity");
     });
 
     const index = event.target.getAttribute("data-tab");
-    tabList
-      .querySelector(`[data-tab="${index}"]`)
-      .classList.add("tab__item--active");
-    tabContainer
-      .querySelector(`[data-tab="${index}"]`)
-      .classList.add("tab__content--active");
+
+    const selectedTrigger = tabList.querySelector(`[data-tab="${index}"]`);
+    selectedTrigger.classList.add("tab__item--active");
+
+    const selectedContent = tabContainer.querySelector(`[data-tab="${index}"]`);
+    selectedContent.classList.add("tab__content--active");
+
+    setTimeout(() => {
+      selectedContent.classList.add("tab__content--opacity");
+    }, 200);
   };
 
   triggers.forEach((trigger) => {
@@ -215,21 +236,77 @@ function tabLogic(tab) {
 }
 
 function addTag() {
-  const trigger = document.querySelector(".fieldset__add");
-  const fieldset = document.querySelector(".fieldset__row--tag");
+  const trigger = document.querySelector(".fieldset__add--tag");
 
-  const n = window.innerWidth > 992 ? 4 : window.innerWidth > 576 ? 2 : 1;
-
-  if (trigger && fieldset) {
+  if (trigger) {
     trigger.addEventListener("click", (e) => {
       e.preventDefault();
+      const fieldset = trigger.parentElement;
+      const row = fieldset.querySelector(".fieldset__row");
+      const n = window.innerWidth > 992 ? 4 : window.innerWidth > 576 ? 2 : 1;
       for (let i = 0; i < n; i++) {
         const newInput = fieldset.querySelector(".input").cloneNode(true);
         newInput.querySelector("input").value = "";
-        fieldset.insertBefore(newInput, trigger);
+        row.appendChild(newInput, trigger);
       }
     });
   }
 }
 
 addTag();
+
+function addChoices() {
+  const trigger = document.querySelector(".fieldset__add--choices");
+
+  if (trigger) {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const fieldset = trigger.parentElement;
+      const row = fieldset.querySelector(".fieldset__row");
+
+      selectCopy.forEach((copy) => {
+        row.appendChild(copy.cloneNode(true));
+        const choice = new Choices(row.lastElementChild, {
+          searchEnabled: false,
+          itemSelectText: "",
+          allowHTML: false,
+        });
+      });
+    });
+  }
+}
+
+addChoices();
+
+function initTinyMCE(params) {
+  tinymce.init({
+    selector: ".tinymce",
+    language: "ru",
+    theme: "silver",
+    skin: "oxide",
+    promotion: false,
+    // statusbar: false,
+    license_key: "gpl",
+    height: 380,
+    resize: true,
+    branding: false,
+    elementpath: false,
+    min_height: 380,
+  });
+}
+
+initTinyMCE();
+
+// const form = document.querySelector(".surface");
+
+// if (form) {
+//   form.addEventListener("submit", (e) => {
+//     e.preventDefault();
+
+//     formData = new FormData(form);
+//     for (let [key, value] of formData) {
+//       console.log(`${key} — ${value}`);
+//     }
+//   });
+// }

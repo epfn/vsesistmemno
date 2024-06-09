@@ -183,12 +183,21 @@ function tabLogic(tab) {
   const tabList = document.querySelector(".tab__list");
   const tabContainer = document.querySelector(".tab__container");
 
+  const open = tab.getAttribute("data-open") || 1;
+
   triggers.forEach((trigger, index) => {
-    trigger.setAttribute("data-tab", index);
+    trigger.setAttribute("data-tab", index + 1);
+    if (+open === index + 1) {
+      trigger.classList.add("tab__item--active");
+    }
   });
 
   contents.forEach((content, index) => {
-    content.setAttribute("data-tab", index);
+    content.setAttribute("data-tab", index + 1);
+    if (+open === index + 1) {
+      content.classList.add("tab__content--active");
+      content.classList.add("tab__content--opacity");
+    }
   });
 
   const clickHandler = (event) => {
@@ -198,15 +207,20 @@ function tabLogic(tab) {
 
     contents.forEach((c) => {
       c.classList.remove("tab__content--active");
+      c.classList.remove("tab__content--opacity");
     });
 
     const index = event.target.getAttribute("data-tab");
-    tabList
-      .querySelector(`[data-tab="${index}"]`)
-      .classList.add("tab__item--active");
-    tabContainer
-      .querySelector(`[data-tab="${index}"]`)
-      .classList.add("tab__content--active");
+
+    const selectedTrigger = tabList.querySelector(`[data-tab="${index}"]`);
+    selectedTrigger.classList.add("tab__item--active");
+
+    const selectedContent = tabContainer.querySelector(`[data-tab="${index}"]`);
+    selectedContent.classList.add("tab__content--active");
+
+    setTimeout(() => {
+      selectedContent.classList.add("tab__content--opacity");
+    }, 200);
   };
 
   triggers.forEach((trigger) => {

@@ -4,12 +4,13 @@
 
   &__container {
     grid-area: center;
-    width: max-content;
+    width: auto;
+    max-width: max-content;
   }
 
   &__element {
     font-size: 16px;
-    line-height: 1;
+    line-height: 1.25;
     color: $color-text-blue;
     display: flex;
     align-items: center;

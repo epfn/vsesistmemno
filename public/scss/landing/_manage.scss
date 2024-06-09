@@ -1,13 +1,13 @@
 .manage {
   display: flex;
-  gap: #{fluid(30px, 90px)};
+  gap: fluid(30px, 90px);
   margin-top: 20px;
 
   &__content {
   }
 
   &__image {
-    width: #{fluid(320px, 400px)};
+    width: fluid(320px, 400px);
     margin-top: -36px;
     object-fit: contain;
   }

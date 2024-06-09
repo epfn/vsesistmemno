@@ -2,18 +2,18 @@
   display: flex;
 
   &--normal {
-    gap: #{fluid(12px, 40px)};
-    font-size: #{fluid(14px, 16px)};
+    gap: fluid(12px, 40px);
+    font-size: fluid(14px, 16px);
   }
 
   &--small {
-    gap: #{fluid(12px, 30px)};
-    font-size: #{fluid(13px, 14px)};
+    gap: fluid(12px, 30px);
+    font-size: fluid(13px, 14px);
   }
 
   &--mini {
     font-size: 12px;
-    gap: #{fluid(12px, 30px)};
+    gap: fluid(12px, 30px);
   }
 
   &__item {

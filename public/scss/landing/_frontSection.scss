@@ -38,25 +38,33 @@
     }
     &-content {
       background-color: white;
-      padding: #{fluid(20px, 40px)};
-      padding-right: #{fluid(20px, 60px)};
+      padding: fluid(20px, 40px);
+      padding-right: fluid(20px, 60px);
+
+      a {
+        color: $color-text-blue;
+        transition: color 0.38s ease-in-out;
+
+        &:hover {
+          color: $color-text-peach;
+        }
+      }
     }
 
     &-image {
       object-fit: contain;
       align-self: flex-end;
       justify-self: end;
-      width: #{fluid(420px, 540px)};
+      width: fluid(420px, 540px);
       object-position: bottom left;
       height: 100%;
     }
 
     ul {
-      // margin-bottom: #{fluid(20px, 40px)};
     }
 
     p {
-      font-size: #{fluid(12px, 14px)};
+      font-size: fluid(12px, 14px);
       &:not(:last-of-type) {
         margin-bottom: 1em;
       }
@@ -92,7 +100,6 @@
       }
 
       &-image {
-        object-fit: cover;
       }
 
       ul {

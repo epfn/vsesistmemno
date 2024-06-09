@@ -4,8 +4,9 @@ import Button from "@components/Button.astro";
 import LayoutUser from "@components/LayoutUser.astro";
 import Section from "@components/Section.astro";
 import Surface from "@components/Surface.astro";
+import Tab from "@components/Tab.astro";
 
-const tabs: string[] = [
+const items: string[] = [
   "Все",
   "Название тега 1",
   "Тег 2",
@@ -20,51 +21,42 @@ const tabs: string[] = [
 
   <Section>
     <Surface variant="catalog" title="Название категории">
-      <Button size="small" slot="options" icon="plus">Создать категорию</Button>
+      <Button href="#" size="small" slot="options" icon="plus"
+        >Создать категорию</Button
+      >
 
-      <div class="tab">
-        <div class="tab__list">
-          {
-            tabs.map((tab, index) => (
-              <div
-                class:list={["tab__item", { "tab__item--active": index === 1 }]}
-              >
-                {tab}
-              </div>
-            ))
-          }
-        </div>
+      <Tab {items} open={2}>
+        {
+          items.map((tab, index) => (
+            <div class="tab__content">
+              <div class="tab__row">
+                <div class="tab__col">
+                  <a href="#" class="tab__link">
+                    Название категории {index}.1
+                  </a>
 
-        <div class="tab__container">
-          {
-            tabs.map((tab, index) => (
-              <div
-                class:list={[
-                  "tab__content",
-                  { "tab__content--active": index === 1 },
-                ]}
-              >
-                <div class="tab__row">
-                  <div class="tab__col">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                      <a href="#" class="tab__link">
-                        Название подкатегории {index}.{n}
-                      </a>
-                    ))}
-                  </div>
-                  <div class="tab__col">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                      <a href="#" class="tab__link">
-                        Название подкатегории {index}.{n}
-                      </a>
-                    ))}
-                  </div>
+                  <a href="#" class="tab__link">
+                    Название категории с длинным названием для примера {index}
+                    .2
+                  </a>
+                  {[3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                    <a href="#" class="tab__link">
+                      Название категории {index}.{n}
+                    </a>
+                  ))}
+                </div>
+                <div class="tab__col">
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                    <a href="#" class="tab__link">
+                      Название категории {index}.{n}
+                    </a>
+                  ))}
                 </div>
               </div>
-            ))
-          }
-        </div>
-      </div>
+            </div>
+          ))
+        }
+      </Tab>
     </Surface>
   </Section>
 </LayoutUser>
