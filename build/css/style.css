@@ -1041,11 +1041,11 @@ body {
   color: #5c7ef4;
 }
 .link--path:not(:first-child) {
-  margin-left: 5px;
+  margin-left: 2px;
 }
 .link--path:not(:first-child)::before {
   content: "/";
-  margin-right: 2px;
+  margin-right: 5px;
 }
 
 .header {

@@ -41,11 +41,11 @@
     }
 
     &:not(:first-child) {
-      margin-left: 5px;
+      margin-left: 2px;
 
       &::before {
         content: "/";
-        margin-right: 2px;
+        margin-right: 5px;
       }
     }
   }
