@@ -301,20 +301,43 @@ function initTinyMCE(params) {
     branding: false,
     elementpath: false,
     min_height: 380,
+    plugins: [
+      "advlist",
+      "autolink",
+      "lists",
+      "link",
+      "image",
+      "charmap",
+      "preview",
+      "anchor",
+      "searchreplace",
+      "visualblocks",
+      "code",
+      "fullscreen",
+      "insertdatetime",
+      "media",
+      "table",
+    ],
+
+    toolbar:
+      "undo redo | blocks | " +
+      "bold italic backcolor | alignleft aligncenter " +
+      "alignright alignjustify | bullist numlist outdent indent | " +
+      "link image",
   });
 }
 
 initTinyMCE();
 
-// const form = document.querySelector(".surface");
+const form = document.querySelector(".surface");
 
-// if (form) {
-//   form.addEventListener("submit", (e) => {
-//     e.preventDefault();
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-//     formData = new FormData(form);
-//     for (let [key, value] of formData) {
-//       console.log(`${key} — ${value}`);
-//     }
-//   });
-// }
+    formData = new FormData(form);
+    for (let [key, value] of formData) {
+      console.log(`${key} — ${value}`);
+    }
+  });
+}

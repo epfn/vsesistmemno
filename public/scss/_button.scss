@@ -8,11 +8,12 @@
   transition-timing-function: ease-in-out;
   transition-property: background-color;
   display: flex;
-  gap: 10px;
+  gap: fluid(6px, 10px);
   align-items: center;
   cursor: pointer;
   justify-content: center;
   font-size: 16px;
+  text-wrap: balance;
 
   &__icon {
     font-size: 1.15em;
@@ -22,6 +23,17 @@
     font-size: 14px;
     padding-bottom: fluid(10px, 14px);
     padding-top: fluid(10px, 14px);
+  }
+
+  &--document {
+    font-size: 14px;
+    padding-bottom: 11px;
+    padding-top: 11px;
+    font-weight: 400;
+  }
+
+  &--document &__icon {
+    font-size: 1.5em;
   }
 
   &--wide {
@@ -48,6 +60,7 @@
 
   &--white {
     background-color: white;
+    border: 1px solid $color-border-gray;
 
     &:hover {
       background-color: $color-background-blue-light-2;

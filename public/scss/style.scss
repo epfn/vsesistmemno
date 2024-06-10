@@ -2,6 +2,7 @@
 @import "normalize";
 @import "layout";
 @import "section";
+// @import "prose";
 
 @import "input/field";
 @import "input/input";
@@ -29,6 +30,10 @@
 @import "blocks";
 @import "company";
 @import "accordion";
+@import "breadcrumbs";
+@import "document";
+@import "aside";
+@import "bage";
 
 // landing
 @import "landing/about";
@@ -40,4 +45,3 @@
 @import "landing/manage";
 @import "landing/placeholder";
 @import "landing/portal";
-

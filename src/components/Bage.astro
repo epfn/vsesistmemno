@@ -1,0 +1,14 @@
+---
+interface Props {
+  variant?: "mobile" | "desktop";
+}
+
+const { variant } = Astro.props;
+
+const classList = ["bage"];
+if (variant) classList.push(`bage--${variant}`);
+---
+
+<div class:list={classList}>
+  <span class="bage__icon icon-personal"></span> Персональный документ
+</div>

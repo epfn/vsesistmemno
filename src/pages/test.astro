@@ -1,9 +1,47 @@
 ---
 import Button from "@components/Button.astro";
+import Layout from "@components/Layout.astro";
+import Section from "@components/Section.astro";
+
+const list: { href: string; label: string }[] = [
+  { href: "login", label: "Вход" },
+  { href: "registration", label: "Регистрация" },
+  { href: "forgotPassword", label: "Восстановление пароля" },
+  { href: "userProfile", label: "Профиль Пользователя" },
+  { href: "userCard", label: "Карточка пользователя" },
+  { href: "users", label: "Пользователи" },
+  { href: "storage", label: "Хранилище документов" },
+  { href: "catalog", label: "Каталог" },
+  { href: "category", label: "Категории" },
+  { href: "subcategory", label: "Подкатегории" },
+  { href: "createCatalog", label: "Создать каталог" },
+  { href: "createCategory", label: "Создать категорию" },
+  { href: "createSubcategory", label: "Создать подкатегорию" },
+  { href: "documentAdmin", label: "Документ. адмнистратор" },
+  { href: "documentUser", label: "Документ. Пользователя" },
+  { href: "additionalDocumentAdmin", label: "Допдокумент. адмнистратор" },
+  { href: "createDocument", label: "Создать документ" },
+  { href: "createAdditionalDocument", label: "Создать допдокумент" },
+  { href: "views", label: "Ознакомились с документами" },
+  { href: "companies", label: "Компании" },
+  { href: "createCompany", label: "Создать Компанию" },
+  { href: "editCompany", label: "Редактировать Компанию" },
+  { href: "createDepartment", label: "Создать Подразделение" },
+  { href: "editDepartment", label: "Редактировать Подразделение" },
+  { href: "companyCard", label: "Карточка компании" },
+];
 ---
 
-<div class='test'>
-<Button>div</Button>
-<Button href="3">a</Button>
-<Button submit>submit</Button>
-</div>
+<Layout>
+  <Section>
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 4rem;">
+      {
+        list.map(({ href, label }) => (
+          <a href={href + ".html"} class="button button--blue " target="_blank">
+            {label}
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+</Layout>

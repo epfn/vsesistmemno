@@ -1,0 +1,142 @@
+.document {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, fluid(280px, 320px));
+  column-gap: fluid(30px, 90px);
+  row-gap: 20px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(20px, 40px);
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(10px, 20px);
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    font-size: fluid(14px, 16px);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  &__content {
+    font-size: fluid(14px, 16px);
+
+    img {
+      display: inline;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      margin-right: 1em;
+    }
+
+    img:last-of-type {
+      margin-right: unset;
+    }
+
+    h2,
+    h3 {
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+    h3 {
+      font-size: 1.25em;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+
+    h4 {
+      font-weight: 500;
+    }
+
+    p {
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+
+    blockquote {
+      background-color: $color-background-blue-light-2;
+      border-left: 3px solid $color-border-blue;
+      padding: 1.25em;
+      margin-top: 2.5em;
+      margin-bottom: 2.5em;
+
+      p {
+        margin: unset;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5em;
+    }
+
+    li {
+      margin-bottom: 0.6em;
+    }
+
+    ol {
+      list-style-type: decimal;
+      padding-left: 1.5em;
+    }
+
+    a {
+      color: $color-text-blue;
+      transition: color 0.38s ease-in-out;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-text-orange;
+      }
+    }
+
+    & > *:first-child {
+      margin-top: unset;
+    }
+
+    table {
+      td,
+      th {
+        border: 1px solid $color-text-gray;
+        padding: 4px;
+        line-height: 1.25;
+      }
+    }
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(20px, 40px);
+    align-items: flex-end;
+  }
+
+  &__form {
+  }
+}
+
+@media (max-width: 992px) {
+  .document {
+    grid-template-columns: 1fr;
+    &__container {
+    }
+
+    &__content {
+    }
+
+    &__aside {
+    }
+  }
+}

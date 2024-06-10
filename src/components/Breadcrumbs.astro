@@ -1,0 +1,17 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="breadcrumbs section">
+  <div class="breadcrumbs__container">
+    {
+      items.map((link) => (
+        <a href="#" class="breadcrumbs__link">{link}</a>
+      ))
+    }
+  </div>
+</section>

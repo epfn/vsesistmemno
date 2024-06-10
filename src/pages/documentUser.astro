@@ -1,0 +1,36 @@
+---
+import Aside from "@components/Aside.astro";
+import Bage from "@components/Bage.astro";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Button from "@components/Button.astro";
+import Document from "@components/Document.astro";
+import LayoutUser from "@components/LayoutUser.astro";
+import Section from "@components/Section.astro";
+import Surface from "@components/Surface.astro";
+
+const bread: string[] = [
+  "Хранилище документов",
+  "Название каталог",
+  "Название категории",
+  "Название подкатегории",
+  "Название документа",
+];
+
+const paths: string[][] = [
+  ["Название каталога", "Название категории", "Название подкатегории"],
+  ["Название каталога", "Название категории", "Название подкатегории"],
+  ["Название каталога", "Название категории", "Название подкатегории"],
+];
+---
+
+<LayoutUser title="Документ. пользователь">
+  <Breadcrumbs items={bread} />
+  <Section>
+    <Surface title="Название документа" variant="catalog">
+      <Bage  slot='options' />
+      <Document>
+        <Aside {paths} files />
+      </Document>
+    </Surface>
+  </Section>
+</LayoutUser>

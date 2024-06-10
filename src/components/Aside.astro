@@ -1,0 +1,89 @@
+---
+import Link from "./Link.astro";
+
+interface Props {
+  files?: boolean;
+  changes?: boolean;
+  views?: boolean;
+  paths: string[][];
+}
+
+const { files, changes, views, paths } = Astro.props;
+
+const items: { date: string; name: string }[] = [
+  { date: "03.03.2024 16:57", name: "Игнатьев Д.И." },
+  { date: "10.02.2024 14:22", name: "Измайлова О.И." },
+];
+---
+
+<div class="aside">
+  <div class="aside__item">
+    <div class="aside__title">Расположение</div>
+    {
+      paths.map((group) => (
+        <div class="aside__path">
+          {group.map((link) => (
+            <Link href="#" variant="path">{link}</Link>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    files && (
+      <div class="aside__item">
+        <div class="aside__title">Прикрепленные файлы</div>
+        <div class="aside__column">
+          {["Название файла.pdf", "Название файла.doc"].map((file) => (
+            <Link
+              download=""
+              variant="file"
+              href="/files/Политика_конфиденциальности.pdf"
+            >
+              {file}
+            </Link>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    changes && (
+      <div class="aside__item">
+        <div class="aside__title">Последние изменения</div>
+        <div class="aside__column">
+          {items.map(({ date, name }) => (
+            <div class="aside__person">
+              <div class="aside__date">{date}</div>
+              <div class="aside__name">{name}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    views && (
+      <div class="aside__item">
+        <div class="aside__title">С документом ознакомились</div>
+        <div class="aside__column">
+          {items.map(({ date, name }) => (
+            <div class="aside__person">
+              <div class="aside__date">{date}</div>
+              <div class="aside__name">{name}</div>
+            </div>
+          ))}
+          {items.map(({ date, name }) => (
+            <div class="aside__person">
+              <div class="aside__date">{date}</div>
+              <div class="aside__name">{name}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</div>

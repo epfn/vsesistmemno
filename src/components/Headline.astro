@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  top?: "60" | "40";
+  top?: boolean;
   type?: "content" | "form";
   variant?: "content" | "form" | "search";
   div?: boolean;
@@ -13,8 +13,12 @@ const Element = type === "form" ? "form" : "div";
 const Container = div ? "div" : "section";
 const H = div ? "h2" : "h1";
 
-const classList = ["headline", { "headline--mb": !div }, { section: !div }];
-if (top) classList.push(`headline--mt${top}`);
+const classList = [
+  "headline",
+  { "headline--mb": !div },
+  { section: !div },
+  { "headline--top": top },
+];
 ---
 
 <Container class:list={classList}>

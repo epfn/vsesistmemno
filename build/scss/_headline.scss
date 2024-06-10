@@ -1,12 +1,6 @@
 .headline {
-  &--mt {
-    &60 {
-      margin-top: 150px;
-    }
-
-    &40 {
-      margin-top: 130px;
-    }
+  &--top {
+    margin-top: 130px;
   }
 
   &--mb {
@@ -48,8 +42,7 @@
 
 @media (max-width: 992px) {
   .headline {
-    &--mt60,
-    &--mt40 {
+    &--top {
       margin-top: 90px;
     }
 
