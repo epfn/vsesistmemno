@@ -2,6 +2,7 @@
   &__element {
     display: none;
   }
+
   &__label {
     font-size: 14px;
     border-radius: 8px;
@@ -24,5 +25,28 @@
   &__icon {
     color: $color-text-blue;
     font-size: 20px;
+  }
+
+  &__list {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    &:empty {
+      margin-top: unset;
+    }
+  }
+
+  &__item {
+    background-color: $color-background-purple-light;
+    height: 74px;
+    width: 74px;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: $color-text-gray;
   }
 }

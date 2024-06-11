@@ -1,0 +1,13 @@
+---
+interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+---
+
+<div class="avatar">
+  <img src={image} class="avatar__image" />
+  <div class="avatar__loaded"></div>
+  <input type="file" name="avatar" class="avatar__input" accept="image/*" />
+</div>

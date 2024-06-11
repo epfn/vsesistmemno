@@ -1,4 +1,6 @@
 ---
+import Avatar from "./Avatar.astro";
+
 export type ProfileType = {
   avatar: string;
   name?: string;
@@ -17,17 +19,19 @@ if (profile) classList.push(`profile__container--info`);
 ---
 
 <section class:list={["profile", { "profile--grow": grow }, "section"]}>
-  <div class:list={classList}>
+  <form class:list={classList}>
     {
       profile && (
         <div class="profile__info">
-          <img src={profile.avatar} alt="" class="profile__avatar" />
+          <div class="profile__avatar">
+            <Avatar image={profile.avatar} />
+          </div>
           {profile.name && <div class="profile__name">{profile.name}</div>}
           {profile.role && <div class="profile__role">{profile.role}</div>}
         </div>
       )
     }
-    <form
+    <div
       class:list={[
         "profile__form",
         { "profile__form--even": Astro.slots.has("col2") },
@@ -44,6 +48,6 @@ if (profile) classList.push(`profile__container--info`);
         )
       }
       <slot name="row" />
-    </form>
-  </div>
+    </div>
+  </form>
 </section>
