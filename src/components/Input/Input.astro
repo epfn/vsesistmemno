@@ -1,9 +1,12 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"input"> {}
+interface Props extends HTMLAttributes<"input"> {
+  error?: boolean;
+  success?: boolean;
+}
 
-const { type, ...restProps } = Astro.props;
+const { type, error, success, ...restProps } = Astro.props;
 
 const classList = [
   "input__element",
@@ -12,7 +15,7 @@ const classList = [
 ];
 ---
 
-<div class:list={["input"]}>
+<div class:list={["input", { "input--error": error }]}>
   <input
     {...restProps}
     type={type === "date" ? "text" : type}
@@ -20,4 +23,6 @@ const classList = [
   />
   {type === "password" && <div class="input__icon icon-eye" />}
   {type === "date" && <div class="input__icon icon-calendar" />}
+  {error && <span class="input__error">Текст ошибки</span>}
+  {success && <div class="input__check icon-check" />}
 </div>

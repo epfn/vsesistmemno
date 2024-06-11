@@ -288,6 +288,96 @@ function addChoices() {
 
 addChoices();
 
+function avatarLoader() {
+  const container = document.querySelector(".avatar");
+  const input = document.querySelector(".avatar__input");
+  const loaded = document.querySelector(".avatar__loaded");
+  const image = document.querySelector(".avatar__image");
+
+  if (container && input && loaded) {
+    const onchangeHandler = (e) => {
+      if (e.target && e.target.files instanceof FileList) {
+        const file = e.target.files[0];
+        if (file.type.includes("image")) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            container.classList.add("avatar--loaded");
+            if (image) image.classList.add("avatar__image--loaded");
+            loaded.style.backgroundImage = `url(${reader.result})`;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+    };
+    input.addEventListener("change", onchangeHandler);
+  }
+}
+
+avatarLoader();
+
+function filePreview() {
+  const container = document.querySelector(".file");
+  const input = document.querySelector(".file__element");
+
+  if (container && input) {
+    const list = document.createElement("div");
+    list.classList.add("file__list");
+    container.append(list);
+
+    const fileTypes = [
+      { text: ["text/plain"] },
+      { pdf: ["application/pdf"] },
+      { png: ["image/png"] },
+      { zip: ["application/x-zip-compressed"] },
+      { jpg: ["image/jpeg"] },
+      { rar: ["application/x-rar-compressed"] },
+      {
+        word: [
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ],
+      },
+    ];
+
+    const selectedFiles = [];
+    const onchangeHandler = (e) => {
+      if (e.target && e.target.files instanceof FileList) {
+        const files = e.target.files;
+        for (const file of files) {
+          selectedFiles.push(file);
+        }
+      }
+
+      if (selectedFiles.length) {
+        list.querySelectorAll(".file__item").forEach((item) => {
+          item.remove();
+        });
+
+        var dt = new DataTransfer();
+
+        selectedFiles.forEach((file) => {
+          dt.items.add(file);
+          const item = document.createElement("div");
+          item.classList.add("file__item");
+
+          const obj = Object.keys(fileTypes).filter((key) =>
+            Object.values(fileTypes[key])[0].includes(file.type),
+          );
+
+          item.classList.add(
+            `icon-file-${(fileTypes[obj] && Object.keys(fileTypes[obj])[0]) || "any"}`,
+          );
+          list.append(item);
+        });
+        input.files = dt.files;
+      }
+    };
+    input.addEventListener("change", onchangeHandler);
+  }
+}
+
+filePreview();
+
 function initTinyMCE(params) {
   tinymce.init({
     selector: ".tinymce",
@@ -329,15 +419,24 @@ function initTinyMCE(params) {
 
 initTinyMCE();
 
-const form = document.querySelector(".surface");
+function testSurfaceForm(params) {
+  const form = document.querySelector(".surface");
 
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    formData = new FormData(form);
-    for (let [key, value] of formData) {
-      console.log(`${key} — ${value}`);
-    }
-  });
+      formData = new FormData(form);
+      const files = formData.getAll("file");
+
+      for (const file of files) {
+        console.log(file);
+      }
+      for (let [key, value] of formData) {
+        console.log(`${key} — ${value}`);
+      }
+    });
+  }
 }
+
+// testSurfaceForm();

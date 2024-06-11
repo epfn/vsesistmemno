@@ -5,20 +5,28 @@ interface Props extends HTMLAttributes<"input"> {
   variant?: "normal" | "small";
   marginTop?: "20";
   marginInline?: "-10";
+  error?: boolean;
 }
 
-const { variant = "normal", type, id, marginTop, marginInline, ...restProps } = Astro.props;
+const {
+  variant = "normal",
+  error,
+  type,
+  id,
+  marginTop,
+  marginInline,
+  ...restProps
+} = Astro.props;
+
 let classList = ["checkbox", `checkbox--${variant}`];
 if (marginTop) classList.push(`checkbox--mt${marginTop}`);
 if (marginInline) classList.push(`checkbox--mi${marginInline}`);
+if (error) classList.push(`checkbox--error`);
 ---
 
 <div class:list={classList}>
   <input {...restProps} {id} type="checkbox" class="checkbox__element" />
-  <label
-    for={id}
-    class:list={["checkbox__label"]}
-  >
+  <label for={id} class:list={["checkbox__label"]}>
     <slot />
   </label>
 </div>

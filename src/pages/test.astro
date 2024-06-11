@@ -1,5 +1,9 @@
 ---
-import Button from "@components/Button.astro";
+import Checkbox from "@components/Checkbox.astro";
+import Field from "@components/Input/Field.astro";
+import Input from "@components/Input/Input.astro";
+import Select from "@components/Input/Select.astro";
+import Textarea from "@components/Input/Textarea.astro";
 import Layout from "@components/Layout.astro";
 import Section from "@components/Section.astro";
 
@@ -34,7 +38,9 @@ const list: { href: string; label: string }[] = [
 
 <Layout>
   <Section>
-    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 4rem;">
+    <div
+      style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 4rem;"
+    >
       {
         list.map(({ href, label }) => (
           <a href={href + ".html"} class="button button--blue " target="_blank">
@@ -42,6 +48,65 @@ const list: { href: string; label: string }[] = [
           </a>
         ))
       }
+    </div>
+    <div style="display: flex; gap: 3rem; flex-wrap: wrap;">
+      <div
+        style="display: flex; flex-direction: column; gap: 1rem; padding-top: 2rem; max-width: 20rem; flex: 1;"
+      >
+        <Field id="name" label="Логин">
+          <Input id="name" name="name" placeholder="Введите логин" />
+        </Field>
+        <Field id="name" label="Логин">
+          <Input success id="name" name="name" placeholder="Введите логин" />
+        </Field>
+        <Field id="name" label="Логин">
+          <Input error id="name" name="name" placeholder="Введите логин" />
+        </Field>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; gap: 1rem; padding-top: 2rem; max-width: 20rem; flex: 1;"
+      >
+        <Field id="company" label="Название компании" variant="gray">
+          <Select
+            id="company"
+            name="company"
+            options={[
+              "ООО “Рога и копыта”",
+              "Энергострой",
+              "Яндекс",
+              "SpaceApp",
+              "ValTec",
+            ]}
+          />
+        </Field>
+        <Field id="company" label="Название компании" variant="gray">
+          <Select
+            error
+            id="company"
+            name="company"
+            options={[
+              "ООО “Рога и копыта”",
+              "Энергострой",
+              "Яндекс",
+              "SpaceApp",
+              "ValTec",
+            ]}
+          />
+        </Field>
+        <Checkbox name="2company_catalor" id="2company_catalor"
+          >Каталог компании</Checkbox
+        >
+        <Checkbox error name="1company_catalog" id="2company"
+          >Каталог компании</Checkbox
+        >
+      </div>
+
+      <div
+        style="display: flex; flex-direction: column; gap: 1rem; padding-top: 2rem; max-width: 20rem; flex: 1;"
+      >
+        <Textarea placeholder="Описание" name="description" />
+        <Textarea error placeholder="Описание" name="description" />
+      </div>
     </div>
   </Section>
 </Layout>

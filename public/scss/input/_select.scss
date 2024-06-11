@@ -1,3 +1,14 @@
+.select {
+  &__element {
+  }
+
+  &__error {
+    margin-top: 4px;
+    font-size: 12px;
+    color: $color-text-red;
+  }
+}
+
 .choices {
   font-size: 14px;
   margin: unset;
@@ -65,6 +76,23 @@
   border-bottom-right-radius: 0px;
   border-top-width: 1px;
   border-bottom-width: 0;
+}
+
+.select--error {
+  .is-focused .choices__inner,
+  .is-open .choices__inner {
+    border-color: $color-text-red;
+  }
+
+  .is-open .choices__list--dropdown,
+  .is-open .choices__list[aria-expanded] {
+    border-color: $color-text-red;
+  }
+
+  .is-flipped .choices__list--dropdown,
+  .is-flipped .choices__list[aria-expanded] {
+    border-color: $color-text-red;
+  }
 }
 .choices__list--dropdown .choices__item--selectable.is-highlighted,
 .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {

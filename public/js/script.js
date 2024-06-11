@@ -118,7 +118,7 @@ if (menuLinks.length) {
 const selectCopy = [];
 
 function customSelects() {
-  const selects = document.querySelectorAll(".select");
+  const selects = document.querySelectorAll(".select__element");
   if (selects.length) {
     selects.forEach((select) => {
       if (select.parentElement.classList.contains("fieldset__row--copy")) {
@@ -136,6 +136,21 @@ function customSelects() {
 }
 
 customSelects();
+
+function customFilter() {
+  const selects = document.querySelectorAll(".filter");
+  if (selects.length) {
+    selects.forEach((select) => {
+      const choice = new Choices(select, {
+        searchEnabled: false,
+        itemSelectText: "",
+        allowHTML: false,
+      });
+    });
+  }
+}
+
+customFilter();
 
 function storageMasonry() {
   if (document.querySelector(".storage__list")) {
@@ -324,22 +339,8 @@ function filePreview() {
     list.classList.add("file__list");
     container.append(list);
 
-    const fileTypes = [
-      { text: ["text/plain"] },
-      { pdf: ["application/pdf"] },
-      { png: ["image/png"] },
-      { zip: ["application/x-zip-compressed"] },
-      { jpg: ["image/jpeg"] },
-      { rar: ["application/x-rar-compressed"] },
-      {
-        word: [
-          "application/msword",
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ],
-      },
-    ];
+    let selectedFiles = [];
 
-    const selectedFiles = [];
     const onchangeHandler = (e) => {
       if (e.target && e.target.files instanceof FileList) {
         const files = e.target.files;
@@ -348,30 +349,81 @@ function filePreview() {
         }
       }
 
-      if (selectedFiles.length) {
-        list.querySelectorAll(".file__item").forEach((item) => {
-          item.remove();
-        });
-
-        var dt = new DataTransfer();
-
-        selectedFiles.forEach((file) => {
-          dt.items.add(file);
-          const item = document.createElement("div");
-          item.classList.add("file__item");
-
-          const obj = Object.keys(fileTypes).filter((key) =>
-            Object.values(fileTypes[key])[0].includes(file.type),
-          );
-
-          item.classList.add(
-            `icon-file-${(fileTypes[obj] && Object.keys(fileTypes[obj])[0]) || "any"}`,
-          );
-          list.append(item);
-        });
-        input.files = dt.files;
-      }
+      if (selectedFiles.length) updatePreview(selectedFiles);
     };
+
+    function updatePreview(selectedFiles) {
+      const r = list.querySelector(".file__row");
+      if (r) r.remove();
+      const c = list.querySelector(".file__col");
+      if (c) c.remove();
+
+      let row = null;
+      let col = null;
+
+      var dt = new DataTransfer();
+
+      selectedFiles.forEach((file) => {
+        dt.items.add(file);
+
+        if (["image/png", "image/jpeg"].includes(file.type)) {
+          if (!row) {
+            row = document.createElement("div");
+            row.classList.add("file__row");
+            list.append(row);
+          }
+          row.append(createFileImage(file));
+        } else {
+          if (!col) {
+            col = document.createElement("div");
+            col.classList.add("file__col");
+            list.append(col);
+          }
+          col.append(createFileItem(file));
+        }
+      });
+      input.files = dt.files;
+    }
+
+    function createCloseButton(file) {
+      const close = document.createElement("div");
+      close.classList.add("icon-x");
+      close.classList.add("file__close");
+
+      close.addEventListener("click", (e) => {
+        e.preventDefault();
+        const index = selectedFiles.indexOf(file);
+        if (index > -1) {
+          let s = new Set(selectedFiles);
+          s.delete(file);
+          selectedFiles = Array.from(s);
+          updatePreview(selectedFiles);
+        }
+      });
+      return close;
+    }
+
+    function createFileItem(file) {
+      const item = document.createElement("div");
+      item.classList.add("file__item");
+      item.innerText = file.name;
+      item.append(createCloseButton(file));
+      return item;
+    }
+
+    function createFileImage(file) {
+      const item = document.createElement("div");
+      item.classList.add("file__image");
+      item.append(createCloseButton(file));
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        item.style.backgroundImage = `url(${reader.result})`;
+      };
+      reader.readAsDataURL(file);
+      return item;
+    }
+
     input.addEventListener("change", onchangeHandler);
   }
 }
@@ -439,4 +491,4 @@ function testSurfaceForm(params) {
   }
 }
 
-// testSurfaceForm();
+// testSurfaceForm()

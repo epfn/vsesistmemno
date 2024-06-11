@@ -36,24 +36,27 @@
   margin-top: -8px;
   transform: rotate(180deg);
 }
-.is-focused .choices__inner,
-.is-open .choices__inner {
-  border-color: $color-border-blue;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
 
-.is-flipped.is-open .choices__inner {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
+.select {
+  .is-focused .choices__inner,
+  .is-open .choices__inner {
+    border-color: $color-border-blue;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
 
-.is-open .choices__list--dropdown,
-.is-open .choices__list[aria-expanded] {
-  border-color: $color-border-blue;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-width: 0;
+  .is-flipped.is-open .choices__inner {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .is-open .choices__list--dropdown,
+  .is-open .choices__list[aria-expanded] {
+    border-color: $color-border-blue;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-width: 0;
+  }
 }
 
 .is-flipped .choices__list--dropdown,

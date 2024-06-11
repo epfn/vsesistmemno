@@ -1,6 +1,7 @@
 ---
 import Button from "@components/Button.astro";
 import Headline from "@components/Headline.astro";
+import Select from "@components/Input/Select.astro";
 import LayoutUser from "@components/LayoutUser.astro";
 
 const items: { icon: string; title: string; list: string[] }[] = [
@@ -66,8 +67,15 @@ const items: { icon: string; title: string; list: string[] }[] = [
 ---
 
 <LayoutUser title="Пользователи">
-  <Headline top title="Все системно - хранилище документов">
-    <Button color="white" icon="filter">Фильтр</Button>
+  <Headline type="form" top title="Все системно - хранилище документов">
+    <Select
+      filter
+      options={[
+        "Сортировка по типу 1",
+        "Сортировка по типу 2",
+        "Сортировка по типу 3",
+      ]}
+    />
     <Button icon="plus">Создать каталог</Button>
   </Headline>
 

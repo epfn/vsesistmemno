@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.49151648" />
+    <link rel="stylesheet" href="./css/style.css?v=0.89086760" />
     <title>Редактировать компанию</title>
   </head>
   <body>
@@ -61,11 +61,17 @@
       </div>
     </section>
     <section class="profile profile--grow section">
-      <div class="profile__container profile__container--info">
+      <form class="profile__container profile__container--info">
         <div class="profile__info">
-          <img src="./img/vespero.png" alt="" class="profile__avatar" />
+          <div class="profile__avatar">
+            <div class="avatar">
+              <img src="./img/vespero.png" class="avatar__image" />
+              <div class="avatar__loaded"></div>
+              <input type="file" name="avatar" class="avatar__input" accept="image/*" />
+            </div>
+          </div>
         </div>
-        <form class="profile__form profile__form--even">
+        <div class="profile__form profile__form--even">
           <div class="profile__col">
             <div class="field">
               <label for="company" class="field__label field__label--gray">Название</label>
@@ -108,8 +114,8 @@
             <span class="button__icon icon-plus"></span>
             Добавить подразделение
           </a>
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
 
     <footer class="footer section">
@@ -124,6 +130,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.49151648" defer></script>
+    <script src="./js/script.js?v=0.89086760" defer></script>
   </body>
 </html>
