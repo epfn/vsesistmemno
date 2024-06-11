@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.89086646" />
+    <link rel="stylesheet" href="./css/style.css?v=0.18753234" />
     <title>Создать подкатегорию</title>
   </head>
   <body>
@@ -70,13 +70,15 @@
           <fieldset class="fieldset">
             <legend class="fieldset__legend">Название категории</legend>
             <div class="fieldset__row fieldset__row--third">
-              <select id="category" name="category" class="select">
-                <option value="Подкатегория 1">Подкатегория 1</option>
-                <option value="Подкатегория 2">Подкатегория 2</option>
-                <option value="Подкатегория 3">Подкатегория 3</option>
-                <option value="Подкатегория 4">Подкатегория 4</option>
-                <option value="Подкатегория 5">Подкатегория 5</option>
-              </select>
+              <div class="select">
+                <select id="category" name="category" class="select__element">
+                  <option value="Подкатегория 1">Подкатегория 1</option>
+                  <option value="Подкатегория 2">Подкатегория 2</option>
+                  <option value="Подкатегория 3">Подкатегория 3</option>
+                  <option value="Подкатегория 4">Подкатегория 4</option>
+                  <option value="Подкатегория 5">Подкатегория 5</option>
+                </select>
+              </div>
             </div>
           </fieldset>
           <fieldset class="fieldset">
@@ -91,7 +93,9 @@
           <fieldset class="fieldset">
             <legend class="fieldset__legend">Краткое описание</legend>
             <div class="fieldset__row fieldset__row--full">
-              <textarea placeholder="Описание" name="description" class="textarea"></textarea>
+              <div class="textarea">
+                <textarea placeholder="Описание" name="description" class="textarea__element"></textarea>
+              </div>
             </div>
           </fieldset>
           <fieldset class="fieldset">
@@ -131,6 +135,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.89086646" defer></script>
+    <script src="./js/script.js?v=0.18753234" defer></script>
   </body>
 </html>

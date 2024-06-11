@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.89086353" />
+    <link rel="stylesheet" href="./css/style.css?v=0.18753013" />
     <title>Создать категорию</title>
   </head>
   <body>
@@ -70,13 +70,15 @@
           <fieldset class="fieldset">
             <legend class="fieldset__legend">Название каталога</legend>
             <div class="fieldset__row fieldset__row--third">
-              <select id="catalog" name="catalog" class="select">
-                <option value="Каталог 1">Каталог 1</option>
-                <option value="Каталог 2">Каталог 2</option>
-                <option value="Каталог 3">Каталог 3</option>
-                <option value="Каталог 4">Каталог 4</option>
-                <option value="Каталог 5">Каталог 5</option>
-              </select>
+              <div class="select">
+                <select id="catalog" name="catalog" class="select__element">
+                  <option value="Каталог 1">Каталог 1</option>
+                  <option value="Каталог 2">Каталог 2</option>
+                  <option value="Каталог 3">Каталог 3</option>
+                  <option value="Каталог 4">Каталог 4</option>
+                  <option value="Каталог 5">Каталог 5</option>
+                </select>
+              </div>
             </div>
           </fieldset>
           <fieldset class="fieldset">
@@ -91,7 +93,9 @@
           <fieldset class="fieldset">
             <legend class="fieldset__legend">Краткое описание</legend>
             <div class="fieldset__row fieldset__row--full">
-              <textarea placeholder="Описание" name="description" value="" class="textarea"></textarea>
+              <div class="textarea">
+                <textarea placeholder="Описание" name="description" value="" class="textarea__element"></textarea>
+              </div>
             </div>
           </fieldset>
           <fieldset class="fieldset">
@@ -131,6 +135,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.89086353" defer></script>
+    <script src="./js/script.js?v=0.18753013" defer></script>
   </body>
 </html>

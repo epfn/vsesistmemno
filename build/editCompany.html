@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.89086760" />
+    <link rel="stylesheet" href="./css/style.css?v=0.18753580" />
     <title>Редактировать компанию</title>
   </head>
   <body>
@@ -103,10 +103,12 @@
             </div>
             <div class="field">
               <label for="status" class="field__label field__label--gray">Статус</label>
-              <select id="status" name="status" class="select">
-                <option value="Активна">Активна</option>
-                <option value="Не активна">Не активна</option>
-              </select>
+              <div class="select">
+                <select id="status" name="status" class="select__element">
+                  <option value="Активна">Активна</option>
+                  <option value="Не активна">Не активна</option>
+                </select>
+              </div>
             </div>
           </div>
           <button type="submit" class="button button--blue">Сохранить изменения</button>
@@ -130,6 +132,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.89086760" defer></script>
+    <script src="./js/script.js?v=0.18753580" defer></script>
   </body>
 </html>

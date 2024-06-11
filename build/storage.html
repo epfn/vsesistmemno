@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.89086856" />
+    <link rel="stylesheet" href="./css/style.css?v=0.18753788" />
     <title>Пользователи</title>
   </head>
   <body>
@@ -55,16 +55,19 @@
     <section class="headline headline--mb section headline--top">
       <div class="headline__container">
         <h1 class="headline__title">Все системно - хранилище документов</h1>
-        <div class="headline__content">
-          <div class="button button--white">
-            <span class="button__icon icon-filter"></span>
-            Фильтр
+        <form class="headline__content">
+          <div class="select select--filter">
+            <select class="select__element">
+              <option value="Сортировка по типу 1">Сортировка по типу 1</option>
+              <option value="Сортировка по типу 2">Сортировка по типу 2</option>
+              <option value="Сортировка по типу 3">Сортировка по типу 3</option>
+            </select>
           </div>
           <div class="button button--blue">
             <span class="button__icon icon-plus"></span>
             Создать каталог
           </div>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -145,6 +148,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.89086856" defer></script>
+    <script src="./js/script.js?v=0.18753788" defer></script>
   </body>
 </html>

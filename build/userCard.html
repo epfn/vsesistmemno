@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.89086898" />
+    <link rel="stylesheet" href="./css/style.css?v=0.18753881" />
     <title>Карточка Пользователя</title>
   </head>
   <body>
@@ -89,23 +89,27 @@
             </div>
             <div class="field">
               <label for="company" class="field__label field__label--gray">Название компании</label>
-              <select id="company" name="company" class="select">
-                <option value="ООО “Ромашка”">ООО “Ромашка”</option>
-                <option value="Энергострой">Энергострой</option>
-                <option value="Яндекс">Яндекс</option>
-                <option value="SpaceApp">SpaceApp</option>
-                <option value="ValTec">ValTec</option>
-              </select>
+              <div class="select">
+                <select id="company" name="company" class="select__element">
+                  <option value="ООО “Ромашка”">ООО “Ромашка”</option>
+                  <option value="Энергострой">Энергострой</option>
+                  <option value="Яндекс">Яндекс</option>
+                  <option value="SpaceApp">SpaceApp</option>
+                  <option value="ValTec">ValTec</option>
+                </select>
+              </div>
             </div>
             <div class="field">
               <label for="department" class="field__label field__label--gray">Название подразделения</label>
-              <select id="department" name="department" class="select">
-                <option value="Отдел снабжения">Отдел снабжения</option>
-                <option value="Отдел маркетинга">Отдел маркетинга</option>
-                <option value="Отдел продаж">Отдел продаж</option>
-                <option value="Отдел безопасности">Отдел безопасности</option>
-                <option value="Отдел обучения">Отдел обучения</option>
-              </select>
+              <div class="select">
+                <select id="department" name="department" class="select__element">
+                  <option value="Отдел снабжения">Отдел снабжения</option>
+                  <option value="Отдел маркетинга">Отдел маркетинга</option>
+                  <option value="Отдел продаж">Отдел продаж</option>
+                  <option value="Отдел безопасности">Отдел безопасности</option>
+                  <option value="Отдел обучения">Отдел обучения</option>
+                </select>
+              </div>
             </div>
             <div class="field">
               <label for="occupation" class="field__label field__label--gray">Должность пользователя</label>
@@ -125,27 +129,33 @@
             </div>
             <div class="field">
               <label for="gender" class="field__label field__label--gray">Пол</label>
-              <select id="gender" name="gender" class="select">
-                <option value="Мужской">Мужской</option>
-                <option value="Женский">Женский</option>
-              </select>
+              <div class="select">
+                <select id="gender" name="gender" class="select__element">
+                  <option value="Мужской">Мужской</option>
+                  <option value="Женский">Женский</option>
+                </select>
+              </div>
             </div>
             <div class="field">
               <label for="role" class="field__label field__label--gray">Роль</label>
-              <select id="role" name="role" class="select">
-                <option value="Администратор Каталога">Администратор Каталога</option>
-                <option value="Менеджер">Менеджер</option>
-                <option value="Глава отдела">Глава отдела</option>
-                <option value="Линейный сотрудник">Линейный сотрудник</option>
-              </select>
+              <div class="select">
+                <select id="role" name="role" class="select__element">
+                  <option value="Администратор Каталога">Администратор Каталога</option>
+                  <option value="Менеджер">Менеджер</option>
+                  <option value="Глава отдела">Глава отдела</option>
+                  <option value="Линейный сотрудник">Линейный сотрудник</option>
+                </select>
+              </div>
             </div>
             <div class="field">
               <label for="status" class="field__label field__label--gray">Статус</label>
-              <select id="status" name="status" class="select">
-                <option value="Aктивен">Aктивен</option>
-                <option value="Отошёл">Отошёл</option>
-                <option value="Заблокирован">Заблокирован</option>
-              </select>
+              <div class="select">
+                <select id="status" name="status" class="select__element">
+                  <option value="Aктивен">Aктивен</option>
+                  <option value="Отошёл">Отошёл</option>
+                  <option value="Заблокирован">Заблокирован</option>
+                </select>
+              </div>
             </div>
           </div>
           <button type="submit" class="button button--blue">Сохранить изменения</button>
@@ -165,6 +175,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.89086898" defer></script>
+    <script src="./js/script.js?v=0.18753881" defer></script>
   </body>
 </html>

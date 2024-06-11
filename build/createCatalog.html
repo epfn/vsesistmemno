@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
     <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
     <link rel="stylesheet" href="./fonts/icomoon/style.css" />
-    <link rel="stylesheet" href="./css/style.css?v=0.89086329" />
+    <link rel="stylesheet" href="./css/style.css?v=0.18752922" />
     <title>Создать каталог</title>
   </head>
   <body>
@@ -78,7 +78,9 @@
           <fieldset class="fieldset">
             <legend class="fieldset__legend">Краткое описание</legend>
             <div class="fieldset__row fieldset__row--full">
-              <textarea placeholder="Описание" name="description" class="textarea"></textarea>
+              <div class="textarea">
+                <textarea placeholder="Описание" name="description" class="textarea__element"></textarea>
+              </div>
             </div>
           </fieldset>
           <fieldset class="fieldset">
@@ -107,8 +109,8 @@
                 <label for="personal_catalog" class="checkbox__label">Персональный каталог</label>
               </div>
               <div class="checkbox checkbox--normal">
-                <input name="company_catalor" id="company_catalor" type="checkbox" class="checkbox__element" />
-                <label for="company_catalor" class="checkbox__label">Каталог компании</label>
+                <input name="company_catalor" id="company_catalog" type="checkbox" class="checkbox__element" />
+                <label for="company_catalog" class="checkbox__label">Каталог компании</label>
               </div>
               <div class="checkbox checkbox--normal">
                 <input name="department__catalog" id="department__catalog" type="checkbox" class="checkbox__element" />
@@ -135,6 +137,6 @@
     <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
     <script src="./plugins/accordion/accordion.min.js" defer></script>
     <script src="./plugins/tinymce/tinymce.min.js" defer></script>
-    <script src="./js/script.js?v=0.89086329" defer></script>
+    <script src="./js/script.js?v=0.18752922" defer></script>
   </body>
 </html>

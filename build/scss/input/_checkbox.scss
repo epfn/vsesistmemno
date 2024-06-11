@@ -73,6 +73,10 @@
     }
   }
 
+  &--error &__element:not(:checked) {
+    border-color: $color-text-red;
+  }
+
   a {
     color: $color-text-blue;
     transition: color 0.38s ease-in-out;

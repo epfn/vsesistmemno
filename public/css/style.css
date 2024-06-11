@@ -560,8 +560,18 @@ body {
   border-radius: 8px;
 }
 
+.select--filter .choices__inner {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .choices[data-type*=select-one] .choices__inner {
   padding: 11px 15px;
+}
+
+.select--filter .choices[data-type*=select-one] .choices__inner {
+  padding-left: 44px;
+  padding-right: 4px;
 }
 
 .choices__list--dropdown .choices__item,
@@ -579,9 +589,21 @@ body {
   right: 20px;
 }
 
+.select--filter .choices[data-type*=select-one]::after {
+  background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.25 4.6875C1.25 4.43886 1.34877 4.2004 1.52459 4.02459C1.7004 3.84877 1.93886 3.75 2.1875 3.75H17.8125C18.0611 3.75 18.2996 3.84877 18.4754 4.02459C18.6512 4.2004 18.75 4.43886 18.75 4.6875C18.75 4.93614 18.6512 5.1746 18.4754 5.35041C18.2996 5.52623 18.0611 5.625 17.8125 5.625H2.1875C1.93886 5.625 1.7004 5.52623 1.52459 5.35041C1.34877 5.1746 1.25 4.93614 1.25 4.6875ZM4.375 9.6875C4.375 9.43886 4.47377 9.2004 4.64959 9.02459C4.8254 8.84877 5.06386 8.75 5.3125 8.75H14.6875C14.9361 8.75 15.1746 8.84877 15.3504 9.02459C15.5262 9.2004 15.625 9.43886 15.625 9.6875C15.625 9.93614 15.5262 10.1746 15.3504 10.3504C15.1746 10.5262 14.9361 10.625 14.6875 10.625H5.3125C5.06386 10.625 4.8254 10.5262 4.64959 10.3504C4.47377 10.1746 4.375 9.93614 4.375 9.6875ZM8.4375 13.75C8.18886 13.75 7.9504 13.8488 7.77459 14.0246C7.59877 14.2004 7.5 14.4389 7.5 14.6875C7.5 14.9361 7.59877 15.1746 7.77459 15.3504C7.9504 15.5262 8.18886 15.625 8.4375 15.625H11.5625C11.8111 15.625 12.0496 15.5262 12.2254 15.3504C12.4012 15.1746 12.5 14.9361 12.5 14.6875C12.5 14.4389 12.4012 14.2004 12.2254 14.0246C12.0496 13.8488 11.8111 13.75 11.5625 13.75H8.4375Z" fill="%238596A0"/></svg>');
+  height: 20px;
+  width: 20px;
+  right: unset;
+  left: 20px;
+}
+
 .choices[data-type*=select-one].is-open::after {
   margin-top: -8px;
   transform: rotate(180deg);
+}
+
+.select--filter .choices[data-type*=select-one].is-open::after {
+  transform: unset;
 }
 
 .is-focused .choices__inner,
@@ -589,6 +611,15 @@ body {
   border-color: #5c7ef4;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
+
+.select--filter .is-focused .choices__inner,
+.select--filter .is-open .choices__inner {
+  border-color: #e9eff2;
+  border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .is-flipped.is-open .choices__inner {
@@ -615,6 +646,31 @@ body {
   border-bottom-width: 0;
 }
 
+.select--filter .is-open .choices__list--dropdown,
+.select--filter .is-open .choices__list[aria-expanded] {
+  margin-top: 8px;
+  border-radius: 8px;
+  border: unset;
+  box-shadow: 0px 4px 15.6px 0px rgba(133, 150, 160, 0.2117647059);
+}
+.select--filter .is-flipped .choices__list--dropdown,
+.select--filter .is-flipped .choices__list[aria-expanded] {
+  margin-bottom: 8px;
+}
+.select--filter .choices__list--dropdown .choices__item,
+.select--filter .choices__list[aria-expanded] .choices__item {
+  font-size: 16px;
+  line-height: 1.25;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.select--filter .choices__list--dropdown .choices__list,
+.select--filter .choices__list[aria-expanded] .choices__list {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-inline: 20px;
+}
+
 .select--error .is-focused .choices__inner,
 .select--error .is-open .choices__inner {
   border-color: #f43e36;
@@ -631,6 +687,20 @@ body {
 .choices__list--dropdown .choices__item--selectable.is-highlighted,
 .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
   background-color: #f1f4f9;
+}
+
+.select--filter .choices__list--dropdown .choices__item--selectable.is-highlighted,
+.select--filter .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+  background-color: unset;
+  color: #f78763;
+}
+.select--filter .choices__list--dropdown .choices__item,
+.select--filter .choices__list[aria-expanded] .choices__item {
+  padding-inline: unset;
+}
+.select--filter .choices__list--dropdown .choices__item:not(:last-child),
+.select--filter .choices__list[aria-expanded] .choices__item:not(:last-child) {
+  border-bottom: 1px solid #e9eff2;
 }
 
 @media (max-width: 992px) {
@@ -773,6 +843,9 @@ body {
     font-size: 14px;
   }
   .fieldset__row--third {
+    grid-template-columns: 1fr;
+  }
+  .fieldset__row--one {
     grid-template-columns: 1fr;
   }
   .fieldset__row--tag {
