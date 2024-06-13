@@ -1,0 +1,158 @@
+.contact {
+  background-color: white;
+  padding-top: 90px;
+  padding-bottom: 120px;
+
+  &__container {
+    grid-area: center;
+    background-color: $color-background-purple-light;
+    padding: 60px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 510px);
+    gap: 40px;
+  }
+
+  &__title {
+    font-size: fluid(24px, 32px);
+    border-bottom: 2px solid currentColor;
+    font-weight: 700;
+    padding-bottom: 0.5em;
+    grid-column: span 2;
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.1em;
+    align-self: end;
+    column-gap: 2em;
+  }
+
+  &__link {
+    font-size: fluid(14px, 16px);
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    width: max-content;
+    transition: color 0.38s ease-in-out;
+
+    span {
+      transition: color 0.38s ease-in-out;
+      color: $color-text-orange;
+      font-size: 2em;
+    }
+
+    &:hover {
+      &,
+      span {
+        color: $color-text-blue;
+      }
+    }
+  }
+
+  &__form {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__row {
+    gap: 10px;
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  &__text {
+    font-size: fluid(14px, 16px);
+    text-wrap: balance;
+  }
+
+  &__subtext {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  &__submit {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: 1fr 1.75fr;
+    gap: 26px;
+  }
+}
+
+@media (max-width: 992px) {
+  .contact {
+    padding-top: 60px;
+    padding-bottom: 90px;
+    &__container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 20px;
+    }
+
+    &__title {
+      grid-column: unset;
+    }
+
+    &__social {
+      flex-wrap: wrap;
+      flex-direction: unset;
+    }
+
+    &__link {
+      gap: 1em;
+    }
+
+    &__form {
+    }
+
+    &__row {
+      grid-auto-flow: row;
+    }
+
+    &__text {
+    }
+
+    &__subtext {
+    }
+
+    &__submit {
+      margin-top: 10px;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    &__container {
+    }
+
+    &__title {
+    }
+
+    &__social {
+    }
+
+    &__link {
+    }
+
+    &__form {
+    }
+
+    &__row {
+    }
+
+    &__text {
+    }
+
+    &__subtext {
+    }
+
+    &__submit {
+    }
+  }
+}

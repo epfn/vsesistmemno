@@ -1,0 +1,40 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &--horizontal {
+    display: grid;
+    gap: 20px;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+  }
+
+  &--even {
+    grid-template-columns: auto minmax(auto, 240px);
+  }
+
+  &__label {
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 400;
+
+    &--gray {
+      color: $color-text-gray;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .field {
+    &--horizontal {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    &__label {
+      &--gray {
+      }
+    }
+  }
+}

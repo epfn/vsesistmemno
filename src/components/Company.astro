@@ -19,6 +19,8 @@ const col2: ColType[] = [
     text: "Активна",
   },
 ];
+
+const col3: ColType[] = [{ label: "ИНН", text: "7727563778" }];
 ---
 
 <section class="company section">
@@ -40,6 +42,16 @@ const col2: ColType[] = [
     <div class="company__column">
       {
         col2.map(({ label, text }) => (
+          <div class="company__item">
+            <div class="company__label">{label}</div>
+            <div class="company__text">{text}</div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="company__column">
+      {
+        col3.map(({ label, text }) => (
           <div class="company__item">
             <div class="company__label">{label}</div>
             <div class="company__text">{text}</div>

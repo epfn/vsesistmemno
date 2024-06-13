@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="stylesheet" href="./plugins/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
+    <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
+    <link rel="stylesheet" href="./fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="./css/style.css?v=0.74562865" />
+    <title>Профиль Пользователя</title>
+  </head>
+  <body>
+    <header class="header section">
+      <div class="header__container">
+        <img src="./img/logo.svg" alt="" class="header__logo" />
+        <div class="header__wrapper section">
+          <div class="header__content">
+            <form class="header__form">
+              <div class="header__search">
+                <input type="text" class="header__search-input" placeholder="Поиск документов" />
+                <button type="submit" class="header__search-icon icon-search"></button>
+              </div>
+            </form>
+            <nav class="header__navigation">
+              <ul class="menu menu--normal">
+                <li class="menu__item">
+                  <a href="./storage.html" class="menu__link">Компании</a>
+                </li>
+                <li class="menu__item">
+                  <a href="./users.html" class="menu__link">Пользователи</a>
+                </li>
+                <li class="menu__item">
+                  <a href="./storage.html" class="menu__link">Хранилище документов</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header__user">
+              <a href="./userProfile.html" class="header__user-avatar">
+                <img src="./img/izmailova.png" alt="" />
+              </a>
+              <a href="./userProfile.html" class="header__user-name">Измайлова Ольга</a>
+              <a href="#" class="header__user-logout">
+                <span class="header__user-logout-icon icon-log-out"></span>
+                Выход
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="header__menu icon-menu"></div>
+      </div>
+    </header>
+
+    <section class="backlink section">
+      <div class="backlink__container">
+        <a href="#" class="backlink__element">
+          <span class="icon-arrow-small"></span>
+          Главная
+        </a>
+      </div>
+    </section>
+    <section class="profile profile--grow section">
+      <form class="profile__container profile__container--info">
+        <div class="profile__info">
+          <div class="profile__avatar">
+            <div class="avatar">
+              <img src="./img/izmailova.png" class="avatar__image" />
+              <div class="avatar__loaded"></div>
+              <input type="file" name="avatar" class="avatar__input" accept="image/*" />
+            </div>
+          </div>
+          <div class="profile__name">Измайлова Ольга Ивановна</div>
+          <div class="profile__role">Администратор</div>
+        </div>
+        <div class="profile__form profile__form--even">
+          <div class="profile__col">
+            <div class="field">
+              <label for="phone" class="field__label field__label--gray">Телефон</label>
+              <div class="input">
+                <input name="phone" id="phone" value="+ 7 (999) 111-22-33" type="text" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Название компании</label>
+              <div class="select">
+                <select id="company" name="company" class="select__element">
+                  <option value="ООО “Рога и копыта”">ООО “Рога и копыта”</option>
+                  <option value="Энергострой">Энергострой</option>
+                  <option value="Яндекс">Яндекс</option>
+                  <option value="SpaceApp">SpaceApp</option>
+                  <option value="ValTec">ValTec</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="inn" class="field__label field__label--gray">ИНН компании</label>
+              <div class="input">
+                <input id="inn" name="inn" value="7727563778" type="text" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="department" class="field__label field__label--gray">Название подразделения</label>
+              <div class="select">
+                <select id="department" name="department" class="select__element">
+                  <option value="Отдел снабжения">Отдел снабжения</option>
+                  <option value="Отдел маркетинга">Отдел маркетинга</option>
+                  <option value="Отдел продаж">Отдел продаж</option>
+                  <option value="Отдел безопасности">Отдел безопасности</option>
+                  <option value="Отдел обучения">Отдел обучения</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="occupation" class="field__label field__label--gray">Должность пользователя</label>
+              <div class="input">
+                <input name="occupation" id="occupation" value="Начальник отдела" type="text" class="input__element" />
+              </div>
+            </div>
+          </div>
+          <div class="profile__col">
+            <div class="field">
+              <label for="email" class="field__label field__label--gray">E-mail</label>
+              <div class="input">
+                <input name="email" id="email" value="IvanovaOI@email.com" type="email" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="date" class="field__label field__label--gray">Дата рождения</label>
+              <div class="input">
+                <input name="date" id="date" value="15.03.1990" type="text" class="input__element input__element--date" />
+
+                <div class="input__icon icon-calendar"></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="gender" class="field__label field__label--gray">Пол</label>
+              <div class="select">
+                <select id="gender" name="gender" class="select__element">
+                  <option value="Женский">Женский</option>
+                  <option value="Мужской">Мужской</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="role" class="field__label field__label--gray">Роль</label>
+              <div class="select">
+                <select id="role" name="role" class="select__element">
+                  <option value="Администратор">Администратор</option>
+                  <option value="Менеджер">Менеджер</option>
+                  <option value="Глава отдела">Глава отдела</option>
+                  <option value="Линейный сотрудник">Линейный сотрудник</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="password" class="field__label field__label--gray">Пароль</label>
+              <div class="input">
+                <input name="password" id="password" value="vova123vova123" type="password" class="input__element input__element--password" />
+                <div class="input__icon icon-eye"></div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="button button--blue">Сохранить изменения</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer section">
+      <div class="footer__container">
+        <div class="footer__copyright">©2024 Все системно</div>
+      </div>
+    </footer>
+
+    <script src="./plugins/air-datepicker/air-datepicker.js" defer></script>
+    <script src="./plugins/imask/imask.js" defer></script>
+    <script src="./plugins/choices/choices.min.js" defer></script>
+    <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
+    <script src="./plugins/accordion/accordion.min.js" defer></script>
+    <script src="./plugins/tinymce/tinymce.min.js" defer></script>
+    <script src="./js/script.js?v=0.74562865" defer></script>
+  </body>
+</html>

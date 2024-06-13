@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="stylesheet" href="./plugins/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="./plugins/choices/choices.min.css" />
+    <link rel="stylesheet" href="./plugins/accordion/accordion.min.css" />
+    <link rel="stylesheet" href="./fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="./css/style.css?v=0.74562795" />
+    <title>Заголовок</title>
+  </head>
+  <body>
+    <section class="section section--grow section--mb">
+      <div class="section__container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 4rem">
+          <a href="login.html" class="button button--blue" target="_blank">Вход</a>
+          <a href="registration.html" class="button button--blue" target="_blank">Регистрация</a>
+          <a href="forgotPassword.html" class="button button--blue" target="_blank">Восстановление пароля</a>
+          <a href="userProfile.html" class="button button--blue" target="_blank">Профиль Пользователя</a>
+          <a href="userCard.html" class="button button--blue" target="_blank">Карточка пользователя</a>
+          <a href="users.html" class="button button--blue" target="_blank">Пользователи</a>
+          <a href="storage.html" class="button button--blue" target="_blank">Хранилище документов</a>
+          <a href="catalog.html" class="button button--blue" target="_blank">Каталог</a>
+          <a href="category.html" class="button button--blue" target="_blank">Категории</a>
+          <a href="subcategory.html" class="button button--blue" target="_blank">Подкатегории</a>
+          <a href="createCatalog.html" class="button button--blue" target="_blank">Создать каталог</a>
+          <a href="createCategory.html" class="button button--blue" target="_blank">Создать категорию</a>
+          <a href="createSubcategory.html" class="button button--blue" target="_blank">Создать подкатегорию</a>
+          <a href="documentAdmin.html" class="button button--blue" target="_blank">Документ. адмнистратор</a>
+          <a href="documentUser.html" class="button button--blue" target="_blank">Документ. Пользователя</a>
+          <a href="additionalDocumentAdmin.html" class="button button--blue" target="_blank">Допдокумент. адмнистратор</a>
+          <a href="createDocument.html" class="button button--blue" target="_blank">Создать документ</a>
+          <a href="createAdditionalDocument.html" class="button button--blue" target="_blank">Создать допдокумент</a>
+          <a href="views.html" class="button button--blue" target="_blank">Ознакомились с документами</a>
+          <a href="companies.html" class="button button--blue" target="_blank">Компании</a>
+          <a href="createCompany.html" class="button button--blue" target="_blank">Создать Компанию</a>
+          <a href="editCompany.html" class="button button--blue" target="_blank">Редактировать Компанию</a>
+          <a href="createDepartment.html" class="button button--blue" target="_blank">Создать Подразделение</a>
+          <a href="editDepartment.html" class="button button--blue" target="_blank">Редактировать Подразделение</a>
+          <a href="companyCard.html" class="button button--blue" target="_blank">Карточка компании</a>
+        </div>
+        <div style="display: flex; gap: 3rem; flex-wrap: wrap">
+          <div style="display: flex; flex-direction: column; gap: 1rem; padding-top: 2rem; max-width: 20rem; flex: 1">
+            <div class="field">
+              <label for="name" class="field__label">Логин</label>
+              <div class="input">
+                <input id="name" name="name" placeholder="Введите логин" class="input__element" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="name" class="field__label">Логин</label>
+              <div class="input">
+                <input id="name" name="name" placeholder="Введите логин" class="input__element" />
+
+                <div class="input__check icon-check"></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="name" class="field__label">Логин</label>
+              <div class="input input--error">
+                <input id="name" name="name" placeholder="Введите логин" class="input__element" />
+
+                <span class="input__error">Текст ошибки</span>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1rem; padding-top: 2rem; max-width: 20rem; flex: 1">
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Название компании</label>
+              <div class="select">
+                <select id="company" name="company" class="select__element">
+                  <option value="ООО “Рога и копыта”">ООО “Рога и копыта”</option>
+                  <option value="Энергострой">Энергострой</option>
+                  <option value="Яндекс">Яндекс</option>
+                  <option value="SpaceApp">SpaceApp</option>
+                  <option value="ValTec">ValTec</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="company" class="field__label field__label--gray">Название компании</label>
+              <div class="select select--error">
+                <select id="company" name="company" class="select__element">
+                  <option value="ООО “Рога и копыта”">ООО “Рога и копыта”</option>
+                  <option value="Энергострой">Энергострой</option>
+                  <option value="Яндекс">Яндекс</option>
+                  <option value="SpaceApp">SpaceApp</option>
+                  <option value="ValTec">ValTec</option>
+                </select>
+                <span class="select__error">Текст ошибки</span>
+              </div>
+            </div>
+            <div class="checkbox checkbox--normal">
+              <input name="2company_catalor" id="2company_catalor" type="checkbox" class="checkbox__element" />
+              <label for="2company_catalor" class="checkbox__label">Каталог компании</label>
+            </div>
+            <div class="checkbox checkbox--normal checkbox--error">
+              <input name="1company_catalog" id="2company" type="checkbox" class="checkbox__element" />
+              <label for="2company" class="checkbox__label">Каталог компании</label>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem; padding-top: 2rem; max-width: 20rem; flex: 1">
+            <div class="textarea">
+              <textarea placeholder="Описание" name="description" class="textarea__element"></textarea>
+            </div>
+            <div class="textarea textarea--error">
+              <textarea placeholder="Описание" name="description" class="textarea__element"></textarea>
+              <p class="textarea__error">Текст ошибки</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./plugins/air-datepicker/air-datepicker.js" defer></script>
+    <script src="./plugins/imask/imask.js" defer></script>
+    <script src="./plugins/choices/choices.min.js" defer></script>
+    <script src="./plugins/minimasonry/minimasonry.min.js" defer></script>
+    <script src="./plugins/accordion/accordion.min.js" defer></script>
+    <script src="./plugins/tinymce/tinymce.min.js" defer></script>
+    <script src="./js/script.js?v=0.74562795" defer></script>
+  </body>
+</html>

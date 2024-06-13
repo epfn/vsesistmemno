@@ -2092,7 +2092,7 @@ body {
   border-radius: 30px;
   padding: clamp(1.563rem, 4.601vw + -1.382rem, 2.5rem);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto repeat(3, 1fr);
   background-color: white;
   gap: clamp(0.625rem, 3.067vw + -1.338rem, 1.25rem);
 }
@@ -2105,6 +2105,7 @@ body {
   display: flex;
   align-items: center;
   gap: clamp(0.938rem, 4.601vw + -2.007rem, 1.875rem);
+  margin-right: clamp(2rem, 9.816vw + -4.282rem, 4rem);
 }
 .company__item {
   display: flex;
@@ -2136,6 +2137,7 @@ body {
   }
   .company__row {
     grid-column: span 2;
+    margin-left: unset;
   }
 }
 @media (max-width: 576px) {

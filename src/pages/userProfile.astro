@@ -26,14 +26,6 @@ const user: ProfileType = {
           value="+ 7 (999) 111-22-33"
         />
       </Field>
-      <Field id="email" label="E-mail" variant="gray">
-        <Input
-          type="email"
-          name="email"
-          id="email"
-          value="IvanovaOI@email.com"
-        />
-      </Field>
       <Field id="company" label="Название компании" variant="gray">
         <Select
           id="company"
@@ -46,6 +38,9 @@ const user: ProfileType = {
             "ValTec",
           ]}
         />
+      </Field>
+      <Field id="inn" label="ИНН компании" variant="gray">
+        <Input id="inn" name="inn" type="text" value="7727563778" />
       </Field>
       <Field id="department" label="Название подразделения" variant="gray">
         <Select
@@ -70,6 +65,14 @@ const user: ProfileType = {
       </Field>
     </Fragment>
     <Fragment slot="col2">
+      <Field id="email" label="E-mail" variant="gray">
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          value="IvanovaOI@email.com"
+        />
+      </Field>
       <Field id="date" label="Дата рождения" variant="gray">
         <Input type="date" name="date" id="date" value="15.03.1990" />
       </Field>

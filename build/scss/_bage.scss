@@ -1,0 +1,43 @@
+.bage {
+  display: flex;
+  background-color: $color-background-peach-light;
+  font-size: 14px;
+  padding: 8px 14px;
+  gap: 10px;
+  border-radius: 8px;
+  align-items: center;
+
+  &__icon {
+    color: $color-text-orange;
+    font-size: 24px;
+  }
+
+  &--desktop {
+    display: flex;
+    padding: 8px fluid(16px, 40px);
+  }
+
+  &--mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .bage {
+    border-radius: 8px;
+    justify-content: center;
+    font-size: 12px;
+
+    &__icon {
+      font-size: 22px;
+    }
+
+    &--desktop {
+      display: none;
+    }
+
+    &--mobile {
+      display: flex;
+    }
+  }
+}

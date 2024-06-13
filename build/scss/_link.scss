@@ -1,0 +1,52 @@
+.link {
+  color: $color-text-blue;
+  transition: color 0.38s ease-in-out;
+
+  &--normal {
+    font-size: 14px;
+    text-decoration: underline;
+  }
+
+  &--file {
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+    font-size: fluid(14px, 16px);
+  }
+
+  &--file &__icon {
+    font-size: 1.5em;
+  }
+
+  &:hover {
+    color: color-mix(in srgb, $color-background-blue 75%, black 25%);
+  }
+
+  &--tag {
+    text-decoration: underline;
+    font-size: 14px;
+    color: $color-text-orange;
+
+    &:hover {
+      color: $color-text-blue;
+    }
+  }
+
+  &--path {
+    font-size: 14px;
+    color: $color-text-black;
+
+    &:hover {
+      color: $color-text-blue;
+    }
+
+    &:not(:first-child) {
+      margin-left: 2px;
+
+      &::before {
+        content: "/";
+        margin-right: 5px;
+      }
+    }
+  }
+}

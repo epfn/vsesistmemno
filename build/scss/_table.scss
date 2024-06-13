@@ -1,0 +1,103 @@
+.table {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid $color-border-gray;
+  overflow: hidden;
+  overflow-x: auto;
+  &--status {
+    :is(th, td):nth-last-child(1) {
+      text-align: center;
+      width: 150px;
+      text-wrap: nowrap;
+    }
+  }
+
+  &--role {
+    :is(th, td):nth-last-child(2) {
+      text-align: center;
+      width: 15%;
+    }
+  }
+
+  &--id {
+    :is(th, td):nth-child(1) {
+      width: 8%;
+    }
+  }
+
+  table {
+    min-width: 100%;
+    width: 100%;
+    background-color: white;
+  }
+
+  thead {
+    background-color: $color-background-purple;
+    outline: 1px solid $color-background-purple;
+  }
+
+  tbody {
+  }
+  tr:not(:first-of-type) {
+    border-top: 1px solid $color-border-gray;
+  }
+
+  th {
+    font-weight: 500;
+  }
+
+  td {
+    font-weight: 400;
+  }
+
+  th,
+  td {
+    text-align: left;
+    line-height: 1.25;
+    height: 44px;
+    font-size: fluid(12px, 14px);
+
+    padding: 4px;
+    padding-inline: 10px;
+
+    &:first-of-type {
+      padding-left: 20px;
+    }
+
+    &:last-of-type {
+      padding-right: 20px;
+    }
+  }
+
+  .green,
+  .yellow,
+  .red {
+    font-size: 12px;
+    border-radius: 42px;
+    padding: 4px 16px;
+  }
+
+  .green {
+    background-color: $color-background-green;
+    color: $color-text-green;
+  }
+
+  .yellow {
+    background-color: $color-background-orange;
+    color: $color-text-orange;
+  }
+
+  .red {
+    background-color: $color-background-red;
+    color: $color-text-red;
+  }
+}
+
+@media (max-width: 992px) {
+  .table {
+    border-radius: 12px;
+    table {
+      width: max-content;
+    }
+  }
+}

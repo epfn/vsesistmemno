@@ -1,0 +1,44 @@
+.aside {
+  background-color: $color-background-gray-light;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: fluid(20px, 40px);
+  padding: fluid(10px, 20px);
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    font-size: fluid(16px, 18px);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__path {
+  }
+
+  &__date,
+  &__name {
+    font-size: fluid(12px, 14px);
+  }
+
+  &__name {
+    color: $color-text-gray;
+  }
+
+  &__person {
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+  }
+}
