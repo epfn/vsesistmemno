@@ -91,7 +91,7 @@
     }
 
     &__options {
-      display: grid;
+      flex-direction: column;
     }
   }
 }

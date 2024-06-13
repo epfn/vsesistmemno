@@ -1636,7 +1636,8 @@ body {
     align-items: unset;
   }
   .headline__form {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
   .headline__search {
     max-width: unset;
@@ -1920,7 +1921,7 @@ body {
 }
 @media (max-width: 576px) {
   .surface__options {
-    display: grid;
+    flex-direction: column;
   }
 }
 .tab {
