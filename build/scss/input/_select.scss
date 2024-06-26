@@ -1,4 +1,11 @@
 .select {
+  &--filter {
+  }
+
+  &--big {
+    min-width: 275px;
+  }
+
   &__element {
   }
 
@@ -138,6 +145,7 @@
     line-height: 1.25;
     padding-top: 11px;
     padding-bottom: 11px;
+    word-break: auto-phrase;
   }
 
   .choices__list--dropdown .choices__list,

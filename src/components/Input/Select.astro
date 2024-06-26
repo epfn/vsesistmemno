@@ -5,9 +5,10 @@ interface Props extends HTMLAttributes<"select"> {
   options: string[];
   error?: boolean;
   filter?: boolean;
+  big?: boolean;
 }
 
-const { options, error, filter, ...restProps } = Astro.props;
+const { options, error, filter, big, ...restProps } = Astro.props;
 ---
 
 <div
@@ -15,6 +16,7 @@ const { options, error, filter, ...restProps } = Astro.props;
     "select",
     { "select--error": error },
     { "select--filter": filter },
+    { "select--big": big },
   ]}
 >
   <select {...restProps} class="select__element">

@@ -538,6 +538,9 @@ body {
     width: 50px;
   }
 }
+.select--big {
+  min-width: 275px;
+}
 .select__error {
   margin-top: 4px;
   font-size: 12px;
@@ -663,6 +666,7 @@ body {
   line-height: 1.25;
   padding-top: 11px;
   padding-bottom: 11px;
+  word-break: auto-phrase;
 }
 .select--filter .choices__list--dropdown .choices__list,
 .select--filter .choices__list[aria-expanded] .choices__list {
@@ -1771,6 +1775,8 @@ body {
   color: #273137;
   transition: color 0.38s ease-in-out;
   line-height: 1.35;
+  word-break: auto-phrase;
+  hyphens: auto;
 }
 .storage__link:hover {
   color: #5c7ef4;
